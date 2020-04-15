@@ -1,0 +1,12 @@
+
+<div id="wrapper-content">
+    <app-sidebar *ngIf="displayMenu"></app-sidebar>
+    <app-leftpanel></app-leftpanel>
+
+    <main role="main">
+        <app-language></app-language>
+        <router-outlet #o="outlet"></router-outlet>
+    </main>
+</div>
+<app-footer></app-footer>
+<app-messagePopup *ngIf="messagePopup"></app-messagePopup>

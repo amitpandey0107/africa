@@ -1,0 +1,232 @@
+#Refferalreward {
+    .text-bold {
+        font-weight: bold;
+    }
+    ul {
+        list-style: none;
+    }
+    li {
+        font-size: 20px;
+        letter-spacing: 1px;
+        line-height: 30px;
+        color: #3d3d3d;
+        font-family: "ProximaNova";
+        font-weight: 500;
+    }
+    ul li::before {
+        content: "\2022";
+        color: #8f27af;
+        font-weight: bold;
+        display: inline-block;
+        width: 40px;
+        margin-left: -1em;
+        font-size: 41px;
+    }
+    .full-width {
+        width: 100%
+    }
+    .deal-drop {
+        width: 90%;
+        text-align: start;
+        position: relative;
+        textarea {
+            min-height: 200px;
+        }
+    }
+    .deal-option {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        letter-spacing: 1px;
+        line-height: 25px;
+        color: rgb(61, 61, 61);
+        font-family: "ProximaNova";
+        // box-shadow: none;
+        background-color: #ffffff;
+        border: 1px solid #d8d8df;
+    }
+    .main {
+        width: 65%;
+        height: auto;
+        box-shadow: 0px -5px 30px rgba(2, 2, 25, 0.2);
+        border-radius: 4px;
+        background: #fff;
+        margin: 0 auto;
+        padding: 10px 30px;
+        margin-top: -35px;
+    }
+    .page-header {
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+    .back-btn {
+        background-color: transparent;
+        border: none;
+        .material-icons {
+            font-size: 30px;
+        }
+    }
+    .content-w {
+        width: 100%;
+    }
+    .top {
+        width: 100%;
+        padding: 25px;
+    }
+    .header {
+        width: 100%;
+        margin-left: 20px;
+        font-size: 24px;
+        letter-spacing: 1px;
+        line-height: 20px;
+        color: #3d3d3d;
+        font-family: "ProximaNova";
+        font-weight: bold;
+        text-align: center;
+    }
+    .primary-color {
+        font-size: 22px;
+        letter-spacing: 1px;
+        line-height: 20px;
+        margin-bottom: 5px;
+        color: #8f28af;
+        font-family: "ProximaNova";
+        font-weight: bold;
+        margin-top: 40px;
+    }
+    .btn1 {
+        width: 100%;
+    }
+    .btn1 button {
+        background: linear-gradient(-32deg, #8031bd 0%, #8f27af 100%);
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        width: 100%;
+        margin-top: 0px;
+        padding: 10px 0;
+    }
+    .subhead {
+        font-size: 20px;
+        letter-spacing: 1px;
+        line-height: 40px;
+        color: #3d3d3d;
+        font-family: "ProximaNova";
+        font-weight: bold;
+        margin-left: 15px;
+    }
+    .mob-actions {
+        display: flex;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background-color: white;
+        z-index: 100;
+        box-shadow: 1.5px 2.598px 40px rgba(0, 0, 0, 0.12);
+        button {
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: rgb(76, 7, 116);
+            .material-icons {
+                font-size: 35px;
+            }
+        }
+        .logo {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+    } //header end
+    @media (min-width: 960px) and (max-width: 1024px) {
+        .main {
+            width: 75%;
+        }
+        .page-header {
+            width: 93%;
+        }
+        label {
+            font-size: 13px;
+        }
+    }
+    @media (max-width: 959px) {
+        .main {
+            height: 100%;
+            margin-bottom: 20px;
+            width: 75%;
+        }
+        .page-header {
+            width: 90%;
+        }
+        .full-width {
+            width: 90%;
+        }
+    }
+    @media (max-width: 600px) {
+        .main {
+            width: 85%;
+            padding: 10px 25px;
+            margin-bottom: 60px;
+            margin-top: 65px;
+        }
+        .page-header {
+            width: 90%;
+        }
+        .header {
+            margin-left: 0px;
+        }
+        form.form h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 25px;
+        }
+        .btn1 {
+            width: 100%;
+        }
+        .btn-done {
+            width: 100%;
+        }
+        .full-width {
+            width: 100%;
+        }
+        .deal-drop { 
+            width: 100%;
+        }
+        li {
+            font-size: 16px;
+        }
+        .primary-color {
+            font-size: 18px;
+        }
+
+        .top {
+            padding: 25px 0px;
+        }
+
+        .mob-action {
+            width: 100%;
+        } //footer css
+        .nav-bar {
+            font-size: 12px;
+            color: #bfbbbb;
+        }
+        .nav-bar {
+            position: fixed;
+            height: 50px;
+            bottom: 0;
+            background-color: #fff;
+            box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.12);
+            .active {
+                color: #882CB6;
+                font-weight: 700;
+                border-bottom: 2px solid #882CB6;
+            }
+        }
+    }
+}

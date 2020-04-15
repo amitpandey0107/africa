@@ -1,0 +1,85 @@
+<div id="Refferalreward" fxLayout="column" fxLayoutAlign="center center">
+    <!-- Header-part -->
+    <div class="page-header" fxShow fxHide.xs>
+        <div fxFlex="100%" fxLayout="row" fxLayoutAlign="start center">
+            <div fxFlex="9" fxFlex.xs="13">
+                <button class="back-btn" (click)="onBack();">
+                    <i class="material-icons">
+                        arrow_back
+                    </i>
+                </button>
+            </div>
+            <div fxFlex></div>
+        </div>
+    </div>
+    <div class="main" fxLayout="column" fxLayoutAlign="center center">
+        <div class="top">
+            <div fxFlex="100" fxLayout="column" fxLayoutAlign="space-between stretch" (ngSubmit)="onSubmit()">
+                <div fxFlex="100%" class="img-container text-center">
+                    <img src="https://s3.amazonaws.com/zalate/public/img/logo-small-min.png" />
+                </div>
+                <div class="header" fxFlex="100%">
+                    <h4>Zalate Refferal Reward Program</h4>
+                </div>
+                <p class="subhead m-0">Use your Refferal code</p>
+                <div class="content-w" fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                    fxLayoutAlign="center center" fxLayoutGap="20px">
+                    <div class="deal-drop" fxFlex="70" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+                        fxLayoutAlign="center start">
+                        <input class="deal-option" [disabled]="true" type="text" [(ngModel)]="RefferalCode" placeholder="Zelate Refferal code">
+                    </div>
+
+                    <div fxFlex="30" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="full-width"
+                        fxLayoutGap="20">
+                        <div class="btn1">
+                            <button class="m-t-0">
+                                copy code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-w m-t-20" fxFlex="100" fxLayout="column" fxLayoutAlign="center start">
+                    <p class="primary-color m-b-0">Refferal 5 Friends to Zelate</p>
+                    <ul>
+                        <li>Increase your daily chat limit by +1</li>
+                    </ul>
+                </div>
+                <div class="content-w m-t-20" fxFlex="100" fxLayout="column" fxLayoutAlign="center start">
+                    <p class="primary-color m-b-0">Refferal 10 Friends to Zelate</p>
+                    <ul>
+                        <li>Receive one sponcership credit and sponser any deal free of charge! ($600 value)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-part -->
+    <div class="nav-bar" fxFlex="100%" fxHide fxShow.xs fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers']" [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                attach_money
+            </i>
+            <span>Buyers</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+            [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                money_off
+            </i>
+            <span>Sellers</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/chat']" [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                message
+            </i>
+            <span>Message</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+            [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                perm_identity
+            </i>
+            <span>My Account</span>
+        </div>
+    </div>
+</div>

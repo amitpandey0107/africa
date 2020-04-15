@@ -1,0 +1,562 @@
+<div id="myaccount" fxLayout="column">
+	<!-- main heading -->
+	<!-- mobile design -->
+	<div *ngIf="isMobile" class="p-t-35 p-b-35 filters" fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+		<div fxFlex="30%" class="drop-container">
+			<div class="dropdown">
+				<button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">{{filterCrypto | limitTo:12}}
+					<i class="material-icons">keyboard_arrow_down </i></button>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					<i class="material-icons drp-caret">
+						arrow_drop_up
+					</i>
+					<li name="All" value="All" (click)="filterCryptoType('all', 'All')">All</li>
+					<li name="bit" value="item.code" *ngFor="let item of filterlist.cryptolist" (click)="filterCryptoType(item.code, item.name)"><img
+						 height="15px" [src]="getUrlCrypto(item.code)" alt="">{{item.name}}</li>
+				</ul>
+			</div>
+		</div>
+
+		<div fxFlex="30%" class="drop-container">
+			<div class="dropdown">
+				<button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">{{filterCountry | limitTo:12}}
+					<i class="material-icons">keyboard_arrow_down </i></button>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					<i class="material-icons drp-caret">
+						arrow_drop_up
+					</i>
+					<li name="All" value="All" (click)="filterCountryType('all', 'All')">All</li>
+					<li value="item.code" *ngFor="let item of filterlist.countries" (click)="filterCountryType(item.code, item.name)">
+						<!-- <img [src]="getFlag('226-united-states')" class="flag" /> -->
+						<span class="filterflag flag-icon flag-icon-{{item.code}}"></span>
+						{{item.name}}
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		<div fxFlex="30%" class="drop-container">
+
+			<div class="dropdown">
+				<button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">{{Sortby| limitTo:12}}
+					<i class="material-icons">keyboard_arrow_down </i></button>
+				<ul class="dropdown-menu last-drop sort-by" role="menu" aria-labelledby="menu1">
+					<i class="material-icons drp-caret">
+						arrow_drop_up
+					</i>
+					<li value="item.id" *ngFor="let item of SortbyOptions" (click)="SortOrder(item, item.name)">
+						{{item.name}}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- web design -->
+	<!-- account section -->
+	<!--<mat-card fxFlex="100%" *ngIf="!loader" class="info-card">
+		<mat-card-header>
+			<mat-card-title>My Account Info</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<mat-grid-list class="acc-infocard" [cols]="4" rowHeight="4:1" (window:resize)="onResize($event)">
+				<mat-grid-tile>
+					<mat-grid-tile-header>{{userData.firstName}} {{userData.lastName}}</mat-grid-tile-header>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>
+						<span class="flag-icon flag-icon-{{(userData.countrycode || 'us' | lowercase )}}"></span>
+						<a class="country hide">{{userData.location}}</a>
+					</mat-grid-tile-header>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>
+						<img width="20px" style="margin-right: 5px !important;" src="../../assets/img/whatsapp-icon.png" />
+						{{userData.phoneNumber}}
+					</mat-grid-tile-header>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header *ngIf="!userData.verified">
+						<button class="verify-btn" (click)="accountverify();">Get Verified</button>
+					</mat-grid-tile-header>
+				</mat-grid-tile>
+				<div class="deal-actions">
+					<button class="deal-btn acc-edit" (click)="accountinfoedit();$event.stopPropagation();">
+						<i class="material-icons">edit</i>
+					</button>
+				</div>
+			</mat-grid-list>
+			<div class="refferal-head">Refferal Rewards</div>
+			<mat-grid-list class="acc-refferal" [cols]="3" rowHeight="7:1" (window:resize)="onResize($event)">
+				<mat-grid-tile>
+					<mat-grid-tile-header>Refferal Code</mat-grid-tile-header>
+					<mat-grid-tile-footer>Isaac27</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>Refferal</mat-grid-tile-header>
+					<mat-grid-tile-footer>0</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header style="height: 80px !important;">
+						<button class="verify-btn" (click)="Refferalreward();">View Rewards</button>
+					</mat-grid-tile-header>
+				</mat-grid-tile>
+			</mat-grid-list>
+			<div class="refferal-head">Your Stats</div>
+			<mat-grid-list class="acc-refferal" [cols]="3" rowHeight="7:1" (window:resize)="onResize($event)">
+				<mat-grid-tile>
+					<mat-grid-tile-header>Deal Slots Available</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{userData.listingsRemaining}}</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>New Chats left today</mat-grid-tile-header>
+					<mat-grid-tile-footer>2</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>Sponsorship Credits</mat-grid-tile-header>
+					<mat-grid-tile-footer>3</mat-grid-tile-footer>
+				</mat-grid-tile>
+			</mat-grid-list>
+		</mat-card-content>
+	</mat-card>-->
+	<!-- sell section -->
+	<mat-card fxFlex="100%" *ngIf="!loader  && sellData.length">
+		<mat-card-title><b class="f-s-18">My Requests</b></mat-card-title>
+		<mat-card-content class="sell-content">
+			<mat-grid-list [ngClass]="{'grid-list-sponser': item.sponsered}" *ngFor="let item of sellData | orderBy: sortOrder.sortby :sortOrder.sorttype | filtercrypto : filterCryptoCode: filterCountryCode"
+			 [cols]="6" rowHeight="7:1"  (window:resize)="onResize($event)"
+			 [style.display]="item.status.key!=1 ? 'block' : 'none'">
+				<div class="Sponsered" *ngIf="item.sponsered" fxHide.xs fxShow>
+					<b>Sponsored Deal</b>
+				</div>
+				<mat-grid-tile class="logo-head">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}" class="m-t-15">
+						<!-- <img height="35px" [src]="getUrlCrypto(item.symbol)" alt=""> -->
+						Summary</mat-grid-tile-header>
+					<mat-grid-tile-footer class="f-w-600 p-t-35">
+						<a class="quantity-text-sponsored">
+							Title
+						</a>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Business Category</mat-grid-tile-header>
+					<mat-grid-tile-footer>Category</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Location</mat-grid-tile-header>
+					<mat-grid-tile-footer class="flag-card">
+						<div fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+							<div fxFlex="26" fxLayoutAlign="end center" class="country-name">
+								<!-- <span class="flag-icon flag-icon-{{item.country.code}}"></span> -->
+							</div>
+							<div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+								<!-- <span class="country hide text-center">{{item.country.name}}</span> -->
+								<span class="country hide text-center">Delhi</span>
+							</div>
+						</div>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<!-- <mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Discount</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.gross}}%</mat-grid-tile-footer>
+				</mat-grid-tile> -->
+				<!-- <mat-grid-tile *ngIf="!isMobile">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Escrow</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.escrow}}</mat-grid-tile-footer>
+				</mat-grid-tile> -->
+				<mat-grid-tile *ngIf="!isMobile">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Status</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.status.value}}
+						<a [ngClass]="{'status-available':item.status.key==0,'status-expired':item.status.key==1,'status-closed':item.status.key==2,'status-inprocess':item.status.key==3}"></a>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile class="verified-section">
+					<mat-grid-tile-header [ngClass]="{ 'sponser-header': item.sponsered }">
+					  <b class="verify-b">Verified<br /></b>
+					</mat-grid-tile-header>
+					<mat-grid-tile-footer class="c-color1 verify-zalate" [ngStyle]="{
+						color: !item.sponsered
+						  ? '#8f28af !important'
+						  : '#ffffff !important'
+					  }">
+					  <i class="material-icons">verified_user</i>
+					</mat-grid-tile-footer>
+				  </mat-grid-tile>
+				  <mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{ 'sponser-header': item.sponsered }" class="m-t-15">Date
+					</mat-grid-tile-header>
+					<mat-grid-tile-footer class="flag-card" [ngClass]="{ 'sponser-footer': item.sponsered }">
+					  <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+						<div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+						  <span class="country hide text-center">17 Dec, 2019</span>
+						</div>
+					  </div>
+					</mat-grid-tile-footer>
+				  </mat-grid-tile>
+				<div class="deal-actions" *ngIf="item.status.key!=1">
+					<button class="deal-btn" (click)="toggleEditSell(item);$event.stopPropagation();">
+						<i class="material-icons">edit</i>
+					</button>
+					<button class="deal-btn" (click)="toggleDeleteSell(item);$event.stopPropagation();">
+						<i class="material-icons">close</i>
+					</button>
+				</div>
+			</mat-grid-list>
+			<div class="dealnoresult" *ngIf="!loader && (sellData | filtercrypto : filterCryptoCode: filterCountryCode).length==0">
+				<i class="material-icons">
+					sentiment_very_dissatisfied
+				</i>
+				<div>No result found.</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+	<!-- buy section -->
+	<mat-card fxFlex="100%" *ngIf="!loader && buyData.length">
+		<mat-card-title><b class="f-s-18">My Buy Orders</b></mat-card-title>
+		<mat-card-content>
+			<!-- <mat-grid-list [ngClass]="{'grid-list-sponser': item.sponsered}" *ngFor="let item of buyData | orderBy: sortOrder.sortby :sortOrder.sorttype 
+			| filtercrypto : filterCryptoCode: filterCountryCode" [style.display]="item.status.key!=1 ? 'block' : 'none'"
+			 [cols]="breakpoint" rowHeight="7:1" (window:resize)="onResize($event)">
+		
+			 <div class="Sponsered" *ngIf="item.sponsered" fxHide.xs fxShow>
+					<b>Sponsored Deal</b>
+				</div>
+				<mat-grid-tile class="logo-head">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}" class="m-t-15">
+						<img height="35px" [src]="getUrlCrypto(item.symbol)" alt="">
+					</mat-grid-tile-header>
+					<mat-grid-tile-footer class="f-w-600 p-t-35">
+						<a class="quantity-text-sponsored">
+							{{item.position}}
+						</a>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">{{item.cryptoCurrency}}</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.quantity | number : '1.0-1'}}</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Location</mat-grid-tile-header>
+					<mat-grid-tile-footer class="flag-card">
+						<div fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+							<div fxFlex="26" fxLayoutAlign="end center" class="country-name">
+								<span class="flag-icon flag-icon-{{item.country.code}}"></span>
+							</div>
+							<div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+								<span class="country hide text-center">{{item.country.name}}</span>
+							</div>
+						</div>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Discount</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.gross}}%</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile *ngIf="!isMobile">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Escrow</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.escrow}}</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile *ngIf="!isMobile">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Status</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.status.value}}
+						<a [ngClass]="{'status-available':item.status.key==0,'status-expired':item.status.key==1,'status-closed':item.status.key==2,'status-inprocess':item.status.key==3}"></a>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile class="verified-section">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}" *ngIf="(item.verified || isMobile)">
+						<img *ngIf="item.verified" [src]="item.sponsered ? 'https://s3.amazonaws.com/zalate/public/img/verified-yes-min.png' : 'https://s3.amazonaws.com/zalate/public/img/done-min.png'"
+						 class="verified-image" />
+						<img *ngIf="!item.verified && isMobile" src="https://s3.amazonaws.com/zalate/public/img/verified-no-min.png" class="nonverified-image" />
+					</mat-grid-tile-header>
+					<mat-grid-tile-footer class="c-color1 verify-zalate" *ngIf="item.verified && !isMobile" [ngStyle]="{'color': !item.sponsered ? '#8f28af !important' : '#ffffff !important'}">
+						<b class="verify-b">Verified by <br> Zalate</b>
+					</mat-grid-tile-footer>
+					<mat-grid-tile-header *ngIf="!item.verified && !isMobile" [ngClass]="{'sponser-header': item.sponsered}">Posted</mat-grid-tile-header>
+					<mat-grid-tile-footer *ngIf="!item.verified && !isMobile" class="c-gray">
+						{{item.dateCreated | date : 'shortDate'}}
+					</mat-grid-tile-footer>
+					<mat-grid-tile-footer *ngIf="item.verified && isMobile" class="c-color1 verify-zalate">Verified</mat-grid-tile-footer>
+					<mat-grid-tile-footer *ngIf="!item.verified && isMobile" class="c-gray" [ngClass]="{'h-100': !item.verified && !isMobile }">{{item.dateCreated
+						| date : 'shortDate'}}</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<div class="deal-actions" *ngIf="item.status.key!=1">
+					<button class="deal-btn" (click)="toggleEditBuy(item);$event.stopPropagation();">
+						<i class="material-icons">edit</i>
+					</button>
+					<button class="deal-btn">
+						<i class="material-icons" (click)="toggleDeleteBuy(item);$event.stopPropagation();">close</i>
+					</button>
+				</div>		
+			</mat-grid-list> -->
+			<mat-grid-list [ngClass]="{'grid-list-sponser': item.sponsered}" *ngFor="let item of buyData | orderBy: sortOrder.sortby :sortOrder.sorttype 
+			| filtercrypto : filterCryptoCode: filterCountryCode" [style.display]="item.status.key!=1 ? 'block' : 'none'"
+			 [cols]="6" rowHeight="7:1" (window:resize)="onResize($event)">
+				<div class="Sponsered" *ngIf="item.sponsered" fxHide.xs fxShow>
+					<b>Sponsored Deal</b>
+				</div>
+				<mat-grid-tile class="logo-head">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}" class="m-t-15">
+						<!-- <img height="35px" [src]="getUrlCrypto(item.symbol)" alt=""> -->
+						Summary</mat-grid-tile-header>
+					<mat-grid-tile-footer class="f-w-600 p-t-35">
+						<a class="quantity-text-sponsored">
+							Title
+						</a>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Business Category</mat-grid-tile-header>
+					<mat-grid-tile-footer>Category</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Location</mat-grid-tile-header>
+					<mat-grid-tile-footer class="flag-card">
+						<div fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+							<div fxFlex="26" fxLayoutAlign="end center" class="country-name">
+								<!-- <span class="flag-icon flag-icon-{{item.country.code}}"></span> -->
+							</div>
+							<div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+								<!-- <span class="country hide text-center">{{item.country.name}}</span> -->
+								<span class="country hide text-center">Delhi</span>
+							</div>
+						</div>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<!-- <mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Discount</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.gross}}%</mat-grid-tile-footer>
+				</mat-grid-tile> -->
+				<!-- <mat-grid-tile *ngIf="!isMobile">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Escrow</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.escrow}}</mat-grid-tile-footer>
+				</mat-grid-tile> -->
+				<mat-grid-tile *ngIf="!isMobile">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Status</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.status.value}}
+						<a [ngClass]="{'status-available':item.status.key==0,'status-expired':item.status.key==1,'status-closed':item.status.key==2,'status-inprocess':item.status.key==3}"></a>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile class="verified-section">
+					<mat-grid-tile-header [ngClass]="{ 'sponser-header': item.sponsered }">
+					  <b class="verify-b">Verified<br /></b>
+					</mat-grid-tile-header>
+					<mat-grid-tile-footer class="c-color1 verify-zalate" [ngStyle]="{
+						color: !item.sponsered
+						  ? '#8f28af !important'
+						  : '#ffffff !important'
+					  }">
+					  <i class="material-icons">verified_user</i>
+					</mat-grid-tile-footer>
+				  </mat-grid-tile>
+				  <mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{ 'sponser-header': item.sponsered }" class="m-t-15">Date
+					</mat-grid-tile-header>
+					<mat-grid-tile-footer class="flag-card" [ngClass]="{ 'sponser-footer': item.sponsered }">
+					  <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+						<div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+						  <span class="country hide text-center">17 Dec, 2019</span>
+						</div>
+					  </div>
+					</mat-grid-tile-footer>
+				  </mat-grid-tile>
+				<div class="deal-actions" *ngIf="item.status.key!=1">
+					<button class="deal-btn" (click)="toggleEditSell(item);$event.stopPropagation();">
+						<i class="material-icons">edit</i>
+					</button>
+					<button class="deal-btn" (click)="toggleDeleteSell(item);$event.stopPropagation();">
+						<i class="material-icons">close</i>
+					</button>
+				</div>
+			</mat-grid-list>
+			<div class="dealnoresult" *ngIf="!loader && (buyData | filtercrypto : filterCryptoCode: filterCountryCode).length==0">
+				<i class="material-icons">
+					sentiment_very_dissatisfied
+				</i>
+				<div>No result found.</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+	<!-- watchsection -->
+	<mat-card fxFlex="100%" class="card-last" *ngIf="!loader && watchlistData.length">
+		<mat-card-title><b class="f-s-18">My Watch List</b></mat-card-title>
+		<mat-card-content>
+			<mat-grid-list [ngClass]="{'grid-list-sponser': item.sponsered}" *ngFor="let item of watchlistData | orderBy: sortOrder.sortby :sortOrder.sorttype | filtercrypto : filterCryptoCode: filterCountryCode"
+			 [cols]="breakpoint" rowHeight="7:1" (window:resize)="onResize($event)">
+				<div class="Sponsered" *ngIf="item.sponsered" fxHide.xs fxShow>
+					<b>Sponsored Deal</b>
+				</div>
+				<mat-grid-tile class="logo-head">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}" class="m-t-15">
+						<img height="35px" [src]="getUrlCrypto(item.symbol)" alt="">
+					</mat-grid-tile-header>
+					<mat-grid-tile-footer class="f-w-600 p-t-35">
+						<a class="quantity-text-sponsored">
+							{{item.position}}
+						</a>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">{{item.cryptoCurrency}}</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.quantity | number : '1.0-1'}}</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Location</mat-grid-tile-header>
+					<mat-grid-tile-footer class="flag-card">
+						<div fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+							<div fxFlex="26" fxLayoutAlign="end center" class="country-name" class="country-name">
+								<span class="flag-icon flag-icon-{{item.country.code}}"></span>
+							</div>
+							<div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+								<span class="country hide text-center">{{item.country.name}}</span>
+							</div>
+						</div>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Discount</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.gross}}%</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile *ngIf="!isMobile">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Escrow</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.escrow}}</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile *ngIf="!isMobile">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}">Status</mat-grid-tile-header>
+					<mat-grid-tile-footer>{{item.status.value}}
+						<a [ngClass]="{'status-available':item.status.key==0,'status-expired':item.status.key==1,'status-closed':item.status.key==2,'status-inprocess':item.status.key==3}"></a>
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<mat-grid-tile class="verified-section">
+					<mat-grid-tile-header [ngClass]="{'sponser-header': item.sponsered}" *ngIf="(item.verified || isMobile)">
+						<img *ngIf="item.verified" [src]="item.sponsered ? 'https://s3.amazonaws.com/zalate/public/img/verified-yes-min.png' : 'https://s3.amazonaws.com/zalate/public/img/done-min.png'"
+						 class="verified-image" />
+						<img *ngIf="!item.verified && isMobile" src="https://s3.amazonaws.com/zalate/public/img/verified-no-min.png" class="nonverified-image" />
+					</mat-grid-tile-header>
+					<mat-grid-tile-footer class="c-color1 verify-zalate" *ngIf="item.verified && !isMobile" [ngStyle]="{'color': !item.sponsered ? '#8f28af !important' : '#ffffff !important'}">
+						<b class="verify-b">Verified by <br> Zalate</b>
+					</mat-grid-tile-footer>
+					<mat-grid-tile-header *ngIf="!item.verified && !isMobile" [ngClass]="{'sponser-header': item.sponsered}">Posted</mat-grid-tile-header>
+					<mat-grid-tile-footer *ngIf="!item.verified && !isMobile" class="c-gray">
+						{{item.dateCreated | date : 'shortDate'}}
+					</mat-grid-tile-footer>
+					<mat-grid-tile-footer *ngIf="item.verified && isMobile" class="c-color1 verify-zalate">Verified</mat-grid-tile-footer>
+					<mat-grid-tile-footer *ngIf="!item.verified && isMobile" class="c-gray" [ngClass]="{'h-100': !item.verified && !isMobile }">
+						{{item.dateCreated | date : 'shortDate'}}
+					</mat-grid-tile-footer>
+				</mat-grid-tile>
+				<div class="deal-actions">
+					<button class="deal-btn" (click)="deleteWatchlist(id, 'watchlist');$event.stopPropagation();">
+						<i class="material-icons">close</i>
+					</button>
+				</div>
+			</mat-grid-list>
+			<div class="dealnoresult" *ngIf="!loader && (watchlistData | filtercrypto : filterCryptoCode: filterCountryCode).length==0">
+				<i class="material-icons">
+					sentiment_very_dissatisfied
+				</i>
+				<div>No result found.</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+	<!-- no result -->
+
+
+	<div class="no-conversations"*ngIf="!loader && (!buyData.length && !watchlistData.length && !sellData.length)">
+					<img src="https://s3.amazonaws.com/zalate/public/NoBuyMessage.png" class="no-message-img"/>
+					<a class="no-conv-title">No Deals Posted Yet</a>
+					<a class="no-conv-description">To see deals here, begin by posting a buy order or sell order</a>
+				</div>
+
+	<!-- footer-part -->
+	<!-- <div class="nav-bar" fxFlex="100%" fxHide fxShow.xs fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+		<div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers']" [routerLinkActive]="['active']">
+			<i fxFlex="100%" class="material-icons">
+				home
+			</i>
+			<span>Home</span>
+		</div>
+		<div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers/new']" [routerLinkActive]="['active']">
+			<i fxFlex="100%" class="material-icons">
+				add_circle
+			</i>
+			<span>New Deal</span>
+		</div>
+		<div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']" [routerLinkActive]="['active']">
+			<i fxFlex="100%" class="material-icons">
+				money_off
+			</i>
+			<span>Sellers</span>
+		</div>
+		<div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/chat']" [routerLinkActive]="['active']">
+			<i fxFlex="100%" class="material-icons">
+				message
+			</i>
+			<span>Message</span>
+		</div>
+		<div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']" [routerLinkActive]="['active']">
+			<i fxFlex="100%" class="material-icons">
+				perm_identity
+			</i>
+			<span>My Account</span>
+		</div>
+	</div> -->
+	<div class="nav-bar" fxFlex="100%" fxHide fxShow.xs fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+		<div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers']"
+		  [routerLinkActive]="['active']">
+		  <i fxFlex="100%" class="material-icons">
+			home
+		  </i>
+		  <span>Home</span>
+		</div>
+		<!-- <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+		[routerLinkActive]="['active']">
+		<i fxFlex="100%" class="material-icons">
+		  add_circle
+		</i>
+		<span>New Deal</span>
+	  </div> -->
+		<div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/chat']"
+		  [routerLinkActive]="['active']">
+		  <i fxFlex="100%" class="material-icons">
+			message
+		  </i>
+		  <span>Message</span>
+		</div>
+		<div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+		  [routerLinkActive]="['active']">
+		  <i fxFlex="100%" class="material-icons">
+			person
+		  </i>
+		  <span>Account</span>
+		</div>
+		<!-- <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+		  [routerLinkActive]="['active']">
+		  <i fxFlex="100%" class="material-icons">
+			accessibility_new
+		  </i>
+		  <span>Access</span>
+		</div> -->
+		<!-- <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+		  [routerLinkActive]="['active']">
+		  <i fxFlex="100%" class="material-icons">
+			notifications_active
+		  </i>
+		  <span>Notifications</span>
+		</div> -->
+		<div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/faq']"
+		  [routerLinkActive]="['active']">
+		  <i fxFlex="100%" class="material-icons">
+			help
+		  </i>
+		  <span>FAQ</span>
+		</div>
+		<!-- <div  fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+		  [routerLinkActive]="['active']">
+		  <i fxFlex="100%" class="material-icons">
+			exit_to_app
+		  </i>
+		  <span>Logout</span>
+		</div> -->
+	  </div>
+</div>
+<app-loader *ngIf="loader"></app-loader>

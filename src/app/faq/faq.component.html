@@ -1,0 +1,137 @@
+<div id="faq">
+    <div class="content">
+        <mat-card>
+            <mat-card-title>
+                <div fxLayout="row" fxLayout.xs="column">
+                    <div fxFlex="50%" fxFlex.xs="100%" class="p-t-100 p-b-10 heading" fxLayout="column" fxLayoutAlign="center start"
+                        fxLayoutAlign.xs="center start">Frequently Answered Questions</div>
+                    <div fxFlex="50%" fxFlex.xs="100%" class="p-t-10 p-b-10" fxLayout="column" fxLayoutAlign="center end"
+                        fxLayoutAlign.xs="center start">
+                        <div class="headind_srch">
+                            <div class="srch_bar">
+                                <div class="stylish-input-group">
+                                    <span class="input-group-addon">
+                                        <button type="button">
+                                            <i class="material-icons">search</i>
+                                        </button>
+                                    </span>
+                                    <input #searchInput type="text" [(ngModel)]="searchText" (change)="setPanelState(faqsData,panelOpenState);"
+                                        class="search-bar" placeholder="Search">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-title>
+            <mat-card-content>
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let faq of faqsData | filter : searchText;let i=index" (opened)="panelOpenState[i] = true"
+                        (closed)="panelOpenState[i] = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <div>
+                                    <i class="material-icons" *ngIf="!panelOpenState[i]">add</i>
+                                    <i class="material-icons" *ngIf="panelOpenState[i]">remove</i>
+                                    <!-- <span innerHTML="{{ faq.title | highlight : searchText}}"></span> -->
+                                    <span>Question title</span>
+                                </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p class="p-t-20">Answer description</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <div class="noresult" *ngIf="!loader && (faqsData | filter : searchText).length===0">
+                    No result found.
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- footer-part -->
+    <!-- <div class="nav-bar" fxFlex="100%" fxHide fxShow.xs fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers']" [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                attach_money
+            </i>
+            <span>Buyers</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+            [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                money_off
+            </i>
+            <span>Sellers</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/chat']" [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                message
+            </i>
+            <span>Message</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+            [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                perm_identity
+            </i>
+            <span>My Account</span>
+        </div>
+    </div> -->
+    <div class="nav-bar" fxFlex="100%" fxHide fxShow.xs fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers']"
+          [routerLinkActive]="['active']">
+          <i fxFlex="100%" class="material-icons">
+            home
+          </i>
+          <span>Home</span>
+        </div>
+        <!-- <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          add_circle
+        </i>
+        <span>New Deal</span>
+      </div> -->
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/chat']"
+          [routerLinkActive]="['active']">
+          <i fxFlex="100%" class="material-icons">
+            message
+          </i>
+          <span>Message</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+          [routerLinkActive]="['active']">
+          <i fxFlex="100%" class="material-icons">
+            person
+          </i>
+          <span>Account</span>
+        </div>
+        <!-- <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+          [routerLinkActive]="['active']">
+          <i fxFlex="100%" class="material-icons">
+            accessibility_new
+          </i>
+          <span>Access</span>
+        </div> -->
+        <!-- <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+          [routerLinkActive]="['active']">
+          <i fxFlex="100%" class="material-icons">
+            notifications_active
+          </i>
+          <span>Notifications</span>
+        </div> -->
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/faq']"
+          [routerLinkActive]="['active']">
+          <i fxFlex="100%" class="material-icons">
+            help
+          </i>
+          <span>FAQ</span>
+        </div>
+        <!-- <div  fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+          [routerLinkActive]="['active']">
+          <i fxFlex="100%" class="material-icons">
+            exit_to_app
+          </i>
+          <span>Logout</span>
+        </div> -->
+      </div>
+</div>
+<app-loader *ngIf="loader"></app-loader>

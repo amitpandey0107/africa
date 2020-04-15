@@ -1,0 +1,65 @@
+<div class="dialog-container">
+  <div class="dialog-wrapper" >
+
+
+     <div class="image-column">
+       <img *ngIf="step == 1" src="/assets/images/circle-logo.png" class="main-image">
+       <img *ngIf="step == 2"  [ngClass]="{'slide2': step == 2}"> <!--src="https://s3.amazonaws.com/zalate/public/onboarding/slide2.png"-->
+       <img *ngIf="step == 3"  [ngClass]="{'slide3': step == 3}"> <!--src="https://s3.amazonaws.com/zalate/public/onboarding/slide3.png"-->
+       <img *ngIf="step == 4"  [ngClass]="{'slide4': step == 4}"> <!--src="https://s3.amazonaws.com/zalate/public/onboarding/slide4.png"-->
+       <img *ngIf="step == 5"  [ngClass]="{'slide5': step == 5}"> <!--src="https://s3.amazonaws.com/zalate/public/onboarding/slide5.png"-->
+       <img *ngIf="step == 6"  [ngClass]="{'slide6': step == 6}"> <!--src="https://s3.amazonaws.com/zalate/public/onboarding/slide6.png"-->
+       <img *ngIf="step == 7" src="/assets/images/circle-logo.png" class="main-image">
+     </div>
+    <div class="title-column">
+      <a *ngIf="step == 1" class="title">Welcome to Africa SMB</a>
+      <a *ngIf="step == 2" class="title">Find and Filter Through Deals Seamlessly</a>
+      <a *ngIf="step == 3" class="title">Message about Deals Anonymously</a>
+      <a *ngIf="step == 4" class="title">Post Your Own Deals</a>
+      <a *ngIf="step == 5" class="title">Verify Both Your Own and Other's Deals</a>
+      <a *ngIf="step == 6" class="title">Sponsor Your Deal for Maximum Exposure</a>
+      <a *ngIf="step == 7" class="title">Let's Close Together!</a>
+    </div>
+    <div class="description-column">
+      <a *ngIf="step == 1" class="description">
+        Let's get started.
+      </a>
+      <a *ngIf="step == 2" class="description">
+        Browse Africa SMB's extensive list of Business deals.
+      </a>
+      <a *ngIf="step == 3" class="description">
+        You have the ability to message users about deals without revealing your identity until you decide you want to.
+      </a>
+      <a *ngIf="step == 4" class="description">
+        With Africa SMB you can post your own Buy Deals or Sell Deals, regardless of your position in the deal. Brokers, Mandates, Principals, Buyers and Sellers welcome!
+      </a>
+      <a *ngIf="step == 5" class="description">
+        Verified deals receive up to 5x more serious inquiries and leads compared to non-verified deals. After Proof-of-Coins or Proof-of-Funds, the verified badge above is shown.
+      </a>
+      <a *ngIf="step == 6" class="description">
+        Sponsored deals receive on average 8x the exposure, and also get listed on Africa SMB's social media channels, as well as push notifications to all users. 
+      </a>
+      <a *ngIf="step == 7" class="description">
+        Click below to enter Africa SMB
+      </a>
+      
+    </div>
+    <div class="pagination-column">
+      <ul>
+        <li class="circle" [ngClass]="{'active': step == 1}"></li>
+        <li class="circle" [ngClass]="{'active': step == 2}"></li>
+        <li class="circle" [ngClass]="{'active': step == 3}"></li>
+        <li class="circle" [ngClass]="{'active': step == 4}"></li>
+        <li class="circle" [ngClass]="{'active': step == 5}"></li>
+        <li class="circle" [ngClass]="{'active': step == 6}"></li>
+        <li class="circle" [ngClass]="{'active': step == 7}"></li>
+      </ul>
+    </div>
+    <div class="continue-column">
+      <button (click)="pressContinue()" class="continue"><a *ngIf="step != 7">Continue</a>
+        <a *ngIf="step == 7">Enter Africa SMB</a></button>
+    </div>
+
+
+  </div>
+</div>

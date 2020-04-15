@@ -1,0 +1,50 @@
+@font-face {
+    font-family: ProximaNova;
+    src: url("assets/ProximaNova/ProximaNova-Regular.otf") format("truetype");
+}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~angular-notifier/styles/core.scss";
+
+
+
+.afu-select-btn {}
+.afu-reset-btn {}
+.afu-upload-btn {}
+.afu-dragndrop-box {}
+.afu-dragndrop-text {}
+.afu-constraints-info {}
+.afu-valid-file {}
+.afu-invalid-file {}
+.afu-progress-bar {}
+.afu-upload-status {}
+.afu-attach-pin {}
+.mat-snack-bar-handset .mat-snack-bar-container {
+    margin: 0;
+    max-width: inherit;
+    width: 100%;
+    background: #4e2a44 !important;
+    color: beige;
+}
+.isLoading
+{
+    pointer-events: none;
+
+}
+.mat-button-toggle {
+    color: black;
+}
+.mat-button-toggle-checked {
+    background-color: #502c46;
+    color:white;
+}
+// .progress-bar{
+//     background-color: #502c46;
+// }
+
+.count{
+    position: absolute;
+    margin-top: -14px;
+    margin-left: 19px;
+    background: red;
+    color: white;
+}

@@ -1,0 +1,276 @@
+<div id="myaccount" fxLayout="column" fxLayoutAlign="center center">
+	<!-- web-newpost-part -->
+	<div  style="place-content:start" id="deal-slot" fxFlex="100%" fxLayout="column">
+		<mat-card fxLayout="column" fxLayoutAlign="start center" class="newpost-card">
+			<mat-card-header>
+				<mat-card-title>
+					<div fxLayout="column">
+						<div fxFlex="100%" fxHide fxShow.xs fxLayout="row wrap" fxLayoutAlign="center center">
+							<div fxFlex="100%" *ngIf="currentStep < 4">
+								<button fxFlex="10%" class="back-btn m-r-5" (click)="backlist()">
+									<i class="material-icons">
+										arrow_back
+									</i>
+								</button>
+							</div>
+						</div>
+						<div fxFlex="100%" fxLayout="row wrap" class="header-container" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
+							<div fxFlex="70%" fxShow fxHide.xs>
+								<button fxFlex="10%" class="back-btn m-r-5" (click)="backlist()">
+									<i class="material-icons">
+										arrow_back
+									</i>
+								</button>
+								<div fxLayout="column" fxFlex="90%" fxShow fxHide.xs class="deal-head">
+									<span>Deal Slots</span>
+									<!--<small>({{listingsRemaining}} Deals Remaining)</small>-->
+								</div>
+							</div>
+							<div fxFlex="70%" fxHide fxShow.xs fxLayoutAlign="start center">
+								<div fxLayout="column" fxFlex="100%" fxFlex.xs="100%" class="deal-head">
+									<span>Post Sell Order</span>
+									<small>({{listingsRemaining}} Deals Remaining)</small>
+								</div>
+							</div>
+							<div fxFlex="30%" fxLayoutAlign="end center" *ngIf="currentStep != 4" class="text-right">
+								<div fxFlex="100%">
+									<span fxShow fxHide.xs class="m-l-10 header-step">Step {{currentStep}}/3</span>
+									<span fxHide fxShow.xs class="m-l-10 header-step">{{currentStep}}/3</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</mat-card-title>
+			</mat-card-header>
+			<mat-card-content *ngIf="currentStep == 1" class="step" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center">
+				<div class="step-block" fxFlex="100%">
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">Select Cryptocurrency you want to Sell</div>
+						<div class="deal-drop">
+							<!-- <img *ngIf="newDeal.SelectCryptoType" class="crypto-img" [src]="getUrlCrypto(newDeal.SelectCryptoType)" alt="">
+							<select class="deal-option crypto-option" [(ngModel)]="newDeal.SelectCryptoType" (change)="onCryptoChange(newDeal.SelectCryptoType)">
+								<option disabled>Select a Cryptocurrency</option>
+								<option value="{{item.code}}" *ngFor="let item of newDealLists.cryptolist">{{item.name}}</option>
+							</select> -->
+							<div class="dropdown">
+								<button class="filter_selector p-l-40" type="button" id="menu1" data-toggle="dropdown">
+									<img *ngIf="newDeal.SelectCryptoType" class="crypto-img" [src]="getUrlCrypto(SelectCryptoType.code)" alt="">
+									<a style="font-weight: 700; margin-left: 5px; font-size: 16px;">{{SelectCryptoType.name}}</a>
+									<i class="material-icons">keyboard_arrow_down </i>
+								</button>
+								<ul class="dropdown-menu drop-cstm" role="menu" aria-labelledby="menu1">
+									<li name="bit" value="item.code" *ngFor="let item of newDealLists.cryptolist" (click)="onCryptoChange(item.code, item.name)">
+										<img class="crypto-li" height="15px" [src]="getUrlCrypto(item.code)" alt="">{{item.name}}</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">Amount of Coin Looking to Purchase</div>
+						<div class="deal-drop">
+							<input autocomplete="off" class="deal-option escrow-text" maxlength="8" NumberOnly type="text" [(ngModel)]="newDeal.AmountofCoin"
+							 name="quantity" placeholder="Coin Amount" [ngClass]="{ 'is-invalid': (step1 && newDealinvalid.coinAmount) }" (keyup)="checkValidation(currentStep)">
+							<img *ngIf="newDeal.SelectCryptoType" class="amnt-img" NumberOnly [src]="getUrlCrypto(SelectCryptoType.code)"
+							 alt="">
+							<div *ngIf="step1 && newDealinvalid.coinAmount" class="invalid-feedback">
+								<div>This field is required</div>
+							</div>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Gross Discount<br>
+								<small>This is the total discount, including sellers fees and broker fees. </small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<select class="deal-option" [(ngModel)]="newDeal.Discount">
+								<option disabled>Select</option>
+								<option value="{{item.key}}" *ngFor="let item of newDealLists.GrossList">{{item.value}}</option>
+							</select>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Net Discount<br>
+								<small>This is the Net discount, including sellers fees and broker fees. </small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<select class="deal-option" [(ngModel)]="newDeal.net">
+								<option disabled>Select</option>
+								<option value="{{item.key}}" *ngFor="let item of newDealLists.net">{{item.value}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</mat-card-content>
+			<mat-card-content *ngIf="currentStep == 2" class="step" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center">
+				<div class="step-block" fxFlex="100%">
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Escrow<br>
+								<small>Which Escrow does the Seller wish to use for this transaction?</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<input class="deal-option escrow-text" maxlength="25" type="text" [(ngModel)]="newDeal.PreferredEscrow" name="escrow" 
+							 placeholder="Escrow Name" [ngClass]="{'is-invalid': (step2 && newDealinvalid.PreferredEscrow)}" (keyup)="checkValidation(currentStep)">
+							<div *ngIf="step2 && newDealinvalid.PreferredEscrow" class="invalid-feedback">
+								<div>This field is required</div>
+							</div>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Location of Seller<br>
+								<small>Which country is the Seller's primary location?</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<!-- <img *ngIf="newDeal.countryCode" class="crypto-img" [src]="getFlag(newDeal.countryCode)" alt=""> -->
+							<!-- <span class="newpost-flag-img flag-icon flag-icon-{{newDeal.countryCode}}"></span>
+							<select class="deal-option crypto-option" [(ngModel)]="newDeal.countryCode" (change)="onCountryChange(newDeal.countryCode)">
+								<option disabled>Location of Buyer</option>
+								<option value="{{item.code}}" *ngFor="let item of newDealLists.countries">{{item.name}}</option>
+							</select> -->
+							<div class="dropdown">
+								<button class="filter_selector deal-option crypto-option" type="button" id="menu1" data-toggle="dropdown">
+									<span class="filterflag flag-icon flag-icon-{{(selectedCountry.code | lowercase)}}"></span>
+									{{selectedCountry.name}}
+									<i class="material-icons">keyboard_arrow_down </i>
+								</button>
+								<ul class="dropdown-menu drop-cstm" role="menu" aria-labelledby="menu1">
+									<li value="item.code" *ngFor="let item of newDealLists.countries" (click)="onCountryChange(item.code, item.name)">
+										<!-- <img [src]="getFlag('226-united-states')" class="flag" /> -->
+										<span class="filterflag flag-icon flag-icon-{{(item.code | lowercase)}}"></span>
+										{{item.name}}
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Your Position<br>
+								<small>What is your position in this transaction?</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<select class="deal-option" [(ngModel)]="newDeal.YourPosition">
+								<option disabled>Select Your Position</option>
+								<option value="{{item.name}}" *ngFor="let item of newDealLists.positions">{{item.name}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Proof of Funds Available?<br>
+								<small>Is the Seller able to provide Proof of Funds?</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<select class="deal-option" [(ngModel)]="newDeal.YourProof">
+								<option disabled>Select Option</option>
+								<option value="{{item.name}}" *ngFor="let item of newDealLists.proofs">{{item.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</mat-card-content>
+			<mat-card-content *ngIf="currentStep == 3" class="step3" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center">
+				<div class="step-block3" fxFlex="100%">
+					<div fxLayout="column" fxLayoutAlign="center start" class="m-t-30 m-b-30" class="center-step">
+						<div class="step-head">
+							<span class="deal-head">Description<br>
+								<small>Add all remaining details about this deal here.</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<textarea class="deal-option escrow-text" [(ngModel)]="newDeal.Description" [ngClass]="{'is-invalid': (step3 && newDealinvalid.Description)}"  (keyup)="checkValidation(currentStep)"></textarea>
+							<div *ngIf="step3 && newDealinvalid.Description" class="invalid-feedback">
+								<div>This field is required</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</mat-card-content>
+
+
+			<mat-card-content *ngIf="currentStep == 4" class="step step4" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+				<div class="main" fxLayout="column" fxLayoutAlign="center center">
+					<div class="top" fxLayout="column" fxLayoutAlign="space-between center">
+						<h3 fxFlex class="title">Seller Deal Successfully Submitted</h3>
+						<button (click)="viewMyDeal()" class="view-my-deal">View Deal</button>
+					</div>
+					
+				</div>
+			</mat-card-content>
+
+
+
+			<mat-card-content *ngIf="currentStep == 18" class="step step4" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+				<div class="main" fxLayout="column" fxLayoutAlign="center center">
+					<div class="top" fxLayout="column" fxLayoutAlign="space-between center">
+						<h3 fxFlex class="title">Give Your Deal a Boost</h3>
+						<div class="mid-img" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+							<div fxFlex="40"><img src="https://s3.amazonaws.com/zalate/public/img/logo-small-min.png"></div>
+							<div fxFlex="20">
+								<div class="plus">+</div>
+							</div>
+							<div fxFlex="20"><img src="https://s3.amazonaws.com/zalate/public/img/done-min.png"></div>
+						</div>
+						<div class="text">BY VERIFYING AND SPONSOR YOUR DEAL</div>
+						<p class="text-dem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua.
+							Lorem ipsum dolor sit amet, consectetur.</p>
+					</div>
+					<form  class="form" fxFlex="100" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+						<div class="header">
+							<h4>If you are interested in Sponsor or Verification, please send your Personal Identity</h4>
+						</div>
+						<div class="content-w" fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center center"
+						 fxLayoutGap="20px">
+							<div class="m-10 input-container" fxFlex="50" fxFlex.xs="100" fxFlex-.sm="100" fxLayout="column" fxLayoutAlign="center start">
+								<label>Email</label>
+								<input type="text" required  placeholder="example@gmail.com">
+							</div>
+							<div class="m-10 input-container" fxFlex="50" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center start">
+								<label>Phone</label>
+								<input type="text" required  placeholder="Input your Phone Number">
+							</div>
+						</div>
+						<div class="content-w" fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center center"
+						 fxLayoutGap="20px">
+							<div class="m-10 input-container" fxFlex="50" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center start">
+								<label>Name</label>
+								<input type="text" required  placeholder="Input your Name">
+							</div>
+							<div class="m-10 btn1 input-container" fxFlex="50" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+							 fxLayoutAlign="center start">
+								<label></label>
+								<button>Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</mat-card-content>
+
+
+
+
+			<mat-card-footer fxShow fxHide.xs *ngIf="currentStep < 4">
+				<button *ngIf="currentStep != 1" class="nav-btn navback" mat-button (click)="back(currentStep)">BACK</button>
+				<button *ngIf="currentStep != 3" [ngClass]="{'InValidBackground':!IsValidate}"  class="nav-btn navnext" mat-button (click)="continue(currentStep)">CONTINUE</button>
+				<button *ngIf="currentStep == 3" [ngClass]="{'InValidBackground':!IsValidate}" class="nav-btn navnext" mat-button (click)="submit()">SUBMIT DEAL</button>
+			</mat-card-footer>
+			<mat-card-footer fxHide fxShow.xs>
+				<button *ngIf="currentStep != 1" class="mob-navbtn mob-navback" mat-button (click)="back(currentStep)">BACK</button>
+				<button *ngIf="currentStep != 3 && currentStep != 1"[ngClass]="{'InValidBackground':!IsValidate}" class="mob-navbtn mob-navnext" mat-button (click)="continue(currentStep)">CONTINUE</button>
+				<button *ngIf="currentStep != 3 && currentStep == 1" [ngClass]="{'InValidBackground':!IsValidate}" class="single-btn mob-navnext" mat-button (click)="continue(currentStep)">CONTINUE</button>
+				<button *ngIf="currentStep == 3"[ngClass]="{'InValidBackground':!IsValidate}" class="mob-navbtn mob-navnext" mat-button (click)="submit()">SUBMIT DEAL</button>
+			</mat-card-footer>
+		</mat-card>
+	</div>
+</div>

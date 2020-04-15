@@ -1,0 +1,412 @@
+<div id="myaccount" fxLayout="column" fxLayoutAlign="center center">
+	<!-- web-newpost-part -->
+
+	<div style="place-content:start" id="deal-slot" fxFlex="100%" fxLayout="column">
+		<mat-card fxLayout="column" fxLayoutAlign="start center" class="newpost-card">
+			<mat-card-header>
+				<mat-card-title>
+					<div fxLayout="column">
+						<div fxFlex="100%" fxHide fxShow.xs fxLayout="row wrap" fxLayoutAlign="center center">
+							<div fxFlex="100%" *ngIf="currentStep < 4">
+								<button fxFlex="10%" class="back-btn m-r-5" (click)="back()">
+									<i class="material-icons">
+										arrow_back
+									</i>
+								</button>
+								<div fxFlex="30%" fxFlex.sm="30%" fxFlex.md="25%" class="drop-container">
+									<div class="dropdown">
+									  <button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">
+										{{ language }}
+										<i class="material-icons">keyboard_arrow_down</i>
+									  </button>
+									  <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+										<li name="All" value="eng" (click)="languageChange('eng', 'ENG')">
+										  ENG
+										</li>
+										<li name="All" value="lanone" (click)="languageChange('lanone', 'Lan One')">
+										  Lan one
+										</li>
+										<li name="All" value="lantwo" (click)="languageChange('lantwo', 'Lan Two')">
+										  Lan two
+										</li>
+									  </ul>
+									</div>
+								  </div>
+							</div>
+						</div>
+						<!-- <div fxFlex="30%" fxFlex.sm="30%" fxFlex.md="25%" class="drop-container">
+							<div class="dropdown">
+							  <button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">
+								{{ language }}
+								<i class="material-icons">keyboard_arrow_down</i>
+							  </button>
+							  <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+								<li name="All" value="eng" (click)="languageChange('eng', 'ENG')">
+								  ENG
+								</li>
+								<li name="All" value="lanone" (click)="languageChange('lanone', 'Lan One')">
+								  Lan one
+								</li>
+								<li name="All" value="lantwo" (click)="languageChange('lantwo', 'Lan Two')">
+								  Lan two
+								</li>
+							  </ul>
+							</div>
+						  </div> -->
+						<div fxFlex="100%" fxLayout="row wrap" class="header-container" fxLayoutAlign="start center"
+							fxLayoutAlign.xs="start center">
+							<div fxFlex="70%" fxShow fxHide.xs>
+								<button fxFlex="10%" class="back-btn m-r-5" (click)="back()">
+									<i class="material-icons">
+										arrow_back
+									</i>
+								</button>
+								<div fxLayout="column" fxFlex="90%" fxShow fxHide.xs class="deal-head">
+									<span>Request Slots</span>
+									<!--<small>({{listingsRemaining}} Deals Remaining)</small>-->
+								</div>
+							</div>
+							<div fxFlex="70%" fxHide fxShow.xs fxLayoutAlign="start center">
+								<div fxLayout="column" fxFlex="100%" fxFlex.xs="100%" class="deal-head">
+									<span>Post Buy Deals</span>
+									<small>({{listingsRemaining}} Deals Remaining)</small>
+								</div>
+							</div>
+							<div fxFlex="30%" fxLayoutAlign="end center" *ngIf="currentStep != 4" class="text-right">
+								<div fxFlex="100%">
+									<span fxShow fxHide.xs class="m-l-10 header-step">Step {{currentStep}}/3</span>
+									<span fxHide fxShow.xs class="m-l-10 header-step">{{currentStep}}/3</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</mat-card-title>
+			</mat-card-header>
+			<mat-card-content *ngIf="ErrorText" class="step" fxFlex="100%" fxLayout="column"
+			fxLayoutAlign="start center" style="color: red;">{{ErrorText}}</mat-card-content>
+			<mat-card-content *ngIf="currentStep == 1" class="step" fxFlex="100%" fxLayout="column"
+				fxLayoutAlign="start center">
+				<div class="step-block" fxFlex="100%">
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Choose Request Type.<br>
+								<small>Check this box if you want provide or to purchase services.</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<mat-radio-group aria-label="Select an option">
+								<mat-radio-button value="0" (change)="onServiceTypeChange($event)">Purchase</mat-radio-button><br/>
+								<mat-radio-button value="1" (change)="onServiceTypeChange($event)">Provide</mat-radio-button>
+							  </mat-radio-group>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">Select Business Category</div>
+						<div class="deal-drop">
+							<div class="dropdown">
+								<button class="filter_selector p-l-40" type="button" id="menu1" data-toggle="dropdown">
+									<a style="font-weight: 700; margin-left: 5px; font-size: 16px;">{{ category }}</a>
+									<i class="material-icons">keyboard_arrow_down </i>
+								</button>
+								<ul class="dropdown-menu drop-cstm" role="menu" aria-labelledby="menu1">
+									<li *ngFor="let item of categoryList" name="bit" value="Cat-one" (click)="categoaryChange(item.name, item.name)">
+										<img class="crypto-li" height="15px" [src]="" alt="">{{item.name}}
+									</li>
+									<!-- <li name="bit" value="cattwo" (click)="categoaryChange('Cat two', 'Cat two')">
+										<img class="crypto-li" height="15px" [src]="" alt="">Cat
+										two
+									</li>
+									<li name="bit" value="catthree" (click)="categoaryChange('Cat Three', 'Cat Three')">
+										<img class="crypto-li" height="15px" [src]="">Cat Three
+									</li> -->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">Select Business Sub Category</div>
+						<div class="deal-drop">
+							<div class="dropdown">
+								<button class="filter_selector p-l-40" type="button" id="menu1" data-toggle="dropdown">
+									<!-- <img *ngIf="newDeal.SelectCryptoType" class="crypto-img"
+										[src]="getUrlCrypto(SelectCryptoType.code)" alt=""> -->
+									<a style="font-weight: 700; margin-left: 5px; font-size: 16px;">{{ subCategory }}</a>
+									<i class="material-icons">keyboard_arrow_down </i>
+								</button>
+								<ul class="dropdown-menu drop-cstm" role="menu" aria-labelledby="menu1">
+									<li *ngFor="let item of subCategoryList" name="bit" value="Cat-one" (click)="subCategoaryChange(item.name, item.name)">
+										<img class="crypto-li" height="15px" [src]="" alt="">
+										{{item.name}}
+									</li>
+									<!-- <li name="bit" value="cattwo" (click)="subCategoaryChange('Sub cat Two', 'Sub Cat Two')">
+										<img class="crypto-li" height="15px" [src]="" alt="">Sub Cat
+										two
+									</li>
+									<li name="bit" value="catthree" (click)="subCategoaryChange('Sub cat Three', 'Sub Cat Three')">
+										<img class="crypto-li" height="15px" [src]="">Sub Cat Three
+									</li> -->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">Select Business</div>
+						<div class="deal-drop">
+							<!-- <img *ngIf="newDeal.SelectCryptoType" class="crypto-img" [src]="getUrlCrypto(newDeal.SelectCryptoType)" alt="">
+							<select class="deal-option crypto-option" [(ngModel)]="newDeal.SelectCryptoType" (change)="onCryptoChange(newDeal.SelectCryptoType)">
+								<option disabled>Select a Cryptocurrency</option>
+								<option value="{{item.code}}" *ngFor="let item of newDealLists.cryptolist">{{item.name}}</option>
+							</select> -->
+							<div class="dropdown">
+								<button class="filter_selector p-l-40" type="button" id="menu1" data-toggle="dropdown">
+									<!-- <img *ngIf="newDeal.SelectCryptoType" class="crypto-img"
+										[src]="getUrlCrypto(SelectCryptoType.code)" alt=""> -->
+									<a style="font-weight: 700; margin-left: 5px; font-size: 16px;">{{ businessType }}</a>
+									<i class="material-icons">keyboard_arrow_down </i>
+								</button>
+								<ul class="dropdown-menu drop-cstm" role="menu" aria-labelledby="menu1">
+									<li name="bit" value="Cat-one" (click)="businessTypeChange('Business One', 'Business One')">
+										<img class="crypto-li" height="15px" [src]="" alt="">
+										Business One
+									</li>
+									<li name="bit" value="cattwo" (click)="businessTypeChange('Business Two', 'Business Two')">
+										<img class="crypto-li" height="15px" [src]="" alt="">Business Two
+									</li>
+									<li name="bit" value="catthree" (click)="businessTypeChange('Business Three', 'Business Three')">
+										<img class="crypto-li" height="15px" [src]="">Business Three
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</mat-card-content>
+			<mat-card-content *ngIf="currentStep == 2" class="step" fxFlex="100%" fxLayout="column"
+				fxLayoutAlign="start center">
+				<div class="step-block" fxFlex="100%">
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Request Description<br>
+								<small>This is the Summary of Request</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<textarea class="deal-option" #Summary (change)="OnInput($event)"></textarea>
+
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Model No.<br>
+								<small>You can put model no. if you have any.</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<!-- <input class="deal-option escrow-text" maxlength="25" type="text"
+								[(ngModel)]="newDeal.PreferredEscrow" name="escrow" placeholder="Model No."
+								[ngClass]="{'is-invalid': (step2 && newDealinvalid.PreferredEscrow)}"
+								(keyup)="checkValidation(currentStep)">
+							<div *ngIf="step2 && newDealinvalid.PreferredEscrow" class="invalid-feedback">
+								<div>This field is required</div>
+							</div> -->
+							<input type="file" id="sign-image" #documentInput [multiple]="false" (change)="onFileChange($event)" #fileInput/>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Targeted Request Audience<br>
+								<small>Which country is Targeted?</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<div class="step-head">Select Business Category</div>
+								<div class="deal-drop">
+									<!-- <img *ngIf="newDeal.SelectCryptoType" class="crypto-img" [src]="getUrlCrypto(newDeal.SelectCryptoType)" alt="">
+									<select class="deal-option crypto-option" [(ngModel)]="newDeal.SelectCryptoType" (change)="onCryptoChange(newDeal.SelectCryptoType)">
+										<option disabled>Select a Cryptocurrency</option>
+										<option value="{{item.code}}" *ngFor="let item of newDealLists.cryptolist">{{item.name}}</option>
+									</select> -->
+									<div class="dropdown">
+										<button class="filter_selector p-l-40" type="button" id="menu1" data-toggle="dropdown">
+											<!-- <img *ngIf="newDeal.SelectCryptoType" class="crypto-img"
+												[src]="getUrlCrypto(SelectCryptoType.code)" alt=""> -->
+											<a style="font-weight: 700; margin-left: 5px; font-size: 16px;">{{ targatedAudience }}</a>
+											<i class="material-icons">keyboard_arrow_down </i>
+										</button>
+										<ul class="dropdown-menu drop-cstm" role="menu" aria-labelledby="menu1">
+											<!-- <li name="bit" value="Cat-one" (click)="audienceChange('Audience One', 'Audience One')">
+												<img class="crypto-li" height="15px" [src]="" alt="">Audience One
+											</li> -->
+											<li *ngFor="let item of categoryList" name="bit" value="Cat-one" (click)="audienceChange(item.name, item.name)">
+												<img class="crypto-li" height="15px" [src]="" alt="">{{item.name}}
+											</li>
+											<!-- <li name="bit" value="cattwo" (click)="audienceChange('Audience two', 'Audience two')">
+												<img class="crypto-li" height="15px" [src]="" alt="">Audience
+												two
+											</li>
+											<li name="bit" value="catthree" (click)="audienceChange('Audience Three', 'Audience Three')">
+												<img class="crypto-li" height="15px" [src]="">Audience Three
+											</li> -->
+										</ul>
+									</div>
+								</div>
+							<!-- <img *ngIf="newDeal.countryCode" class="crypto-img" [src]="getFlag(newDeal.countryCode)" alt=""> -->
+							<!-- <span class="newpost-flag-img flag-icon flag-icon-{{newDeal.countryCode}}"></span>
+							<select class="deal-option crypto-option" [(ngModel)]="newDeal.countryCode" (change)="onCountryChange(newDeal.countryCode)">
+								<option disabled>Location of Buyer</option>
+								<option value="{{item.code}}" *ngFor="let item of newDealLists.countries">{{item.name}}</option>
+							</select> -->
+							<!-- <div class="dropdown">
+								<button class="filter_selector deal-option crypto-option" type="button" id="menu1"
+									data-toggle="dropdown">
+									<span
+										class="filterflag flag-icon flag-icon-{{(selectedCountry.code | lowercase)}}"></span>
+									{{selectedCountry.name}}
+									<i class="material-icons">keyboard_arrow_down </i>
+								</button>
+								<ul class="dropdown-menu drop-cstm" role="menu" aria-labelledby="menu1">
+									<li value="item.code" *ngFor="let item of newDealLists.countries"
+										(click)="onCountryChange(item.code, item.name)"> -->
+										<!-- <img [src]="getFlag('226-united-states')" class="flag" /> -->
+										<!-- <span class="filterflag flag-icon flag-icon-{{(item.code | lowercase)}}"></span>
+										{{item.name}}
+									</li>
+								</ul>
+							</div> -->
+						</div>
+					</div>
+					<!-- <div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Your Position<br>
+								<small>What is your position in this transaction?</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<select class="deal-option" [(ngModel)]="newDeal.YourPosition">
+								<option disabled>Select Your Position</option>
+								<option value="{{item.name}}" *ngFor="let item of newDealLists.positions">{{item.name}}
+								</option>
+							</select>
+						</div>
+					</div> -->
+
+					<!-- <div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Proof of Funds Available?<br>
+								<small>Is the Buyer able to provide Proof of Funds?</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<select class="deal-option" [(ngModel)]="newDeal.YourProof">
+								<option disabled>Select Option</option>
+								<option value="{{item.name}}" *ngFor="let item of newDealLists.proofs">{{item.name}}
+								</option>
+							</select>
+						</div>
+					</div> -->
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<mat-checkbox [(ngModel)]="autoExpire">Check if Request Expire in 30 days.
+								<small>Check this box if you want to auto expire your deal inn 30 days.</small>
+							</mat-checkbox>
+<!-- 
+							<span class="deal-head">Check if Request Expire in 30 days.<br>
+								<small>Check this box if you want to auto expire your deal inn 30 days.</small>
+							</span> -->
+						</div>
+						<div class="deal-drop">
+							<!-- <mat-checkbox>Check me!</mat-checkbox> -->
+
+							<!-- <input type="checkbox" name="autoexpire" value="autoexpire"> -->
+						</div>
+					</div>
+				</div>
+			</mat-card-content>
+			<mat-card-content *ngIf="currentStep == 3" class="step3" fxFlex="100%" fxLayout="column"
+				fxLayoutAlign="start center">
+				<div class="step-block3" fxFlex="100%">
+					<div fxLayout="column" fxLayoutAlign="center start" class="m-t-30 m-b-30" class="center-step">
+						<div class="step-head">
+							<span class="deal-head">Description<br>
+								<small>Add all remaining details about this deal here.</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<!-- <textarea class="deal-option escrow-text" [(ngModel)]="newDeal.Description"
+								[ngClass]="{'is-invalid': (step3 && newDealinvalid.Description)}"
+								(keyup)="checkValidation(currentStep)"></textarea> -->
+							<textarea class="deal-option escrow-text" #description (keypress)="OnDescInput(description.value)"></textarea>
+							<div *ngIf="step3 && newDealinvalid.Description" class="invalid-feedback">
+								<div>This field is required</div>
+							</div>
+						</div>
+					</div>
+					<div fxLayout="column" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						<div class="step-head">
+							<span class="deal-head">Check if want to broadcast subscribers in<br>
+								<small>Check this box if you want to broadcast subscribers in particular criteria</small>
+							</span>
+						</div>
+						<div class="deal-drop">
+							<mat-checkbox name="Region" [(ngModel)]="region" value="region">  Region  </mat-checkbox>
+							&nbsp;
+							&nbsp;
+							<mat-checkbox name="Region" [(ngModel)]="country" value="Country">  Country </mat-checkbox>
+							&nbsp;
+							&nbsp;
+							<mat-checkbox name="Region" [(ngModel)]="categoryCheck" value="Category"> Category </mat-checkbox>
+							&nbsp;
+							&nbsp;
+							<mat-checkbox name="Region" [(ngModel)]="subCateogry" value="Sub Category"> Sub Category </mat-checkbox>
+						</div>
+					</div>
+				</div>
+			</mat-card-content>
+
+
+			<mat-card-content *ngIf="currentStep == 4" class="step step4" fxFlex="100%" fxLayout="column"
+				fxLayoutAlign="center center">
+				<div class="main" fxLayout="column" fxLayoutAlign="center center">
+					<div class="top" fxLayout="column" fxLayoutAlign="space-between center">
+						<h3 fxFlex class="title">Request Successfully Submitted</h3>
+						<button (click)="viewMyDeal()" class="view-my-deal">View Deal</button>
+					</div>
+
+				</div>
+			</mat-card-content>
+
+
+
+			<mat-card-footer fxShow fxHide.xs *ngIf="currentStep < 4">
+				<button *ngIf="currentStep != 1" class="nav-btn navback" mat-button
+					(click)="back(currentStep)">BACK</button>
+				<button *ngIf="currentStep != 3" [disabled]="isValid" [ngClass]="{'InValidBackground':isValid}" class="nav-btn navnext"
+					mat-button (click)="continue(currentStep)">
+				<span *ngIf="currentStep === 3; else not"> SUBMIT DEAL </span>
+				<ng-template #not>CONTINUE</ng-template>	
+				</button>
+				<button *ngIf="currentStep == 3" [disabled]="isValid" [ngClass]="{'InValidBackground':isValid}" class="nav-btn navnext"
+					mat-button (click)="submit()"> 
+					<a *ngIf="!loader">SUBMIT REQUEST</a>
+					<img *ngIf="loader" src="assets/images/spinner.svg" style="height: 35px; margin-top: 5px;">
+								</button>
+			</mat-card-footer>
+			<mat-card-footer fxHide fxShow.xs>
+				<button *ngIf="currentStep != 1" class="mob-navbtn mob-navback" mat-button
+					(click)="back(currentStep)">BACK</button>
+				<button *ngIf="currentStep != 3 && currentStep != 1" [ngClass]="{'InValidBackground':!IsValidate}"
+					class="mob-navbtn mob-navnext" mat-button (click)="continue(currentStep)">CONTINUE</button>
+				<button *ngIf="currentStep != 3 && currentStep == 1" [disabled]="isValid"
+					class="single-btn mob-navnext" mat-button (click)="continue(currentStep)">CONTINUE</button>
+				<button *ngIf="currentStep == 3" [ngClass]="{'InValidBackground':!IsValidate}"
+					class="mob-navbtn mob-navnext" mat-button (click)="submit()">
+				          <a *ngIf="!loader">SUBMIT REQUEST</a>
+          <img *ngIf="loader" src="assets/images/spinner.svg" style="height: 35px; margin-top: 5px;">
+
+					
+				</button>
+			</mat-card-footer>
+		</mat-card>
+	</div>
+</div>

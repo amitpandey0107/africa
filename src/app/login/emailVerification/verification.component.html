@@ -1,0 +1,52 @@
+
+<div class="animated fadeIn">
+  <div class="nomargin login">
+    <img src="https://s3.amazonaws.com/zalate/public/img/logo-min.png" class="toolbar_logo" [routerLink]="['/']">
+
+ 	
+ 	<div [hidden]="resetError || resetSuccessful" class="login-container" style="margin-top: 20px;">
+
+ 		<!--Checking if UID is valid-->
+ 		<img *ngIf="loading" src="https://s3.amazonaws.com/zalate/public/img/spinner2.svg" style="width: 80px" />
+ 		<a *ngIf="loading" class="checking-title">
+ 			Verifying Email Link
+ 		</a>
+
+ 	
+
+
+       
+
+ 	</div>
+
+
+ 	<div [hidden]="!resetError" class="login-container" style="margin-top: 20px;">
+
+ 		<!--If the UID is false-->
+ 		<img  src="https://s3.amazonaws.com/zalate/public/img/invalid.svg" style="width: 100px; margin-bottom: 30px;" />
+ 		<a  class="checking-title">
+ 			An Error Occured While Verifying Your Email
+ 		</a>
+ 		 <button  class="submit-button" style="margin-top: 20px;" [routerLink]="['/']">
+          <a>Go Home</a>
+        </button>
+
+ 	</div>
+
+
+ 		<div [hidden]="!resetSuccessful" class="login-container" style="margin-top: 20px;">
+
+ 	
+ 		<img  src="https://s3.amazonaws.com/zalate/public/img/check.svg" style="width: 100px; margin-bottom: 30px;" />
+ 		<a  class="checking-title">
+ 			Email Successfully Verified!
+ 		</a>
+ 		 <button class="submit-button" style="margin-top: 20px;" [routerLink]="['/login']">
+          <a>Login</a>
+        </button>
+
+ 	</div>
+   
+
+  </div>
+</div>

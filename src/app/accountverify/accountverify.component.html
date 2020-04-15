@@ -1,0 +1,139 @@
+<div id="accountverify" fxLayout="column" fxLayoutAlign="center center">
+    <!-- Header-part -->
+    <div class="page-header" fxShow fxHide.xs>
+        <div fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+            <div fxFlex="9" fxFlex.xs="13">
+                <button class="back-btn" (click)="onBack();">
+                    <i class="material-icons">
+                        arrow_back
+                    </i>
+                </button>
+            </div>
+            <div fxFlex="41" fxFlex.xs="30" *ngIf="step2">
+                <span class="contact-us">Get Verified</span>
+            </div>
+            <div fxFlex="41" fxFlex.xs="67" class="text-end" *ngIf="step2">
+                <button type="submit" class="btn-done m-r-5" (click)="onSubmit()">
+                    <a>Done</a>
+                </button>
+            </div>
+            <div fxFlex></div>
+        </div>
+    </div>
+    <div class="main" fxLayout="column" fxLayoutAlign="center center" >
+        <div class="top" *ngIf="step2">
+            <form [formGroup]="verifyForm" class="form" fxFlex="100" fxLayout="column" fxLayoutAlign="center center"
+                fxLayoutGap="20px">
+                <div class="content-w" fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                    fxLayoutAlign="center center" fxLayoutGap="20px">
+                    <div class="m-10 input-container" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+                        fxLayoutAlign="center start">
+                        <input type="text" required formControlName="name" placeholder="Please Enter your full name"
+                            [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">This field is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-w" fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                    fxLayoutAlign="center center" fxLayoutGap="20px">
+                    <div class="m-10 input-container" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+                        fxLayoutAlign="center start">
+                        <div class="dropdown">
+                            <button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">
+                                <span class="filterflag flag-icon flag-icon-{{(selectedCountry.code | lowercase)}}"></span>
+                                {{selectedCountry.name}}
+                                <i class="material-icons">keyboard_arrow_down </i>
+                            </button>
+                            <ul class="dropdown-menu drop-cstm" role="menu" aria-labelledby="menu1">
+                                <li value="item.code" *ngFor="let item of countries" (click)="onCountryChange(item.code, item.name)">
+                                    <!-- <img [src]="getFlag('226-united-states')" class="flag" /> -->
+                                    <span class="filterflag flag-icon flag-icon-{{(item.code | lowercase)}}"></span>
+                                    {{item.name}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-w form-group" fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                    fxLayoutAlign="center center" fxLayoutGap="20px">
+                    <div class="m-10 input-container" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+                        fxLayoutAlign="center start">
+                        <input type="text" required formControlName="address" placeholder="Permanent Residential Address"
+                            [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+                        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                            <div *ngIf="f.address.errors.required">This field is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-10" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center center">
+                    <span>Please attach a government issued ID or Passportgel</span>
+                </div>
+                <div fxHide fxShow.xs fxFlex.xs="100" fxLayout="row" fxLayoutAlign="start center" class="mob-action">
+                    <div class="m-10 btn1" fxFlex="100" fxFlex.xs="50" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center start">
+                        <button type="button">Attach</button>
+                    </div>
+                    <div class="m-10" fxFlex="100" fxFlex.xs="50" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center end">
+                            <button type="submit" class="btn-done" (click)="onSubmit()">
+                                <a>Done</a>
+                            </button>
+                    </div>
+                </div>
+                <div class="m-10 btn1" fxShow fxHide.xs fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center center">
+                    <button type="button">Attach</button>
+                </div>
+            </form>
+        </div>
+        <div class="top" *ngIf="step1">
+            <div fxFlex="100" fxLayout="column" fxLayoutAlign="space-between stretch" (ngSubmit)="onSubmit()">
+                <div fxFlex="100%" class="img-container text-center">
+                    <img src="https://s3.amazonaws.com/zalate/public/img/logo-small-min.png" />
+                </div>
+                <div class="header" fxFlex="100%">
+                    <span>Why Get Verified?</span>
+                </div>
+                <div class="content-w m-t-20" fxFlex="100" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="primary-color m-b-0 m-l-15">Note: You must Verify your Account to post a deal on Zalate</span>
+                    <ul class="points m-t-25">
+                        <li>Ability to post 3 Buy/Sell Deals at once</li>
+                        <li>Ability to sponsor and verify deals</li>
+                        <li>Ability to open up to 5 new chats per day</li>
+                        <li>Messages you send appear on the top of user's messages tab</li>
+                    </ul>
+                </div>
+                <div class="m-10 btn1 btn-oky" fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center center">
+                    <button type="button" (click)="nextStep()">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-part -->
+    <div class="nav-bar" fxFlex="100%" fxHide fxShow.xs fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers']" [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                attach_money
+            </i>
+            <span>Buyers</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+            [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                money_off
+            </i>
+            <span>Sellers</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/chat']" [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                message
+            </i>
+            <span>Message</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+            [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                perm_identity
+            </i>
+            <span>My Account</span>
+        </div>
+    </div>
+</div>

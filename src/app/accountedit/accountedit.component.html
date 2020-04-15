@@ -1,0 +1,123 @@
+<div id="accountedit" fxLayout="column" fxLayoutAlign="center center">
+    <!-- Header-part -->
+    <div class="page-header" fxShow fxHide.xs>
+        <div fxFlex="100%" fxLayout="row" fxLayoutAlign="start center">
+            <div fxFlex="9" fxFlex.xs="13">
+                <button class="back-btn" (click)="onBack();">
+                    <i class="material-icons">
+                        arrow_back
+                    </i>
+                </button>
+            </div>
+            <div fxFlex="91" fxFlex.xs="87">
+                <span class="contact-us">Edit Info</span>
+            </div>
+        </div>
+    </div>
+    <div class="main" fxLayout="column" fxLayoutAlign="center center">
+        <div class="top">
+            <form [formGroup]="editForm" class="form" fxFlex="100" fxLayout="column" fxLayoutAlign="center center"
+                fxLayoutGap="20px" (ngSubmit)="onSubmit()">
+                <div class="content-w" fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                    fxLayoutAlign="center center" fxLayoutGap="20px">
+                    <div class="m-10 input-container" fxFlex="50" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+                        fxLayoutAlign="center start">
+                        <label>Enter Your Name</label>
+                        <input type="text" required formControlName="name" placeholder="Input your Name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">This field is required</div>
+                        </div>
+                    </div>
+                    <div class="m-10 input-container" fxFlex="50" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+                        fxLayoutAlign="center start">
+                        <label>Primary Phone Number</label>
+                        <input type="text" required formControlName="phoneNumber" NumberOnly maxlength="10" placeholder="Input your Phone Number"
+                            [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
+                        <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                            <div *ngIf="f.phoneNumber.errors.required">This field is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-w" fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                    fxLayoutAlign="center center" fxLayoutGap="20px">
+                    <div class="m-10 input-container" fxFlex="50" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+                        fxLayoutAlign="center start">
+                        <label>Select Your Location</label>
+                        <div class="dropdown">
+                            <button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">
+                                <span class="filterflag flag-icon flag-icon-{{(selectedCountry.code | lowercase)}}"></span>
+                                {{selectedCountry.name}}
+                                <i class="material-icons">keyboard_arrow_down </i>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li value="item.code" *ngFor="let item of countries" (click)="onCountryChange(item.code, item.name)">
+                                    <!-- <img [src]="getFlag('226-united-states')" class="flag" /> -->
+                                    <span class="filterflag flag-icon flag-icon-{{(item.code | lowercase)}}"></span>
+                                    {{item.name}}
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="m-10 input-container" fxFlex="50" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+                        fxLayoutAlign="center start">
+                        <label>WhatsApp</label>
+                        <input type="text" required formControlName="WhatsApp" NumberOnly maxlength="10" placeholder="Input your WhatsApp"
+                            [ngClass]="{ 'is-invalid': submitted && f.WhatsApp.errors }">
+                        <div *ngIf="submitted && f.WhatsApp.errors" class="invalid-feedback">
+                            <div *ngIf="f.WhatsApp.errors.required">This field is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-w form-group" fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                    fxLayoutAlign="center center" fxLayoutGap="20px">
+                    <div class="m-10 input-container" fxFlex="50" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column"
+                        fxLayoutAlign="center start">
+                        <label>Telegram Username</label>
+                        <input type="text" required formControlName="telegram" placeholder="Telegram Username"
+                            [ngClass]="{ 'is-invalid': submitted && f.telegram.errors }">
+                        <div *ngIf="submitted && f.telegram.errors" class="invalid-feedback">
+                            <div *ngIf="f.telegram.errors.required">This field is required</div>
+                        </div>
+                    </div>
+                    <div class="m-10 btn1" fxFlex="50" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center start">
+                        <label></label>
+                        <button type="submit">
+                            <a *ngIf="!loading">Save</a>
+                            <img *ngIf="loading" src="https://s3.amazonaws.com/zalate/public/img/spinner.svg" style="height: 35px; margin-top: 5px;">
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- footer-part -->
+    <div class="nav-bar" fxFlex="100%" fxHide fxShow.xs fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers']" [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                attach_money
+            </i>
+            <span>Buyers</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+            [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                money_off
+            </i>
+            <span>Sellers</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/chat']" [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                message
+            </i>
+            <span>Message</span>
+        </div>
+        <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+            [routerLinkActive]="['active']">
+            <i fxFlex="100%" class="material-icons">
+                perm_identity
+            </i>
+            <span>My Account</span>
+        </div>
+    </div>
+</div>

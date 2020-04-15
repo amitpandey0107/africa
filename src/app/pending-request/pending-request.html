@@ -1,0 +1,596 @@
+<div id="myaccount" fxLayout="column" fxLayoutAlign="center center">
+    <!-- Header-part -->
+    <mat-card fxFlex="100%" class="weblist">
+      <mat-card-title>
+        <div fxFlex="100%" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center"
+          fxLayoutAlign.xs="center start">
+          <div class="p-b-10 filters" fxShow fxFlex="80%" fxFlex.md="75%" fxFlex.sm="75%" fxFlex.xs="100%" fxLayout="row"
+            fxLayoutAlign="center center" fxLayoutAlign.xs="center start">
+            <!-- <div fxFlex="10%" fxHide fxShow.gt-sm class="filter-by m-r-0">
+              <b>Filter by: </b>
+            </div> -->
+            <div class="filters" fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%" fxLayout="row"
+              fxLayoutAlign="start">
+              <div fxFlex="15%" fxFlex.sm="25%" fxFlex.md="20%" class="drop-container">
+                <div class="dropdown">
+                  <button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">
+                      Category
+                    <i class="material-icons">keyboard_arrow_down</i>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <li name="All" value="All">
+                      All
+                    </li>
+                    <li name="All" value="Cat One">
+                      Cat One
+                    </li>
+                    <li name="All" value="Cat Two">
+                      Cat two
+                    </li>
+                    <li name="All" value="Cat Three">
+                      Cat Three
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div fxFlex="27%" fxFlex.sm="25%" fxFlex.md="25%" class="drop-container">
+                <div class="dropdown">
+                  <button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">
+                    <i class="material-icons">keyboard_arrow_down</i>
+                    Sub Category
+                  </button>
+                  <ul class="dropdown-menu sort-by" role="menu" aria-labelledby="menu1">
+                    <li value="acssencding">Sub Cat One</li>
+                    <li value="decssencding">Sub Cat Two</li>
+                    <li value="phtl">Sub Cat Three</li>
+                    <!-- <li value="phtl">Price low to high</li>
+                    <li value="phtl">Alphabatically</li> -->
+                    <!-- <li value="item.id" *ngFor="let item of SortbyOptions"
+                                          (click)="SortOrder(item, item.name)">
+                                          {{item.name}}
+                                      </li> -->
+                  </ul>
+                </div>
+              </div>
+              <div fxFlex="23%" fxFlex.sm="25%" fxFlex.md="20%" class="drop-container">
+                <div class="dropdown">
+                  <button class="filter_selector" type="button" id="menu1"data-toggle="dropdown">
+                    Country/Region
+                    <i class="material-icons">keyboard_arrow_down</i>
+                  </button>
+                  <i class="material-icons drp-caret-cstm">arrow_drop_up</i>
+                  <ul class="dropdown-menu drop-cstm" role="menu"
+                    aria-labelledby="menu1">
+                    <li name="All" value="All">
+                      All
+                    </li>
+                    <li name="Delhi" value="Delhi">
+                      India
+                    </li>
+                    <li name="jaipur" value="Jaipur">
+                      Norway
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div fxFlex="27%" fxFlex.sm="25%" fxFlex.md="25%" class="drop-container">
+                <div class="dropdown">
+                  <button class="filter_selector" type="button" id="menu1" data-toggle="dropdown">
+                    <i class="material-icons">keyboard_arrow_down</i>
+                    Request Type
+                  </button>
+                  <ul class="dropdown-menu sort-by" role="menu" aria-labelledby="menu1">
+                    <li value="acssencding">Purchase Service</li>
+                    <li value="decssencding">Provide Service</li>
+                    <!-- <li value="phtl">Sub Cat Three</li> -->
+                    <!-- <li value="phtl">Price low to high</li>
+                    <li value="phtl">Alphabatically</li> -->
+                    <!-- <li value="item.id" *ngFor="let item of SortbyOptions"
+                                          (click)="SortOrder(item, item.name)">
+                                          {{item.name}}
+                                      </li> -->
+                  </ul>
+                </div>
+              </div>
+              <!-- <div class="new_post" fxFlex="15%" fxFlex.sm="20%" fxLayout="row" fxLayoutAlign="center center">
+                <button class="btn new_btn f-s-14" (click)="toggleNewDeal()">
+                  + New Post
+                </button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </mat-card-title>
+      <mat-card-content>
+        <!-- class="grid-list-sponser" -->
+        <mat-grid-list [cols]="6" rowHeight="7:1"
+           style="position: relative;"
+          >
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Summary
+            </mat-grid-tile-header>
+  
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a >
+                Title One
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Category
+            </mat-grid-tile-header>
+  
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a>
+                Cat One
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">
+              Location</mat-grid-tile-header>
+            <mat-grid-tile-footer >
+              Delhi</mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Request Type
+            </mat-grid-tile-header>
+            
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a class="">
+                Purchase
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">Approve
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="flag-card" >
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+                <div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+                  <button class="btn new_btn f-s-14">
+                    <i class="material-icons">done</i>
+                  </button>
+                </div>
+              </div>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">Reject
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="flag-card" >
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+                <div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+                  <button class="btn new_btn f-s-14">
+                    <i class="material-icons">cancel</i>
+                  </button>
+                </div>
+              </div>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <!-- <mat-grid-tile class="verified-section">
+            <mat-grid-tile-header >
+              <b class="verify-b">Verified<br /></b>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="c-color1 verify-zalate">
+              <i class="material-icons">verified_user</i>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+          <!-- <mat-grid-tile class="intrest-section">
+            <mat-grid-tile-header >
+              <b class="verify-b">Interest<br /></b>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="c-color1 verify-zalate">
+              <i class="material-icons">star_border</i>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+          <!-- <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Request Type
+            </mat-grid-tile-header>
+            
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a class="">
+                Purchase
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+        </mat-grid-list>
+        <mat-grid-list [cols]="6" rowHeight="7:1"
+           style="position: relative;"
+          >
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Summary
+            </mat-grid-tile-header>
+  
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a >
+                Title One
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Category
+            </mat-grid-tile-header>
+  
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a>
+                Cat One
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">
+              Location</mat-grid-tile-header>
+            <mat-grid-tile-footer >
+              Delhi</mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Request Type
+            </mat-grid-tile-header>
+            
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a class="">
+                Purchase
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">Approve
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="flag-card" >
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+                <div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+                  <button class="btn new_btn f-s-14">
+                    <i class="material-icons">done</i>
+                  </button>
+                </div>
+              </div>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">Reject
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="flag-card" >
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+                <div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+                  <button class="btn new_btn f-s-14">
+                    <i class="material-icons">cancel</i>
+                  </button>
+                </div>
+              </div>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <!-- <mat-grid-tile class="verified-section">
+            <mat-grid-tile-header >
+              <b class="verify-b">Verified<br /></b>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="c-color1 verify-zalate">
+              <i class="material-icons">verified_user</i>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+          <!-- <mat-grid-tile class="intrest-section">
+            <mat-grid-tile-header >
+              <b class="verify-b">Interest<br /></b>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="c-color1 verify-zalate">
+              <i class="material-icons">star_border</i>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+          <!-- <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Request Type
+            </mat-grid-tile-header>
+            
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a class="">
+                Purchase
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+        </mat-grid-list>
+        <mat-grid-list [cols]="6" rowHeight="7:1"
+           style="position: relative;"
+          >
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Summary
+            </mat-grid-tile-header>
+  
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a >
+                Title One
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Category
+            </mat-grid-tile-header>
+  
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a>
+                Cat One
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">
+              Location</mat-grid-tile-header>
+            <mat-grid-tile-footer >
+              Delhi</mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Request Type
+            </mat-grid-tile-header>
+            
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a class="">
+                Purchase
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">Approve
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="flag-card" >
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+                <div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+                  <button class="btn new_btn f-s-14">
+                    <i class="material-icons">done</i>
+                  </button>
+                </div>
+              </div>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">Reject
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="flag-card" >
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+                <div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+                  <button class="btn new_btn f-s-14">
+                    <i class="material-icons">cancel</i>
+                  </button>
+                </div>
+              </div>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <!-- <mat-grid-tile class="verified-section">
+            <mat-grid-tile-header >
+              <b class="verify-b">Verified<br /></b>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="c-color1 verify-zalate">
+              <i class="material-icons">verified_user</i>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+          <!-- <mat-grid-tile class="intrest-section">
+            <mat-grid-tile-header >
+              <b class="verify-b">Interest<br /></b>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="c-color1 verify-zalate">
+              <i class="material-icons">star_border</i>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+          <!-- <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Request Type
+            </mat-grid-tile-header>
+            
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a class="">
+                Purchase
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+        </mat-grid-list>
+        <mat-grid-list [cols]="6" rowHeight="7:1"
+           style="position: relative;"
+          >
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Summary
+            </mat-grid-tile-header>
+  
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a >
+                Title One
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Category
+            </mat-grid-tile-header>
+  
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a>
+                Cat One
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">
+              Location</mat-grid-tile-header>
+            <mat-grid-tile-footer >
+              Delhi</mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Request Type
+            </mat-grid-tile-header>
+            
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a class="">
+                Purchase
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">Approve
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="flag-card" >
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+                <div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+                  <button class="btn new_btn f-s-14">
+                    <i class="material-icons">done</i>
+                  </button>
+                </div>
+              </div>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-grid-tile-header  class="m-t-15">Reject
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="flag-card" >
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="country-box">
+                <div fxFlex="72" fxLayoutAlign="start center" class="country-name">
+                  <button class="btn new_btn f-s-14">
+                    <i class="material-icons">cancel</i>
+                  </button>
+                </div>
+              </div>
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+          <!-- <mat-grid-tile class="verified-section">
+            <mat-grid-tile-header >
+              <b class="verify-b">Verified<br /></b>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="c-color1 verify-zalate">
+              <i class="material-icons">verified_user</i>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+          <!-- <mat-grid-tile class="intrest-section">
+            <mat-grid-tile-header >
+              <b class="verify-b">Interest<br /></b>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer class="c-color1 verify-zalate">
+              <i class="material-icons">star_border</i>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+          <!-- <mat-grid-tile class="logo-head">
+            <mat-grid-tile-header  class="m-t-15">
+              Request Type
+            </mat-grid-tile-header>
+            
+            <mat-grid-tile-footer style="height: 80px!important">
+              <a class="">
+                Purchase
+              </a>
+            </mat-grid-tile-footer>
+          </mat-grid-tile> -->
+        </mat-grid-list>
+      </mat-card-content>
+      <!-- class="grid-list-sponser" -->
+  
+      <!-- <div class="pagination-box">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div> -->
+    </mat-card>
+  
+    <!-- footer-part -->
+    <!-- <div  class="nav-bar" fxFlex="100%" fxHide fxShow.xs fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+      <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          attach_money
+        </i>
+        <span>Buyers</span>
+      </div>
+      <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          money_off
+        </i>
+        <span>Sellers</span>
+      </div>
+      <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/chat']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          message
+        </i>
+        <span>Message</span>
+      </div>
+      <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          perm_identity
+        </i>
+        <span>My Account</span>
+      </div>
+    </div> -->
+    <!-- </div> -->
+    <div class="nav-bar" fxFlex="100%" fxHide fxShow.xs fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+      <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/buyers']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          home
+        </i>
+        <span>Home</span>
+      </div>
+      <!-- <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+      [routerLinkActive]="['active']">
+      <i fxFlex="100%" class="material-icons">
+        add_circle
+      </i>
+      <span>New Deal</span>
+    </div> -->
+      <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/chat']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          message
+        </i>
+        <span>Message</span>
+      </div>
+      <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          person
+        </i>
+        <span>Account</span>
+      </div>
+      <!-- <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          accessibility_new
+        </i>
+        <span>Access</span>
+      </div> -->
+      <!-- <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/sellers']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          notifications_active
+        </i>
+        <span>Notifications</span>
+      </div> -->
+      <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/faq']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          help
+        </i>
+        <span>FAQ</span>
+      </div>
+      <!-- <div  fxFlex="25%" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/account']"
+        [routerLinkActive]="['active']">
+        <i fxFlex="100%" class="material-icons">
+          exit_to_app
+        </i>
+        <span>Logout</span>
+      </div> -->
+    </div>
+    <!-- <div fxHide fxShow.xs *ngIf="!viewDetails && !openNewDeal">
+      <button class="btn-circle" (click)="toggleNewDeal()">
+        <i class="material-icons">
+          add
+        </i>
+      </button>
+    </div> -->
+    <!-- <app-loader *ngIf="loader"></app-loader> -->
+  </div>

@@ -1,0 +1,173 @@
+app-sidebar {
+    display: block;
+    // position: fixed;
+    min-width: 205px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    // padding-top: 40px;
+    padding-top: 20px;
+    background-color: #fff;
+    border-right: 1px solid #e2e2e2;
+    ul {
+        margin: 0;
+        padding: 0; //border-right: 2px solid $color-primary;
+        li {
+            list-style-type: none;
+            a {
+                position: relative;
+                cursor: pointer;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                background-color: transparent;
+                height: 48px;
+                line-height: 48px;
+                text-decoration: none;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                padding: 5px 16px 5px 30px;
+                transition: all .3s ease-in-out;
+                font-size: 16px;
+                letter-spacing: 1px;
+                color: rgb(61, 61, 61);
+                font-family: "ProximaNova";
+                font-weight: bold;
+                &:hover {
+                    background-color: #e7def2;
+                    color: #633a5a;
+                    text-decoration: none;
+                }
+                &.active {
+                    background-color: transparent;
+                    text-decoration: none;
+                    font-size: 16px;
+                    letter-spacing: 1px;
+                    color:#633a5a;
+                    font-family: "ProximaNova";
+                    font-weight: bold;
+                    .vl {
+                        width: 4px;
+                        height: 23px;
+                        border-bottom-left-radius: 3px;
+                        border-top-left-radius: 3px;
+                        background-color: #633a5a;
+                        right: 0;
+                        position: absolute;
+                    }
+                }
+                .material-icons {
+                    margin-right: 15px;
+                    line-height: 2;
+                }
+            }
+        }
+    }
+}
+
+.no-display {
+    display: none;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.toolbar__logo {
+    width: 115px;
+}
+.toolbar__logo.active:hover {
+    cursor: pointer;
+}
+.toolbar__smalllogo {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    app-sidebar {
+        width: 100%;
+        position: relative;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        ul {
+            border-right: 0px !important;
+            border-top: 2px solid $color-primary;
+            li {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                a {
+                    width: 100%;
+                    flex-direction: row;
+                    justify-content: center !important;
+                    align-items: center;
+                    padding: 0px !important;
+                    i {
+                        position: relative;
+                    }
+                    .material-icons {
+                        margin-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+    .logo-container {
+        margin-bottom: 20px;
+    }
+    .menu-icon {
+        color: #38192D;
+        display: flex !important;
+        position: absolute !important;
+        right: 20px;
+        font-size: 26px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+    app-sidebar {
+        min-width: 80px;
+        padding-top: 40px;
+        ul {
+            li {
+                a {
+                    padding: 0px;
+                    margin: 10px 0px 10px 0px;
+                    justify-content: center !important;
+                    .material-icons {
+                        margin-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+    .no-tab-display {
+        display: none;
+    }
+    .logo-container {
+        margin-bottom: 60px;
+    }
+    .toolbar__logo {
+        display: none;
+    }
+    .toolbar__smalllogo {
+        width: 50px;
+        display: block;
+    }
+    .logout {
+        position: absolute;
+        bottom: 0;
+        left: 25px;
+    }
+}

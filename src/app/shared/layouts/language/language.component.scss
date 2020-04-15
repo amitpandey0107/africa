@@ -1,0 +1,189 @@
+.language-drop{
+    position: relative;
+    margin: 0;
+}
+mat-card.language-switch.mat-card {
+    padding: 10px;
+}
+.language-drop .filter_selector{
+    width: 95%;
+    padding: 5px 5px;
+    font-size: 14px;
+    background-color: white;
+    font-weight: 500;
+    padding-right: 20px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid #633a5a;
+    letter-spacing: 1px;
+    line-height: 20px;
+    color: #38192D;
+    font-family: "ProximaNova";
+    text-align: center;
+}
+.language-drop .dropdown-menu {
+    width: 95%;
+    position: absolute;
+    left: 0;
+    z-index: 1000;
+    // display: none;
+    float: left;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 2px solid #633a5a;
+    border-radius: 0px 0px 5px 5px;
+    top: -6px !important;
+}
+.language-drop .dropdown > button > i {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+@media only screen and (max-width: 600px){
+    mat-card.language-switch.mat-card{
+        display: none !important;
+    }
+}
+.username{
+    line-height: 2;
+    margin-right: 10px;
+}
+
+
+.profileDropdown{
+    margin-right: 10px;
+}
+.profileDropdown button{
+    // padding: 3px;
+    border: 2px solid #633a5a;
+    background-color: transparent;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+}
+.profileDropdown img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+.profileUser{
+    padding-top: 8px;
+}
+.profileDropdown ul li a{
+    text-decoration: none;
+    display: block;
+    color: #3b3f5c;    
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 15px;
+}
+.profileDropdown ul li i.material-icons{
+    position: relative;
+    margin-right: 10px;
+    top: 6px;
+    color: #633a5a;
+}
+.profileDropdown ul li {
+    border-bottom: 1px solid #ebedf2;
+}
+.profileDropdown ul li:last-child{
+    border-bottom: 0;
+}
+
+.profileDropdown ul li a:hover{
+    text-decoration: none;
+    background-color: rgba(27, 85, 226, 0.1803921568627451);
+}
+
+.profileDropdown  ul li i.fa {
+    color: #633a5a;
+    width: 21px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+.profileDropdown .dropdown-menu{
+    border-radius: 0;
+    border: none;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);
+    background: #fff;
+    margin-top: 8px;
+    width: 191px;
+    position: relative;
+    padding: 10px;
+    border: 2px solid #633a5a;
+
+}
+.dropdown-menu:after{
+    position: absolute;
+    content: "";
+    top: -8px;
+    margin-left: -7px;
+    height: 0;
+    width: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 15px solid #fff;
+    left: 24px;
+    right: 0;
+    border-bottom-color: #fff;
+}
+.langselector{
+    width: 110px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    text-align: left !important;
+}
+.langselector a{
+    position: relative;
+    top: -4px;
+}
+.langselector a i.material-icons{
+    position: relative;
+    top: 6px;
+}
+.langselector a img{
+    height: 20px;
+    position: relative;
+    top: -2px;
+}
+.drop-container .dropdown {
+    margin-top: 6px;
+}
+
+.notification button {
+    padding: 3px;
+    background-color: transparent;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border: 0;
+    font-size: 24px;
+    margin-right: 11px;
+    color: #633a5a;
+}
+.notification button i.material-icons {
+    font-size: 30px;
+    top: 5px;
+    position: relative;
+}
+.profileMenu .color1{
+    color: #633a5a;
+    font-weight: 500;
+}
+.notification.profileDropdown .dropdown-menu {
+    width: 260px;
+}
+.notification.profileDropdown .dropdown-menu li a {
+    padding: 9px 9px;
+}

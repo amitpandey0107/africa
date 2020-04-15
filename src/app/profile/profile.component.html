@@ -1,0 +1,916 @@
+<!-- <app-spinner></app-spinner> -->
+<div [ngClass]="{'isLoading': loader}">
+	<form [formGroup]="profileForm">
+		<mat-card class="profile-card">
+			<mat-card-header>
+				<div mat-card-avatar class="example-header-image 
+			  avatar huge">
+					<img class="profile-image" src="{{profileImage}}">
+					<div class="edit"><a href="#"><i class="fa fa-pencil fa-lg"></i></a></div>
+					<input (change)="uploadProfileImage($event)" required accept=".jpg" 
+					type="file" style="opacity: 0.0;
+					position: absolute;
+					top: 20px;
+					left: 20px;
+					bottom: 0;
+					right: 0;
+					width: 100px;
+					height: 100px;" />
+				</div>
+				<!-- <div class="person-icon">
+  <img [src]="profileImage" style="max-width: 100%; max-height: 
+   100%;">
+  <input (change)="onPersonEdit($event)" required accept=".jpg" 
+   type="file" style="opacity: 0.0; position: absolute; top:120px; 
+   left: 30px; bottom: 0; right:0; width: 200px; height:200px;" />
+</div>
+Adding a default image in style sheets... -->
+
+				<mat-card-title class="profile-title">{{name}}</mat-card-title>
+				<!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+				<span class="example-spacer"></span>
+
+				<button *ngIf="edit" (click)="editProfile()" class="btn-top"
+					mat-button>Edit</button>
+				<button *ngIf="!edit" (click)="updateProfile(); edit = true" class="btn-top"
+					mat-button>Submit</button>
+
+				<button class="btn-top" (click)="openProfile()" mat-button>Public
+					Profile</button>
+
+			</mat-card-header>
+			<mat-card-content>
+				<p>
+					{{aboutbusiness}}
+				</p>
+			</mat-card-content>
+
+		</mat-card>
+
+		<!-- <mat-progress-bar *ngIf="fileUploadProgress>0" class="example-margin" [color]="primary"
+			[mode]="determinate" [value]="uploaded">
+		</mat-progress-bar> -->
+		<mat-horizontal-stepper [linear]="isLinear" #stepper>
+			<mat-step class="not-allow">
+				<ng-template matStepLabel>Basic Information
+				</ng-template>
+
+				<div *ngIf="!edit" class="container proForm">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">First Name</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="firstName"
+										name="firstname"
+										placeholder="First Name"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Last Name</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="lastName"
+										name="lastname"
+										placeholder="Last Name"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Email</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="email"
+										name="email"
+										placeholder="Email"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Business Category
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="businessCat"
+										name="businessCat"
+										placeholder="businessCat"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Location</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										name="location"
+										formControlName="location"
+										placeholder="Location"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Business Sub
+									Category</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										name="businessSubCat"
+										placeholder="Business Name"
+										formControlName="businessSubCat"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Name
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="companyName"
+										name="companyname"
+										placeholder="Company Name"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company web
+									Address</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="companyWebpage"
+										name="website"
+										placeholder="Company web Address"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Admin Id
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="companyAdminID"
+										name="companyAdminId"
+										placeholder="Company Name"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Country
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="companyCountry"
+										name="companyCountry"
+										placeholder="Company web Address"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Fiscal
+									Number</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="companyFiscalNumber"
+										name="companyFiscalNumber"
+										placeholder="Company Fiscal Number"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Region
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="companyRegion"
+										name="companyRegion"
+										placeholder="Company Region"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Sub
+									Region</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="companySubRegion"
+										name="companySubRegion"
+										placeholder="Company SubRegion"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Funtion Of
+									Contacts</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="funtionOfContacts"
+										name="funtionOfContacts"
+										placeholder="funtion Of Contacts"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Group Country
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="groupCountry"
+										name="groupCountry"
+										placeholder="Group Country"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Group Name</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="groupName"
+										name="groupName"
+										placeholder="groupName"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Group Region
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="groupRegion"
+										name="groupRegion"
+										placeholder="Group Region"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Group Sub Region
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										formControlName="groupSubRegion"
+										name="groupSubRegion"
+										placeholder="groupSubRegion"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">New Password
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="password"
+										formControlName="password"
+										name="password"
+										placeholder="New Password"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Re-enter Password
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="password"
+										name="rpassword"
+										formControlName="password"
+										placeholder="Re-enter Password"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Address
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										type="text"
+										name="companyAddress"
+										formControlName="companyAddress"
+										placeholder="Company Address"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- /row -->
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="step-head">Business Vision
+								</div>
+								<div class="input-form">
+									<textarea class="form-control"
+										formControlName="businessVision"
+										placeholder="Business Vision"
+										name="businessAddress"
+										id="" cols="30"
+										rows="5"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="step-head">About Business
+								</div>
+								<div class="input-form">
+									<textarea class="form-control"
+										placeholder="About Business"
+										name="aboutbusiness"
+										id=""
+										formControlName="businessDenomination"
+										cols="30"
+										rows="5"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div *ngIf="edit" class="container proForm">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">First Name</div>
+								<div class="input-form">
+									{{profile?.firstName}}
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Last Name</div>
+								<div class="input-form">
+									{{profile?.lastName}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Email</div>
+								<div class="input-form">
+									{{profile?.email}}
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Business Category
+								</div>
+								<div class="input-form">
+									{{profile?.businessCat}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Location</div>
+								<div class="input-form">
+									{{profile?.location}}
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Business Sub
+									Category</div>
+								<div class="input-form">
+									{{profile?.businessSubCat}}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Name
+								</div>
+								<div class="input-form">
+									{{profile?.companyName}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company web
+									Address</div>
+								<div class="input-form">
+									{{profile?.companyWebPage}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Admin Id
+								</div>
+								<div class="input-form">
+									{{profile?.companyAdminID}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Country
+								</div>
+								<div class="input-form">
+									{{profile?.companyCountry}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Fiscal
+									Number</div>
+								<div class="input-form">
+									{{profile?.companyFiscalNumber}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Region
+								</div>
+								<div class="input-form">
+									{{profile?.companyRegion}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Sub
+									Region</div>
+								<div class="input-form">
+									{{profile?.companySubRegion}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Funtion Of
+									Contacts</div>
+								<div class="input-form">
+									{{profile?.funtionOfContacts}}
+
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Group Country
+								</div>
+								<div class="input-form">
+									{{profile?.groupCountry}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Group Name</div>
+								<div class="input-form">
+									{{profile?.groupName}}
+
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Group Region
+								</div>
+								<div class="input-form">
+									{{profile?.groupRegion}}
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Group Sub Region
+								</div>
+								<div class="input-form">
+									{{profile?.groupSubRegion}}
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- /row -->
+					<div *ngIf="!edit" class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="step-head">Business Vision
+								</div>
+								<div class="input-form">
+									<textarea class="form-control"
+										formControlName="companyAddress"
+										placeholder="Business Address"
+										name="businessAddress"
+										id="" cols="30"
+										rows="5"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="step-head">About Business
+								</div>
+								<div class="input-form">
+									<textarea class="form-control"
+										placeholder="About Business"
+										name="aboutbusiness"
+										id=""
+										formControlName="businessDenomination"
+										cols="30"
+										rows="5"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="edit" class="row">
+						<div class="col-sm-8">
+							<div class="form-group">
+								<div class="step-head">Business Vision
+								</div>
+								<div class="input-form">
+									{{profile?.businessVision}}
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<div class="step-head">Company Address
+								</div>
+								<div class="input-form">
+									{{profile?.companyAddress}}
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div *ngIf="!edit" class="row">
+					<div class="col-sm-6">
+						<!-- <div class="form-group">
+						<input type="submit" class="btn btn-lg" value="Submit">
+					</div> -->
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group text-right">
+							<button mat-button class="navnext"
+								matStepperNext>Next</button>
+							<button class="nav-btn navnext InValidBackground"
+								mat-button (click)="updateProfile()">
+								<a *ngIf="!loader">SUBMIT</a>
+								<img *ngIf="loader"
+									src="assets/images/spinner.svg"
+									style="height: 35px; margin-top: 5px;">
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</mat-step>
+			<mat-step [completed]="false">
+				<ng-template matStepLabel>Images</ng-template>
+				<div *ngIf="!edit" class="container proForm">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group files color">
+								<div class="step-head">Upload Business
+									Logo</div>
+								<div class="input-form">
+									<input [disabled]="loader"
+										(change)="changeUploadFile($event)"
+										autocomplete="off"
+										type="file"
+										name="uploadlogo"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group files color">
+								<div class="step-head">Upload User Image
+								</div>
+								<div class="input-form">
+									<input autocomplete="off"
+										[disabled]="loader"
+										(change)="uploadProfile($event)"
+										type="file"
+										name="bgimage"
+										class="form-control">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <h5>Business Logo</h5>
+				<div class="row">
+					<div class="col-md-12">
+						<img src="{{profile?.businessLogo}}" class="img-fluid" >
+					</div>
+				</div> -->
+				<div class="row">
+						<div *ngIf="profile?.businessLogo" class="col-md-3 media">
+							<img class="img-fluid ng-tns-c190-34" title="Business Logo" src="{{profile?.businessLogo}}">
+							<div class="title ng-tns-c190-34">Business Logo</div>
+						</div>
+						<div class="col-md-3 media" *ngFor="let tile of profile?.pictures | slice:0:3; let i=index">
+							<img class="img-fluid ng-tns-c190-34" title="Business Logo" src="{{tile}}">
+							<div class="title ng-tns-c190-34">User Image {{i+1}}</div>
+						</div>
+				</div>
+				<!-- <h5>User Images</h5>
+				<div class="row">
+					<div *ngFor="let tile of profile?.pictures" class="col-md-4">
+						<img src="{{tile}}" class="img-fluid">
+					</div>
+				</div> -->
+
+				<div *ngIf="!edit" class="row margin-top">
+					<div class="col-sm-6">
+						<button class="navnext pull-left" mat-button
+							matStepperPrevious>Back</button>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group text-right">
+							<button class="navnext" mat-button
+								matStepperNext>Next</button>
+							<!-- <button  class="nav-btn navnext"
+						mat-button (click)="updateProfile()"> 
+						<a *ngIf="!loader">SUBMIT</a>
+						<img *ngIf="loader" src="assets/images/spinner.svg" style="height: 35px; margin-top: 5px;">
+									</button> -->
+
+						</div>
+					</div>
+				</div>
+
+
+			</mat-step>
+			<mat-step [completed]="true">
+				<ng-template matStepLabel>Videos</ng-template>
+				<mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style">
+					<mat-button-toggle checked value="video" (click)="isVideo=true;" >Video</mat-button-toggle>
+					<mat-button-toggle value="link" (click)="isVideo=false">Video Link</mat-button-toggle>
+				        </mat-button-toggle-group>
+				        
+				<div *ngIf="isVideo" class="row">
+					<div class="col-md-6">
+						<div class="form-group files color">
+							<label>Upload Your Video </label>
+							<div class="progress" *ngIf="loader">
+							<div class="progress-bar" [ngStyle]="{'width': uploaded}">{{uploaded}}</div>
+							        </div>
+							<input type="file"
+								(change)="onselectVideo($event)"  #myInput
+								id="video" name="video" accept="video/*"
+								class="form-control">
+							<button *ngIf="selectedVideo" (click)="uploadVideo()" class="navnext pull-left margin-top-10"
+								mat-button>Upload</button>
+							<button *ngIf="selectedVideo" (click)="removeVideo();selectedVideo=null" class="navnext pull-left margin-top-10"
+								mat-button>Remove</button>
+						</div>
+					</div>
+					<div *ngIf="video" class="col-md-6 media">
+						<div class="form-group">
+							<label>Company Video </label>
+							<mat-video title="Company Video" [autoplay]="false"
+							[preload]="true" [fullscreen]="true"
+							[download]="false" color="accent" spinner="spin"
+							poster="image.jpg">
+							<source matVideoSource src="{{video}}"
+								type="video/mp4">
+							<source src="tutorial.webm" type="video/webm">
+							<track matVideoTrack src="subtitles_en.vtt"
+								kind="subtitles" srclang="en"
+								label="English">
+							<track src="subtitles_no.vtt" kind="subtitles"
+								srclang="no" label="Norwegian">
+						</mat-video>
+						</div>
+
+
+					</div>
+				</div>
+				<div *ngIf="!isVideo" class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Video Link </label>
+							<div class="input-form">
+								<input (focusout)="updateProfile()"
+									autocomplete="off"
+									type="text"
+									formControlName="companyVideoLink"
+									name="companyVideoLink"
+									placeholder="Video Link"
+									class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 ">
+						<div class="form-group">
+							<label>Company Video </label>
+							<mat-video title="Company Video" [autoplay]="false"
+							[preload]="true" [fullscreen]="true"
+							[download]="false" color="accent" spinner="spin"
+							poster="image.jpg">
+							<source matVideoSource src="{{video}}"
+								type="video/mp4">
+							<source src="tutorial.webm" type="video/webm">
+							<track matVideoTrack src="subtitles_en.vtt"
+								kind="subtitles" srclang="en"
+								label="English">
+							<track src="subtitles_no.vtt" kind="subtitles"
+								srclang="no" label="Norwegian">
+						</mat-video>
+						</div>
+
+
+					</div>
+				</div>
+				<div *ngIf="!edit" class="container proForm">
+					<div class="row">
+						<!-- <div class="col-sm-6">
+							<div class="form-group">
+								<div class="step-head">Upload Video
+								</div>
+								<div class="input-form">
+									<input type="file"
+										(change)="onselectVideo($event)"
+										id="video"
+										name="video"
+										accept="video/*"
+										class="form-control">
+								</div>
+							</div>
+						</div> -->
+						<!-- <div class="col-sm-6">
+							<div class="form-group">
+								<div class="step-head">Video Link</div>
+								<div class="input-form">
+									<input (focusout)="updateProfile()"
+										autocomplete="off"
+										type="text"
+										formControlName="companyVideoLink"
+										name="companyVideoLink"
+										placeholder="Video Link"
+										class="form-control">
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<!-- <div class="row">
+					<div class="col-md-6 video-player">
+						<mat-video title="Company Video" [autoplay]="false"
+							[preload]="true" [fullscreen]="true"
+							[download]="false" color="accent" spinner="spin"
+							poster="image.jpg">
+							<source matVideoSource src="{{video}}"
+								type="video/mp4">
+							<source src="tutorial.webm" type="video/webm">
+							<track matVideoTrack src="subtitles_en.vtt"
+								kind="subtitles" srclang="en"
+								label="English">
+							<track src="subtitles_no.vtt" kind="subtitles"
+								srclang="no" label="Norwegian">
+						</mat-video>
+					</div>
+					<div class="col-md-6 video-player">
+						<mat-video title="Company Video Link" [autoplay]="false"
+							[preload]="true" [fullscreen]="true"
+							[download]="true" color="accent" spinner="spin"
+							poster="image.jpg">
+							<source matVideoSource
+								src="{{profile?.companyVideoLink}}"
+								type="video/mp4">
+							<source src="tutorial.webm" type="video/webm">
+							<track matVideoTrack src="subtitles_en.vtt"
+								kind="subtitles" srclang="en"
+								label="English">
+							<track src="subtitles_no.vtt" kind="subtitles"
+								srclang="no" label="Norwegian">
+						</mat-video>
+					</div>
+				</div> -->
+				<!-- 
+			    <mat-grid-list cols="2" rowHeight="360px">
+
+
+				<mat-grid-tile >
+					        <div class="video">
+						<video width="400" controls (click)="toggleVideo()" #videoPlayer>
+						    <source src="{{video}}" type="video/mp4" />
+						    Browser not supported
+						</video>
+					      </div>
+								</mat-grid-tile>
+								<mat-grid-tile *ngIf="profile?.companyVideoLink">
+									        <div class="video">
+										<video width="400" controls (click)="toggleVideo()" #videoPlayer>
+										    <source src="{{profile?.companyVideoLink}}" type="video/mp4" />
+										    Browser not supported
+										</video>
+									      </div>
+												</mat-grid-tile>
+			        </mat-grid-list> -->
+
+				<div  class="row margin-top">
+					<div class="col-sm-12">
+						<button class="navnext pull-left" mat-button
+							matStepperPrevious>Back</button>
+					</div>
+					<!-- <div class="col-sm-6">
+					<div class="form-group text-right">
+						<button class="navnext" (click)="updateProfile()" mat-button>Submit</button>
+	
+					</div>
+				</div> -->
+				</div>
+			</mat-step>
+		</mat-horizontal-stepper>
+	</form>
+</div>
+
+<app-loader *ngIf="loader"></app-loader>

@@ -1,0 +1,104 @@
+<mat-sidenav-container id="leftpanel" fxHide fxShow.xs class="example-container"
+	[ngStyle]="{'height': slideHeight?'100vh':'auto'}" style="display: block;
+width: 100%;
+z-index: 999;position: fixed;">
+	<mat-sidenav-content>
+		<div class="mob-actions" fxLayout="row" fxFlex="100%" style="width:100% ">
+
+
+
+
+			<div fxFlex="100%" fxLayoutAlign="space-between center"
+				style="border-bottom: 1px #e4e4e4 solid; padding-left: 20px; padding-right: 20px;">
+				<div class="header-box header-box-left" (click)="pressedBack()"><img *ngIf="showBackButton" class="logo"
+						src="assets/icon/back.png" class="back-button" /></div>
+				<div class="header-box"><img [routerLink]="['/buyers']" class="logo"
+						src="assets/images/circle-logo.png"/></div>
+				<div class="header-box"></div>
+			</div>
+		</div>
+	</mat-sidenav-content>
+	<mat-sidenav #sidenav mode="over" closed (opened)="slideHeight = true" (closed)="slideHeight = false">
+		<mat-nav-list>
+			<mat-list-item>
+				<a [routerLink]="['/buyers']" [routerLinkActive]="['active']">
+					<div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+						<div fxFlex="70%" class="no-tab-display" style="width:50%;">Buy Orders</div>
+						<div fxFlex="30%" style="width:50%;">
+							<i class="material-icons">
+								keyboard_arrow_right
+							</i>
+						</div>
+					</div>
+
+				</a>
+			</mat-list-item>
+			<mat-list-item>
+				<a [routerLink]="['/sellers']" [routerLinkActive]="['active']">
+					<div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+						<div fxFlex="70%" class="no-tab-display">Sell Orders</div>
+						<div fxFlex="30%">
+							<i class="material-icons">
+								keyboard_arrow_right
+							</i>
+						</div>
+					</div>
+				</a>
+			</mat-list-item>
+			<mat-list-item *ngIf="loggedIn">
+				<a [routerLink]="['/chat']" [routerLinkActive]="['active']">
+					<div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+						<div fxFlex="70%" class="no-tab-display">My Messages</div>
+						<div fxFlex="30%">
+							<i class="material-icons">
+								keyboard_arrow_right
+							</i>
+						</div>
+					</div>
+				</a>
+			</mat-list-item>
+			<mat-list-item *ngIf="loggedIn">
+				<a [routerLink]="['/account']" [routerLinkActive]="['active']">
+					<div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+						<div fxFlex="70%" class="no-tab-display">My Account</div>
+						<div fxFlex="30%">
+							<i class="material-icons">
+								keyboard_arrow_right
+							</i>
+						</div>
+					</div>
+				</a>
+			</mat-list-item>
+			<mat-list-item>
+				<a [routerLink]="['/contact']" [routerLinkActive]="['active']">
+					<div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+						<div fxFlex="70%" class="no-tab-display">Contact Us</div>
+						<div fxFlex="30%">
+							<i class="material-icons">
+								keyboard_arrow_right
+							</i>
+						</div>
+					</div>
+				</a>
+			</mat-list-item>
+			<mat-list-item>
+				<a [routerLink]="['/faq']" [routerLinkActive]="['active']">
+					<div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+						<div fxFlex="70%" class="no-tab-display">FAQ</div>
+						<div fxFlex="30%">
+							<i class="material-icons">
+								keyboard_arrow_right
+							</i>
+						</div>
+					</div>
+				</a>
+			</mat-list-item>
+			<mat-list-item *ngIf="loggedIn">
+				<a (click)="onLogout()" class="logout">
+					<span class="no-tab-display">Logout</span>
+				</a>
+			</mat-list-item>
+		</mat-nav-list>
+	</mat-sidenav>
+
+</mat-sidenav-container>

@@ -1,0 +1,238 @@
+<div id="myaccount" fxLayout="column" fxLayoutAlign="center center">
+    <!-- mob-list-part -->
+    <mat-card id="deal-design" *ngIf="selectedItem" fxHide fxShow.xs fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+      
+        <mat-card-content *ngIf="!IsNotFound && !IsNotActive" class="dashboard-card-content" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+            
+           
+            <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center" class="deal-detail">
+                <div fxFlex="50%">
+                    
+                    <span>Request Type</span>
+                </div>
+                <div fxFlex="50%" class="second">
+                    <span *ngIf="selectedItem?.serviceType === 0">Purchase
+                    </span> 
+                    <span *ngIf="selectedItem?.serviceType === 1">Provide</span>             
+                
+                </div>
+            </div>
+
+
+            <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center" class="deal-detail">
+                <div fxFlex="50%">
+                    <span>Business Category</span>
+                </div>
+                <div fxFlex="50%" class="second">
+                    <span>{{selectedItem.businessCat}}</span>
+                </div>
+            </div>
+            <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center" class="deal-detail">
+                <div fxFlex="50%">
+                    <span>Business Sub Category</span>
+                </div>
+                <div fxFlex="50%" class="second">
+                    <span>{{selectedItem.businessSubCat}}</span>
+                </div>
+            </div>
+            <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center end" class="deal-detail">
+                <div fxFlex="50%">
+                    <span>Business</span>
+                </div>
+                <div fxFlex="50%" class="second">
+                    <div>
+                        {{selectedItem.business}} </div>
+                </div>
+            </div>
+            
+            <div class="m-t-45 m-b-20 description" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+                <div class="m-b-10 description-head" fxFlex="100%">Description of buyer Prosedures/Process</div>
+                <div fxFlex="100%">
+                    {{selectedItem.description}}
+                </div>
+            </div>
+            <h5>Document</h5>
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="{{document}}" class="img-fluid" >
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-content *ngIf="IsNotFound" class="dashboard-card-content" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+            <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center end" class="detail-img">
+                <div fxFlex="50%" fxLayout="column" fxLayoutAlign="start end">
+                    <div fxFlex="100%">
+                        <span>No Deal Found with that ID</span>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-content *ngIf="IsNotActive" class="dashboard-card-content" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+                <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center end" class="detail-img">
+                    <div fxFlex="50%" fxLayout="column" fxLayoutAlign="start end">
+                        <div fxFlex="100%">
+                            <span>This deal is no longer active</span>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+    </mat-card>
+
+    <!-- see-details-part -->
+    <div class="deal-background" *ngIf="selectedItem" style="place-content:start" fxHide fxShow.lg fxshow fxShow.sm
+        fxShow.md fxShow.xl fxFlex="100%" fxLayout="column">
+        <div id="deal-back" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+            <mat-card class="p-t-30" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+                <mat-card-header>
+                    <mat-card-title>
+                        <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+                            <div fxFlex="50%">
+                                <button fxFlex="10%" class="back-btn m-r-15" (click)="goBack();">
+                                    <i class="material-icons">
+                                        arrow_back
+                                    </i>
+                                </button>
+                                <span fxFlex="90%" style="white-space:nowrap">Request Details<br>
+                                    <small style="color: #9f989f;">Posted {{selectedItem.dateCreated | date :
+                                        'shortDate'}}</small></span>
+                            </div>
+                            <div fxFlex="70%" fxFlex.sm="100%" fxLayoutAlign="end center" fxLayout="row">
+
+                                <div class="m-r-20" style="display:none">
+                                    <h4 class="watchlist">+ ADD TO WATCHLIST</h4>
+                                </div>
+                                <div (click)="messageSeller()" class="m-r-20" *ngIf="selectedItem.posterId!=appStorage.getItem('UserId') && type == 'sell'">
+                                    <h4 class="message-seller">
+                                        Message Seller
+                                    </h4>
+                                </div>
+                                <div (click)="messageSeller()" class="m-r-20" *ngIf="selectedItem.posterId!=appStorage.getItem('UserId') && type == 'buy'">
+                                    <h4 class="message-seller">
+                                        Message Buyer
+                                    </h4>
+                                </div>
+                                <div class="flag-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;"
+                                        xml:space="preserve" width="20px" height="20px">
+                                        <path d="M51.421,22.593L10,3.362V1c0-0.553-0.448-1-1-1S8,0.447,8,1v3v33v3v19c0,0.553,0.448,1,1,1s1-0.447,1-1V40.681  l41.366-16.251c0.373-0.146,0.622-0.501,0.634-0.9C52.012,23.13,51.784,22.762,51.421,22.593z"
+                                            fill="#bc9bbd" />
+                                    </svg>
+                                    <span class="m-l-5" style="color:#bd9cbd">Flag</span>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-title>
+                </mat-card-header>
+
+                <mat-card class="mat-elevation-z" style="padding-top:0px;">
+                    <mat-card-content *ngIf="!IsNotFound && !IsNotActive" class="dashboard-card-content" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center"
+                        style="background: #fff;padding: 20px;box-shadow: 0px 0px 25px rgba(63,61,111,0.15);margin: 0 12%;">
+                        <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center center" class="deal-detail">
+                            <div fxFlex="60%">
+                                <div>Request Type</div>
+                                <span class="second">
+                                    <span *ngIf="selectedItem?.serviceType === 0">Purchase
+                                    </span> 
+                                    <span *ngIf="selectedItem?.serviceType === 1">Provide</span>             
+                                </span>
+                            </div>
+                            <div fxFlex="40%">
+                                <div>Business Category</div>
+                                <span class="second">{{selectedItem.businessCat}}</span>
+                            </div>
+                        </div>
+                   
+                        <div fxFlex="100%" fxLayout="row" class="deal-detail">
+                            <div fxFlex="60%">
+                                
+                                <div>
+                                    Business Sub Category </div>
+                                <span class="second">{{selectedItem.businessSubCat}}</span>
+                            </div>
+
+                            <div fxFlex="40%">
+                                
+                                <div>Business </div>
+                                <div>
+                                    <span style="color: #3d3d3d">{{selectedItem.business}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div fxFlex="100%" fxLayout="row" class="deal-detail">
+                            <div fxFlex="60%">
+                                <div>
+                                    Model No. </div>
+                                <span class="second">{{selectedItem.modelNo}}</span>
+                            </div>
+
+                            <div fxFlex="40%">
+                                <div>Targeted Request Audience </div>
+                                <div>
+                                    <span style="color: #3d3d3d">{{selectedItem.targetedAudience}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div fxFlex="100%" fxLayout="row" class="deal-detail">
+                            <div fxFlex="60%">
+                                <div>
+                                    Region  </div>
+                                <span class="second">{{selectedItem.region}}</span>
+                            </div>
+
+                            <div fxFlex="40%">
+                                <div>Country  </div>
+                                <div>
+                                    <span style="color: #3d3d3d">{{selectedItem.country?.code}}</span>
+                                </div>
+                            </div>
+                            <!-- <div fxFlex="33%">
+                                <div>Auto Expire  </div>
+                                <div>
+                                    <span style="color: #3d3d3d">>{{selectedItem?.autoExpire ? 'Yes' : 'No' }}</span>
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </mat-card-content>
+                    
+                   
+                </mat-card>
+
+                <mat-card class="mat-elevation-z p-0" *ngIf="!IsNotFound && !IsNotActive">
+                    <div class="m-t-45 m-b-10 description-desktop p-l-25" fxFlex="100%" fxLayout="column" fxLayoutAlign="center start">
+                        <div fxFlex="100%" class="description-head p-b-15">
+                            <b>Summary</b>
+                        </div>
+                        <div fxFlex="100%" class="c-color-lightgrey p-b-15">
+                            {{selectedItem.description}}
+                        </div>
+                    </div>
+                </mat-card>
+                <mat-card class="mat-elevation-z p-0" style="    margin-top: 20px;">
+                    <div class="m-t-45 m-b-10 description-desktop p-l-25" fxFlex="100%" fxLayout="column" fxLayoutAlign="center start">
+                        <div fxFlex="100%" class="description-head p-b-15">
+                            <b>Document</b>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                <img src="{{document}}" class="img-fluid" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+                <!-- <h5></h5>
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{document}}" class="img-fluid" >
+                    </div>
+                </div> -->
+            </mat-card>
+        </div>
+
+    </div>
+</div>

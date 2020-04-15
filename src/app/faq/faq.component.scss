@@ -1,0 +1,183 @@
+#faq {
+    height: 100%;
+      background: #fdf8ff; 
+  background: -webkit-linear-gradient(to right, #fdf8ff, #fef4ff); 
+  background: linear-gradient(to right, #fdf8ff, #fef4ff);
+    min-height: 100vh;
+
+    
+}
+
+#faq {
+    .mat-expansion-panel .mat-expansion-panel-header {
+        background-image: linear-gradient(-32deg, #633a5a 0%, #38192D  100%);
+        color: #ffffff;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .mat-expansion-panel .mat-expansion-panel-header:hover {
+        background-image: linear-gradient(-32deg, #633a5a 0%, #38192D  100%);
+        color: #ffffff;
+    }
+    .mat-expanded .mat-expansion-panel-header,
+    .mat-expanded .mat-expansion-panel-header:hover {
+        background-image: linear-gradient(-32deg, #633a5a 0%, #38192D  100%);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        color: #ffffff;
+    }
+    .mat-expansion-panel-header-title {
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 20px;
+        color: rgb(255,255,255);
+        font-family: "ProximaNova";
+        font-weight: bold;
+    }
+    .mat-expansion-panel {
+        margin: 20px;
+        border-radius: 10px;
+    }
+    .material-icons {
+        vertical-align: middle;
+        margin-right: 15px;
+    }
+    ::ng-deep .mat-expansion-indicator {
+        display: none;
+    }
+    .mat-card-title {
+        margin: 30px;
+    }
+    .mat-card {
+        height: 100%;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        min-height: 100vh;
+    }
+    .srch_bar {
+        display: inline-block;
+        text-align: right;
+        width: 100%;
+    }
+    .headind_srch {
+        overflow: hidden;
+        text-align: center;
+        background-color: transparent;
+    }
+    .srch_bar input {
+        border: 2px solid #c8b5cf;
+        border-radius: 25px;
+        width: 100%;
+        padding: 10px;
+        padding-left: 40px;
+        background-color: #ffffff;
+        font-size: 16px;
+        color: #454546;
+    }
+    .srch_bar input::placeholder {
+        color: #c8b5cf;
+    }
+    .srch_bar .input-group-addon button {
+        background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+        border: medium none;
+        padding: 0;
+        vertical-align: middle;
+        color: #c8b5cf;
+        font-size: 18px;
+    }
+    .srch_bar .input-group-addon {
+        position: absolute;
+        padding: 10px;
+        margin: -5px 0px 0px 0px;
+    }
+    .noresult {
+        font-size: 16px;
+        margin-left: 30px;
+        color: #9c00b8;
+    }
+}
+
+.heading {
+    font-size: 24px;
+    letter-spacing: 1px;
+    line-height: 20px;
+    color: #383838;
+    font-family: "ProximaNova";
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+    #faq {
+        .heading {
+            width: 100%;
+            margin-top: 50px;
+        }
+        .mat-card{
+            padding-bottom: 50px;
+        }
+        .headind_srch {
+            width: 100%;
+            text-align: start;
+            .srch_bar {
+                width: 100%;
+            }
+        }
+        .material-icons {
+            margin-right: 5px;
+        }
+        .mat-expansion-panel-header {
+            padding: 0 10px;
+        }.mat-expansion-panel-header-title {
+            margin-right: 0px;
+        }
+        .nav-bar {
+            font-size: 12px;
+            color:#bfbbbb;
+        }
+    }
+   
+}
+
+@media only screen and (max-width: 768px) {
+    .heading {
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 359px) {
+    .heading {
+        font-size: 16px;
+    }
+}
+p{
+    font-size: 14px;
+letter-spacing: 1px;
+line-height: 20px;
+color: rgb(61,61,61);
+font-family: "ProximaNova";
+}
+
+.nav-bar {
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    background-color: #fff;   
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 
+                0 2px 2px 0 rgba(0,0,0,.14), 
+                0 1px 5px 5px rgba(0,0,0,.12);
+    .active {
+        color: #633a5a;
+        font-weight: 700;
+        border-bottom: 2px solid #633a5a;
+    }
+}
+//footer nav bar
+@media (max-width:1440px) {
+    .content {
+        height:100%;
+        margin: auto;
+        width: 100%
+    }
+}

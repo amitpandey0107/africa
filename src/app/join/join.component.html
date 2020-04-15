@@ -1,0 +1,570 @@
+<div class="animated fadeIn">
+	<div class="nomargin login" [ngClass]="">
+		<!-- <div class="nomargin login" [ngClass]="{'t50-top': !step4, 'no-50': step4}"></div> -->
+		<!-- <img src="https://s3.amazonaws.com/zalate/public/img/logo-min.png" class="toolbar_logo" [routerLink]="['/']"> -->
+		<h1 [hidden]="!step1" class="login-title" style="color: #444444">Join Africa SMB</h1>
+		<h1 [hidden]="!step2" class="login-title" style="color: #444444">Basic Information</h1>
+		<h1 [hidden]="!step3" class="login-title" style="color: #444444">Select Membership</h1>
+		<h1 [hidden]="!step4" class="login-title" style="color: #444444">Review KYC</h1>
+		<h1 [hidden]="!step5" class="login-title" style="color: #444444">Upload Signature And Profile Picture</h1>
+		<h1 [hidden]="!step6" class="login-title" style="color: #444444">View Completed KYC</h1>
+		<h1 [hidden]="!step7" class="login-title" style="color: #444444">Payment Screen</h1>
+		<h1 [hidden]="!step8" class="login-title">Successfully Signed Up!</h1>
+		<div *ngIf="error" class="warning animated fadeIn">
+			<a>{{errorText}}</a>
+		</div>
+
+
+		<div class="login-container"
+			[ngClass]="{'step-1-container': step1, 'step-2-container': step2, 'step-3-container': step3, 'step-4-container': step4, 'step-5-container': step5, 'step-6-container': step6, 'step-7-container': step7}">
+
+			<form [formGroup]="fbForm">
+
+				<!-- <pdf-viewer [src]="pdfSrc"
+							(after-load-complete)="callBackFn($event)"
+							[autoresize]="true" [render-text]="true"
+							style="display: block;"></pdf-viewer> -->
+				<div [hidden]="!step1">
+					<!-- firstName -->
+					<div class="input-text">
+						<input type="text" placeholder="First Name"
+							class="text-field-login" required
+							formControlName="firstName"
+							[ngClass]="fbForm.controls['firstName'].valid && !fbForm.controls['firstName'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<!-- lastName -->
+					<div class="input-text">
+						<input type="text" placeholder="Last Name"
+							class="text-field-login" required
+							formControlName="lastName"
+							[ngClass]="fbForm.controls['firstName'].valid && !fbForm.controls['firstName'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<!-- Email -->
+					<div class="input-text">
+						<img *ngIf="!searchingForEmail && emailAvailable && fbForm.controls['email'].valid"
+							src="assets/images/check.svg"
+							style="width: 23px; position: absolute; right: 15px; margin-top:12px;">
+						<img *ngIf="!searchingForEmail && !emailAvailable && fbForm.controls['email'].valid"
+							src="assets/images/x.svg"
+							style="width: 23px; position: absolute; right: 15px; margin-top:12px;">
+						<input type="text" placeholder="Email Address"
+							class="text-field-login" required
+							formControlName="email"
+							[ngClass]="fbForm.controls['email'].valid && !fbForm.controls['email'].pristine && emailAvailable ? 'green-outline' : 'red-outline'"
+							email autocomplete="off"
+							(focusout)="validateEmail()"
+							(keyup)="validateEmail()">
+					</div>
+					<!-- password -->
+					<div class="input-text">
+						<img *ngIf="fbForm.controls['password'].valid"
+							src="assets/images/check.svg"
+							style="width: 23px; position: absolute; right: 15px; margin-top:12px;">
+						<img *ngIf="!fbForm.controls['password'].valid && !fbForm.controls['password'].pristine"
+							src="assets/images/x.svg"
+							style="width: 23px; position: absolute; right: 15px; margin-top:12px;">
+						<input type="password" placeholder="Password"
+							class="text-field-login"
+							formControlName="password" name="password"
+							required autocomplete="off"
+							[ngClass]="fbForm.controls['password'].valid && !fbForm.controls['password'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<!-- repeatPassword -->
+					<div class="input-text">
+						<img *ngIf="fbForm.controls['password'].value == fbForm.controls['repeatPassword'].value && fbForm.controls['password'].valid"
+							src="assets/images/check.svg"
+							style="width: 23px; position: absolute; right: 15px; margin-top:12px;">
+						<img *ngIf="fbForm.controls['password'].value != fbForm.controls['repeatPassword'].value && fbForm.controls['password'].value == fbForm.controls['repeatPassword'].value"
+							src="assets/images/x.svg"
+							style="width: 23px; position: absolute; right: 15px; margin-top:12px;">
+						<input type="password" placeholder="Repeat Password"
+							class="text-field-login"
+							style="margin-bottom: 15px;"
+							formControlName="repeatPassword"
+							name="repeatPassword" required autocomplete="off"
+							[ngClass]="{'green-outline':fbForm.controls['repeatPassword'].valid && fbForm.controls['repeatPassword'].pristine}">
+					</div>
+					<!-- companyRegion -->
+					<div class="input-text">
+						<select (change)="getsubRegionList()" class="text-field-login"
+							formControlName="companyRegion"
+							[ngClass]="fbForm.controls['companyRegion'].valid && !fbForm.controls['companyRegion'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true"
+								[disabled]="true">Region</option>
+								<option *ngFor="let item of regionList" value="{{item.name}}">{{item.name}}</option>
+						</select>
+					</div>
+					<!--  -->
+					<div class="input-text">
+						<select class="text-field-login"
+						(change)="getCountryList()" formControlName="companySubRegion"
+							[ngClass]="fbForm.controls['companySubRegion'].valid && !fbForm.controls['companySubRegion'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true"
+								[disabled]="true">Sub Region</option>
+								<option *ngFor="let item of subRegionList" value="{{item.name}}">{{item.name}}</option>
+						</select>
+					</div>
+					<div class="input-text">
+						<select class="text-field-login"
+							formControlName="companyCountry"
+							[ngClass]="fbForm.controls['companyCountry'].valid && !fbForm.controls['companyCountry'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true"
+								[disabled]="true">Country</option>
+								<option *ngFor="let item of countryList" value="{{item.name}}">{{item.name}}</option>
+						</select>
+					</div>
+					<div class="input-text">
+						<input type="text" placeholder="Company Name"
+							class="text-field-login" required
+							formControlName="companyName"
+							[ngClass]="fbForm.controls['companyName'].valid && !fbForm.controls['companyName'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<div class="input-text">
+						<textarea row="10" type="text"
+							placeholder="Address Of Company"
+							style="height: 100px;" class="text-field-login"
+							required formControlName="companyAddress"
+							[ngClass]="fbForm.controls['companyAddress'].valid && !fbForm.controls['companyAddress'].pristine ? 'green-outline' : 'red-outline'"></textarea>
+					</div>
+					<div class="input-text">
+						<input type="text" placeholder="Admin ID Of Company"
+							class="text-field-login" required
+							formControlName="companyAdminId"
+							[ngClass]="fbForm.controls['companyAdminId'].valid && !fbForm.controls['companyAdminId'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<div class="input-text">
+						<input type="text" placeholder="Company Webpage"
+							class="text-field-login" required
+							formControlName="companyWebpage"
+							[ngClass]="fbForm.controls['companyWebpage'].valid && !fbForm.controls['companyWebpage'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<div class="input-text">
+						<input type="text" placeholder="Company Fiscal Number "
+							class="text-field-login" required
+							formControlName="companyFiscal"
+							[ngClass]="fbForm.controls['companyFiscal'].valid && !fbForm.controls['companyFiscal'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<div class="input-text">
+						<input type="text" placeholder="Company video Content Link"
+							class="text-field-login" required
+							formControlName="companyVideoLink"
+							[ngClass]="fbForm.controls['companyVideoLink'].valid && !fbForm.controls['companyVideoLink'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<div class="input-text">
+						<input type="text" placeholder="Function of Contact"
+							class="text-field-login" required
+							formControlName="funtionOfContacts"
+							[ngClass]="fbForm.controls['funtionOfContacts'].valid && !fbForm.controls['funtionOfContacts'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<!-- <div class="input-text">
+						<button class="filter_selector" type="button" id="userRoleMenu" data-toggle="dropdown">
+							<a style="margin-left: 12px; margin-right: 12px; font-size: 16px;">
+								{{userRole}}</a>
+							<i class="material-icons">keyboard_arrow_down</i>
+						</button>
+						<ul class="dropdown-menu" role="userRoleMenu" aria-labelledby="userRoleMenu">
+							<li name="subscriber" value="subscriber" (click)="userRoleChange('Subscriber', 'Subscriber')">
+								<span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+								Subscriber
+							</li>
+							<li name="supplier" value="supplier" (click)="userRoleChange('Supplier', 'Supplier')">
+								<span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+								Supplier
+							</li>
+							<li name="purchaser" value="purchaser" (click)="userRoleChange('Purchaser', 'Purchaser')">
+								<span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+								Purchaser
+							</li>
+						</ul>
+					</div> -->
+					<!-- <div class="input-text">
+						<button class="filter_selector" type="button" id="sectorMenu" data-toggle="dropdown">
+							<a style="margin-left: 12px; margin-right: 12px; font-size: 16px;">
+								{{businessCategory}}</a>
+							<i class="material-icons">keyboard_arrow_down</i>
+						</button>
+						<ul class="dropdown-menu" role="sectorMenu" aria-labelledby="sectorMenu">
+							<li name="subscriber" value="subscriber" (click)="businessCatChange('Business Category One', 'Business Category One')">
+								<span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+								Business Category One
+							</li>
+							<li name="supplier" value="supplier" (click)="businessCatChange('Business Category two', 'Business Category Two')">
+								<span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+								Business Category two
+							</li>
+							<li name="purchaser" value="purchaser" (click)="businessCatChange('Business Category Three', 'Business Category Three')">
+								<span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+								Business Category Three
+							</li>
+						</ul>
+					</div> -->
+					<!-- <div class="input-text">
+						<button class="filter_selector" type="button" id="subSectorMenu" data-toggle="dropdown">
+							<a style="margin-left: 12px; margin-right: 12px; font-size: 16px;">
+								{{businessSubcategory}}</a>
+							<i class="material-icons">keyboard_arrow_down</i>
+						</button>
+						<ul class="dropdown-menu" role="subSectorMenu" aria-labelledby="subSectorMenu">
+							<li name="subscriber" value="subscriber" (click)="businessSubCatChange('Sector one', 'Sector one')">
+								<span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+								Sector one
+							</li>
+							<li name="supplier" value="supplier" (click)="businessSubCatChange('Sector two', 'Sector two')">
+								<span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+								Sector two
+							</li>
+							<li name="purchaser" value="purchaser" (click)="businessSubCatChange('Sector three', 'Sector Three')">
+								<span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+								Sector three
+							</li>
+						</ul>
+					</div> -->
+					<!-- <input type="checkbox" id="terms" name="terms" [checked]="termsAccepted"
+						(change)="termsAccepted = !termsAccepted">
+					<label for="terms" style="margin-bottom: 15px;"><a style="color: #3e3e3e"
+							href="#" target="_blank">I Accept the Africa SMB Terms &
+							Conditions</a></label> -->
+
+
+				</div>
+				<div [hidden]="!step2">
+					<div class="input-text">
+						<mat-checkbox (change)="memberOfProfOrganization = !memberOfProfOrganization" formControlName="memberOfProfOrganization">
+							Member of
+							Professional organisation
+						</mat-checkbox>
+						<!-- <input type="checkbox" id="memberOfProfOrganization"
+							formControlName="memberOfProfOrganization"
+							[checked]="memberOfProfOrganization"
+							(change)="memberOfProfOrganization = !memberOfProfOrganization"> -->
+						<!-- <label for="memberOfProfOrganization"
+							style="margin-bottom: 15px;">Member of
+							Professional organisation
+						</label> -->
+					</div>
+					<div class="input-text">
+						<select *ngIf="memberOfProfOrganization"
+							placeholder="Name of Company"
+							class="text-field-login"
+							formControlName="typeOfProfOrganization"
+							[ngClass]="fbForm.controls['typeOfProfOrganization'].valid && !fbForm.controls['typeOfProfOrganization'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true"
+								[disabled]="true">choose</option>
+							<option value="chamberOfCommerce">Chamber Of
+								Commerce</option>
+							<option value="unionOfXx">Union of XX</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					<div class="input-text">
+						<mat-checkbox (change)="affilliatedToGroup = !affilliatedToGroup" formControlName="affilliatedToGroup">
+							Member of
+							Professional organisation
+						</mat-checkbox>
+						<!-- <input type="checkbox" id="affilliatedToGroup"
+							formControlName="affilliatedToGroup"
+							[checked]="affilliatedToGroup"
+							(change)="affilliatedToGroup = !affilliatedToGroup">
+						<label for="affilliatedToGroup"
+							style="margin-bottom: 15px;">Affiliated to a Group
+						</label> -->
+					</div>
+					<div class="input-text">
+						<input *ngIf="affilliatedToGroup" type="text"
+							placeholder="Name of Group"
+							class="text-field-login"
+							formControlName="groupName"
+							[ngClass]="fbForm.controls['groupName'].valid && !fbForm.controls['groupName'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<div class="input-text">
+						<textarea *ngIf="affilliatedToGroup" row="10" type="text"
+							placeholder="Address Of Group"
+							style="height: 100px;" class="text-field-login"
+							formControlName="groupAddress"
+							[ngClass]="fbForm.controls['groupAddress'].valid && !fbForm.controls['groupAddress'].pristine ? 'green-outline' : 'red-outline'"></textarea>
+					</div>
+					<div class="input-text">
+						<select *ngIf="affilliatedToGroup" class="text-field-login"
+							formControlName="groupRegion" (change)="getGroupSubRegionList()"
+							[ngClass]="fbForm.controls['groupRegion'].valid && !fbForm.controls['groupRegion'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true"
+								[disabled]="true">Region</option>
+								<option *ngFor="let item of regionList" value="{{item.name}}">{{item.name}}</option>
+							<!-- <option value="Asia">Asia</option>
+							<option value="EU">EU</option>
+							<option value="Africa">Africa</option>
+							<option value="Oceania">Oceania</option> -->
+						</select>
+					</div>
+					<div class="input-text">
+						<select *ngIf="affilliatedToGroup" class="text-field-login"
+							formControlName="groupSubRegion"
+							[ngClass]="fbForm.controls['groupSubRegion'].valid && !fbForm.controls['groupSubRegion'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true" [disabled]="true">Sub Region</option>
+							<option *ngFor="let item of subRegionList" value="{{item.name}}">{{item.name}}</option>
+
+						</select>
+					</div>
+					<div class="input-text">
+						<select *ngIf="affilliatedToGroup"
+							placeholder="Name of Company"
+							class="text-field-login"
+							formControlName="groupCountry"
+							[ngClass]="fbForm.controls['groupCountry'].valid && !fbForm.controls['groupCountry'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true"
+								[disabled]="true">Country</option>
+								<option *ngFor="let item of countryList" value="{{item.name}}">{{item.name}}</option>
+
+						</select>
+					</div>
+					<div class="input-text">
+						<input type="text" placeholder="Business Denomination"
+							class="text-field-login"
+							formControlName="businessDenomination"
+							[ngClass]="fbForm.controls['businessDenomination'].valid && !fbForm.controls['businessDenomination'].pristine ? 'green-outline' : 'red-outline'">
+					</div>
+					<div class="input-text">
+						<select class="text-field-login"
+							formControlName="businessCategory" (change)="getSubBusList()"
+							[ngClass]="fbForm.controls['businessCategory'].valid && !fbForm.controls['businessCategory'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true"
+								[disabled]="true">Business Category
+							</option>
+							<option *ngFor="let item of categoryList" value="{{item.name}}">{{item.name}}</option>
+						</select>
+					</div>
+					<div class="input-text">
+						<select class="text-field-login"
+							formControlName="businessSubcategory"
+							[ngClass]="fbForm.controls['businessSubcategory'].valid && !fbForm.controls['businessSubcategory'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true"
+								[disabled]="true">Business Subcategory
+							</option>
+							<option *ngFor="let item of listofSubCategories" value="{{item.name}}">{{item.name}}</option>
+							
+						</select>
+					</div>
+					<div class="input-text">
+						<select class="text-field-login"
+							formControlName="companyProfile"
+							[ngClass]="fbForm.controls['companyProfile'].valid && !fbForm.controls['companyProfile'].pristine ? 'green-outline' : 'red-outline'">
+							<option value="" [selected]="true"
+								[disabled]="true">Company Profile
+							</option>
+							<option value="0">Buyer</option>
+							<option value="1">Provider</option>
+							<option value="2">Partner</option>
+						</select>
+					</div>
+					<div class="input-text">
+						<re-captcha (resolved)="resolved($event)"
+							siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
+						</re-captcha>
+						<!-- <img src="assets/images/captcha.png" style="right: 15px; margin-top:12px; width:100%"> -->
+						<!-- <label for="terms" style="margin-bottom: 15px;">Captcha</label>	 -->
+					</div>
+					<div class="input-text">
+						<mat-checkbox (change)="termsAccepted = !termsAccepted" >
+							I Accept the Africa SMB
+								Terms &
+								Conditions
+						</mat-checkbox>
+						<!-- <input type="checkbox" id="terms" name="terms"
+							[checked]="termsAccepted"
+							(change)="termsAccepted = !termsAccepted">
+						<label for="terms"
+							style="margin-bottom: 15px; margin-top: 15px;;"><a
+								style="color: #3e3e3e" href="#"
+								target="_blank">I Accept the Africa SMB
+								Terms &
+								Conditions</a></label> -->
+					</div>
+				</div>
+				<div [hidden]="!step3" class="row">
+					<div class="columns">
+						<ul class="price">
+							<li class="header">Basic</li>
+							<li class="grey">$ 9.99 / year</li>
+							<li>10GB Storage</li>
+							<li>10 Emails</li>
+							<li>10 Domains</li>
+							<li>1GB Bandwidth</li>
+							<li class="grey button">
+								
+								
+								<input type="radio"
+									class="radio-field-login"
+									required
+									formControlName="subscriptionCategory"
+									value="0">Select</li>
+						</ul>
+					</div>
+					<div class="columns">
+						<ul class="price">
+							<li class="header">Preminum</li>
+							<li class="grey">$ 9.99 / year</li>
+							<li>10GB Storage</li>
+							<li>10 Emails</li>
+							<li>10 Domains</li>
+							<li>1GB Bandwidth</li>
+							<li class="grey button"><input type="radio"
+									required
+									class="radio-field-login"
+									value="1"
+									formControlName="subscriptionCategory">Select
+							</li>
+						</ul>
+					</div>
+					<div class="columns">
+						<ul class="price">
+							<li class="header">Pre Plus</li>
+							<li class="grey">$ 9.99 / year</li>
+							<li>10GB Storage</li>
+							<li>10 Emails</li>
+							<li>10 Domains</li>
+							<li>1GB Bandwidth</li>
+							<li class="grey button"><input type="radio"
+									required
+									class="radio-field-login"
+									value="2" required
+									formControlName="subscriptionCategory">Select
+							</li>
+						</ul>
+					</div>
+					<!-- <div class="input-text">
+						<input type="radio" required class="radio-field-login" value="1"
+							formControlName="subscriptionCategory">Premium
+					</div>
+					<div class="input-text">
+						<input type="radio" required class="radio-field-login" value="2"
+							required formControlName="subscriptionCategory">Premimum Plus
+					</div> -->
+				</div>
+				<div [hidden]="!step4">
+					<div *ngIf="step4" class="pdf-scroller">
+					<pdf-viewer   [src]="pdfSrc" [original-size]="false" [autoresize]="true"
+					style="display: block;" (after-load-complete)="callBackFn1($event)"></pdf-viewer>
+					</div>
+					<!-- <div [hidden]="notLoadedPdf" class="pdf-scroller"> -->
+						<!-- <ng2-pdfjs-viewer *ngIf="step5" [src]="pdfSrc" [original-size]="false" [autoresize]="true"
+							style="display: block;" (after-load-complete)="callBackFn1($event)"></ng2-pdfjs-viewer> -->
+						<!-- <pdf-viewer [src]="pdfSrc"
+							(after-load-complete)="callBackFn($event)"
+							[autoresize]="true" [render-text]="true"
+							style="display: block;"></pdf-viewer> -->
+							<!-- <ngx-extended-pdf-viewer [src]="pdfSrc" useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer> -->
+
+						<!-- </div> -->
+				</div>
+				<div [hidden]="!step5">
+					<div class="row setup-content" id="step-1">
+						<div class="col-xs-12">
+						    <div class="col-md-12 well text-center">
+					  
+					        <label for="fileToUpload">Please upload Your signature Image</label><br />
+					        <input type="file" (change)="uploadSign($event)" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"/>
+					      </div>
+					      <img class="logo" *ngIf="userSign" src="{{userSign}}">
+					      </div>
+					      <div class="col-xs-12">
+						<div class="col-md-12 well text-center">
+				        
+					    <label for="fileToUpload">Please upload Your profile picture</label><br />
+					    <input type="file" (change)="uploadProfileImage($event)" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"/>
+					  </div>
+					  <img class="logo" *ngIf="profileImage" src="{{profileImage}}">
+
+					  </div>
+					</div>
+		
+				</div>
+
+				<div [hidden]="!step6" >
+					<!-- <div *ngIf="step6" class="pdf-scroller"> -->
+						<!-- <pdf-viewer [src]="pdfSrc2"
+							(after-load-complete)="callBackFn($event)"
+							[autoresize]="true" [render-text]="true"
+							style="display: block;"></pdf-viewer> -->
+						<!-- <ng2-pdfjs-viewer [src]="pdfSrc2" [original-size]="false" [autoresize]="true" style="display: block;"
+							(after-load-complete)="callBackFn($event)"></ng2-pdfjs-viewer> -->
+							<!-- <ngx-extended-pdf-viewer [src]="pdfSrc2" useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer> -->
+
+						<!-- </div> -->
+						<div *ngIf="step6" class="pdf-scroller">
+							<pdf-viewer   [src]="pdfSrc" [original-size]="false" [autoresize]="true"
+							style="display: block;" (after-load-complete)="callBackFn1($event)"></pdf-viewer>
+						<div class="row" style="margin-top: -50%;">
+							<div class="col-md-6">
+								<img class="logo" *ngIf="userSign" src="{{userSign}}">
+	
+							</div>
+							<div class="col-md-6">
+								<img class="logo" *ngIf="profileImage" src="{{profileImage}}">
+	
+							</div>
+						</div>
+						</div>
+				</div>
+				<div [hidden]="!step7">
+					<div *ngIf="step7" class="pdf-scroller">
+						<div class="input-text">
+							<input type="text" placeholder="Name on Card"
+								class="text-field-login" name="name">
+						</div>
+						<div class="input-text">
+							<input type="text" placeholder="Card Number"
+								class="text-field-login" name="name">
+						</div>
+						<div class="input-text">
+							<input type="text" placeholder="MM/YY"
+								class="text-field-login" name="name">
+						</div>
+						<div class="input-text">
+							<input type="text" placeholder="CVC Code"
+								class="text-field-login" name="name">
+						</div>
+					</div>
+				</div>
+				<div *ngIf="!step8" class="row p-s-5" [ngClass]="{'center-p': step7}">
+
+					<button (click)="onBack()" [hidden]="step1 || step5 || step7"
+						class="back-button">
+						<a>Back</a>
+					</button>
+
+					<button (click)="onSubmit()" type="submit" class="submit-button"
+						[ngClass]="{'submit-button-1': step1, 'submit-button-2': !step1,'InValidBackground':!IsValidate}">
+						<a *ngIf="!step6 || !loading">Continue</a>
+						<!-- <a *ngIf="step4">Sign Now</a> -->
+						<a *ngIf="step5">Complete Upload Sign</a>
+						<a *ngIf="step7">Proceed To payment</a>
+						<!-- <a *ngIf="!loading">Continue</a> -->
+						<img *ngIf="loading" src="assets/images/spinner.svg"
+							style="height: 35px; margin-top: 5px;">
+					</button>
+
+				</div>
+			</form>
+			<div class="input-text" [hidden]="!step8">
+				<img src="assets/images/check.svg" class="success-check" />
+				<a class="success-text">Nice! You are ready to begin using Africa SMB. Please
+					login using the button
+					below to enter the platform.</a>
+				<div class="log-in-row">
+					<button [routerLink]="['/login']" class="login-button">
+						<a>Log In</a>
+					</button>
+				</div>
+			</div>
+
+
+		</div>
+
+
+		<div *ngIf="step1" class="row footer">
+			<span class="sign-up">Already a Member?
+				<a class="sign-up-link" [routerLink]="['/login']">Sign In</a>
+			</span>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,121 @@
+<div id="myaccount" fxLayout="column" fxLayoutAlign="center center">
+	<!-- web-newpost-part -->
+
+	<div style="place-content:start" id="deal-slot" fxFlex="100%" fxLayout="column">
+		<mat-card fxLayout="column" fxLayoutAlign="start center" class="newpost-card">
+			<mat-card-header>
+				<mat-card-title>
+					<div fxLayout="column">
+						
+						
+						<div fxFlex="100%" fxLayout="row wrap" class="header-container" fxLayoutAlign="start center"
+							fxLayoutAlign.xs="start center">
+							<div fxFlex="70%" fxShow fxHide.xs>
+								<button fxFlex="10%" class="back-btn m-r-5" (click)="back()">
+									<i class="material-icons">
+										arrow_back
+									</i>
+								</button>
+								<div fxLayout="column" fxFlex="90%" fxShow fxHide.xs class="deal-head">
+									<span>Request Deatils</span>
+									<small>(Posted {{deatils?.dateCreated | date}})</small>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</mat-card-title>
+			</mat-card-header>
+			<mat-card-content class="step" fxFlex="100%" fxLayout="column"
+				fxLayoutAlign="start center">
+                                        <div class="step-block3" fxFlex="100%">
+					<div fxLayout="row" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+                                                            
+						<div class="step-head">
+							<span class="deal-head">Request Type : 
+                                                                  <small *ngIf="deatils?.serviceType === 0">Purchase
+                                                                  </small> 
+                                                                  <small *ngIf="deatils?.serviceType === 1">Provide</small>             
+							</span>
+						</div>
+						<div class="step-head">
+							<span class="deal-head">Business Category : 
+                                                                  <small>{{deatils?.businessCat}}
+                                                                  </small> 
+							</span>
+                                                            </div>
+                                                            <div class="step-head">
+							<span class="deal-head">Business Sub Category : 
+                                                                  <small>{{deatils?.businessSubCat}}
+                                                                  </small> 
+							</span>
+                                                            </div>
+                                                  </div>
+                                                  <div fxLayout="row" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						
+                                                            <div class="step-head">
+							<span class="deal-head">Business : 
+                                                                  <small>{{deatils?.business}}
+                                                                  </small> 
+							</span>
+                                                            </div>
+                                                            <div class="step-head">
+							<span class="deal-head">Model No. : 
+                                                                  <small>{{deatils?.modelNo ? deatils.modelNo : '-'}}
+                                                                  </small> 
+							</span>
+                                                            </div>
+                                                            <div class="step-head">
+							<span class="deal-head">Targeted Request Audience : 
+                                                                  <small>{{deatils?.targetedAudience ? deatils.targetedAudience : '-' }}
+                                                                  </small> 
+							</span>
+                                                            </div>
+					</div>
+                                                  <div fxLayout="row" fxLayoutAlign="center center" class="m-t-30 m-b-30">
+						
+                                                            <div class="step-head">
+							<span class="deal-head">Region : 
+                                                                  <small *ngIf="deatils?.region">{{deatils?.region}}
+                                                                  </small> 
+							</span>
+                                                            </div>
+                                                            <div class="step-head">
+							<span class="deal-head">Country : 
+                                                                  <small>{{deatils?.country?.code ? deatils?.country?.code : '-'}}
+                                                                  </small> 
+							</span>
+                                                            </div>
+                                                            <div class="step-head">
+							<span class="deal-head">Auto Expire : 
+                                                                  <small>{{deatils?.autoExpire ? 'Yes' : 'No' }}
+                                                                  </small> 
+							</span>
+                                                            </div>
+					</div>					
+                                                  <div fxLayout="row" fxLayoutAlign="left left" class="m-t-30 m-b-30">
+						
+                                                            <div class="step-head">
+							<span class="deal-head">Summary : 
+                                                                                <div fxLayout="row" fxLayoutAlign="center start" class="m-t-30 m-b-30">
+						
+                                                                                          <div class="step-head">
+                                                                                                    <span class="deal-head">
+                                                                                                              <small>
+                                                                                                                        {{deatils?.description}}
+                                                                                                              </small>
+                                                                                              
+                                                                                                    </span>
+                                                                                          </div>
+                                                                                         
+                                                                                </div>
+							</span>
+                                                            </div>
+                                                           
+                                                  </div>
+                                                
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

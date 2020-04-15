@@ -1,0 +1,73 @@
+<mat-card fxFlex="100%"  class="language-switch">
+    <div fxFlex="100%" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end start"
+        fxLayoutAlign.xs="center start">
+
+        <div class="filters" fxflex="25%" fxflex.sm="20%" fxlayout="row" fxlayoutalign="center center" ng-reflect-layout="row" ng-reflect-align="center center">
+            <div class="language-drop drop-container" >
+                <div class="dropdown">
+                    <button class="filter_selector langselector" type="button" id="lanmenu" data-toggle="dropdown">
+                        <a style="font-weight: 700; margin-left: 12px; margin-right: 12px; font-size: 16px;">
+                            <!-- <img src="https://image.flaticon.com/icons/svg/174/174249.svg" alt=""> -->
+                            <i class="material-icons language">language</i>
+                            {{language}}</a>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </button>
+                    <ul class="dropdown-menu" role="lanmenu" aria-labelledby="lanmenu">
+                        <!-- <ul class="dropdown-menu" role="menu" aria-labelledby="lanmenu">
+                        <li value="eng" (click)="languageChange('eng', 'ENG')">
+                            ENG
+                        </li>
+                        <li value="es" (click)="languageChange('es', 'ES')">
+                            ES
+                        </li> -->
+                         <!-- </ul> -->
+                        <li name="EN" value="eng" (click)="languageChange('eng', 'ENG')">
+                            <span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+                            <img src="https://designreset.com/cork/ltr/demo4/assets/img/ca.png" alt="">
+                            ENG
+                        </li>
+                        <li name="ES" value="es" (click)="languageChange('es', 'ES')">
+                            <span _ngcontent-c7="" class="filterflag flag-icon flag-icon-us"></span> <img src="https://www.contentlocalized.com/img/spanish_flag.png" alt="">    ES 
+                        </li>
+                        <li name="FR" value="FR" (click)="languageChange('FR', 'ES')">
+                            <span _ngcontent-c7=""class="filterflag flag-icon flag-icon-us"></span>
+                            <img src="https://designreset.com/cork/ltr/demo4/assets/img/fr.png" alt="">
+                            FR
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="notification profileDropdown">
+            <button class="filter_selector" type="button" id="notification" data-toggle="dropdown">
+                <a class="profileImage"><i class="material-icons">notifications_active</i></a>
+            </button>
+            <ul class="dropdown-menu profileMenu" role="lanmenu" aria-labelledby="lanmenu">
+                <li><a href="javascript:;"><i class="fa fa-heart"></i> <strong class="color1">Shaun park</strong> likes your photo</a></li>
+                <li><a href="javascript:;"><i class="fa fa-share"></i> <strong class="color1">kelly young</strong> shared your photo</a></li>
+                <li><a href="javascript:;"><i class="fa fa-heart"></i> <strong class="color1">Shaun park</strong> lmentioned in a comment</a></li>
+                <li><a href="javascript:;"><i class="fa fa-heart"></i> <strong class="color1">Shaun park</strong> likes your photo</a></li>
+                <li><a href="javascript:;"><i class="fa fa-share"></i> <strong class="color1">kelly young</strong> shared your photo</a></li>
+                <li><a href="javascript:;"><i class="fa fa-heart"></i> <strong class="color1">Shaun park</strong> lmentioned in a comment</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown profileDropdown">
+            <button class="filter_selector" type="button" id="lanmenu" data-toggle="dropdown">
+                <a class="profileImage"><img src="https://image.flaticon.com/icons/svg/1674/1674291.svg" height="40px" /></a>
+            </button>
+            <ul class="dropdown-menu profileMenu" role="lanmenu" aria-labelledby="lanmenu">
+                <!-- <li><a href="javascript:;">{{email}}</a></li> -->
+                <li><a href="javascript:;"><i class="material-icons">person</i> My Profile</a></li>
+                <li><a href="javascript:;"><i class="material-icons">email</i> Inbox</a></li>
+                <li><a href="javascript:;"><i class="material-icons">lock</i> Lock Screen</a></li>
+                <li><a href="javascript:;"><i class="material-icons">exit_to_app</i> Logout</a></li>
+            </ul>
+        </div>
+
+
+       <span class="username profileUser">{{email}}</span> 
+        
+    </div>
+</mat-card>

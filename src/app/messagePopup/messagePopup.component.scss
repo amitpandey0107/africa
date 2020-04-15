@@ -1,0 +1,137 @@
+.main-body
+{
+    width: 400px;
+    height: 90px;
+    background: #fff;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 99;
+    border-radius: 5px;
+    padding: 10px;
+    border:1px solid #b19f9f30;
+    display: block;
+    cursor: pointer;
+}
+.main-body .img-div{
+    width: 80px;
+    float: left;
+}
+.main-body .img-div img{
+    width: 60px;
+    height: auto;
+}
+.main-body .container-div{
+    width: 295px;
+    float: left;
+}
+.main-body .container-div .heading
+{
+    width: 100%;
+    overflow: hidden;
+    line-height: 27px;
+
+}
+.main-body .container-div .heading p{
+    font-size: 19px;
+    font-weight: bold;
+    margin: 0;
+}
+.main-body .container-div .message
+{   
+ width: 295px;
+ line-height: 25px;
+}
+.main-body .container-div .message p
+{   
+    overflow: hidden; 
+    width: 295px; 
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+font-size: 14px;
+margin:0;
+}
+.main-body .container-div .time
+{
+    width: 270px; 
+   
+}
+.main-body .container-div .time p
+{
+    color: #212529a6;
+    font-size: 12px;
+    font: 400;
+}
+@media (max-width: 600px){
+.main-body{
+    width: 94%;
+    height: 90px;
+    background: #fff;
+    position: fixed;
+    top: 20px;
+    /* bottom: 20px; */
+    z-index: 999;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #b19f9f30;
+    display: block;
+    cursor: pointer;
+    left: 3%;
+}
+.main-body .img-div
+{
+    width: 20%;
+    float: left;
+}
+.main-body .img-div img{
+    width: 45px;
+    height: auto;
+}
+.main-body .container-div{
+    width: 79%;
+    float: left;
+}
+.main-body .container-div .heading
+{
+    width: 95%;
+    overflow: hidden;
+    line-height: 27px;
+
+}
+.main-body .container-div .heading p{
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0;
+}
+.main-body .container-div .message
+{   
+ width: 100%;
+ line-height: 25px;
+}
+.main-body .container-div .message p
+{   
+    overflow: hidden; 
+    width: 100%; 
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 500;
+font-size: 12px;
+margin:0;
+}
+.main-body .container-div .time
+{
+    width: 95%; 
+   
+}
+.main-body .container-div .time p
+{
+    color: #212529a6;
+    font-size: 10px;
+    font: 400;
+}
+}

@@ -1,0 +1,48 @@
+app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  #wrapper-content {
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 auto;
+    padding: 0 0 0 0;
+    main {
+      flex: auto;
+      // padding-left: 205px;
+      // padding-left: 40px;
+      // padding-top: 40px;
+      // padding-right:40px;
+      background-color: #fafafc;
+    }
+  }
+}
+
+@media (min-width: 600px) and (max-width: 768px) { 
+  // app-wrapper {
+  //   #wrapper-content {
+  //     main {
+  //       // padding-left: 80px;
+  //       // height: 100%;
+  //     }
+  //   }
+  // }
+}
+
+ @media only screen and (max-width: 600px) {
+   app-wrapper #wrapper-content{
+    display: flex;
+    flex-direction: column;
+   }
+
+   app-wrapper #wrapper-content main{
+    padding: 15px;
+   }
+
+}
+
+@media only screen and (max-width: 600px) {
+  app-wrapper #wrapper-content main{
+   padding: 0px;
+  }
+}

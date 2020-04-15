@@ -1,0 +1,637 @@
+<!-- <div class="page-wrapper">
+	<div class="header">
+		<div class="navigation">
+			<img src="../assets/img/logowhite.png" class="logo"/>
+			<div class="menu-buttons">
+				<a class="signin" [routerLink]="['/login']">Sign In</a>
+				<a class="join" [routerLink]="['/join']">Join</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="page-content">
+		<div class="welcome-text">
+			<span>Zalate OTC Matchmaking Platform Now Live</span>
+		</div>
+	</div>
+
+
+</div> -->
+
+<!-- web screen -->
+<div class="container bg-white" fxHide.xs fxShow fxLayout="column" fxLayoutAlign="space-around center">
+	<div class="header">
+		<div class="head-actions" fxFlex="100%" fxLayout="row">
+			<div fxFlex="10%">
+				<img width="38px" class="logo" src="https://s3.amazonaws.com/zalate/public/img/logo-small-min.png" />
+			</div>
+			<div fxFlex="50%"></div>
+			<div fxFlex="40%" class="subheader-actions" fxLayout="row" fxLayoutAlign="end center">
+				
+				<div>
+					<button class="btn" [routerLink]="['/login']">Login</button>
+				</div>
+				<div>
+					<button class="btn" [routerLink]="['/join']">Join Now</button>
+				</div>
+			</div>
+		</div>
+		<div fxFlex="100%" class="p-t-40">
+			<div fxFlex="50%" class="welcome">
+				<div class="header-welcome">
+					Welcome to <span>Zalate. Cryptocurrency</span> OTC Matchmaking
+				</div>
+				<div class="welcome-content m-t-20"><a>Zalate is the world’s first and only peer-to-peer matchmaking platform allowing users to instantly discover cryptocurrency OTC deals. <br><br> Users from all across the globe are able to find, negotiate, and close OTC deals using our advanced listing and messaging tools. <br><br>Oh, and did we mention it’s <span style="font-weight: 600;">free</span>?</a>
+				</div>
+				<div class="m-t-20">
+					<button class="btn creat-btn" [routerLink]="['/join']">Create Account</button>
+					<button class="btn deals-btn" [routerLink]="['/buyers']">See Deals</button>
+				</div>
+			</div>
+			<div fxFlex="50%" class="p-t-20 top-app-banner">
+				<img src="https://s3.amazonaws.com/zalate/public/img/app-screen-min.png" />
+			</div>
+		</div>
+		<div fxFlex="100%">
+			<a id="scroller" fxLayoutAlign="center center">
+				<svg class="scroller" width="24" height="24">
+					<g fill="none" fill-rule="evenodd" transform="translate(4)">
+						<rect width="15" height="23" x=".5" y=".5" stroke="#FFF" rx="7.5"></rect>
+						<rect class="scroller wheel" width="2" height="2" x="7" y="7" fill="#FFF" rx="1"></rect>
+					</g>
+				</svg>
+			</a>
+		</div>
+	</div>
+	<div class="otc-deal" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+		<div fxFlex="100%" class="otc-head">Discover OTC Deals Instantly</div>
+		<div fxFlex="100%" class="otc-list">
+			<img src="https://s3.amazonaws.com/zalate/public/img/otc-list-min.png" />
+		</div>
+	</div>
+	<div class="how-it-work" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+		<div fxFlex="100%" class="how-head">How it Works</div>
+		<div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-around center" class="how-list p-t-20">
+			<div class="p-t-30" fxFlex="30%" fxLayout="row">
+				<div fxFlex="15%">
+					<img src="https://s3.amazonaws.com/zalate/public/img/searchcolor-min.png" />
+				</div>
+				<div fxFlex="85%" fxLayout="column">
+					<div class="list-head p-l-15 p-t-10">FIND</div>
+					<div class="list-content p-l-15 p-t-15">
+						<a>Search through our extensive list of buy and sell orders, and find the perfect fit. Filter by discounts, location of the coin, and different types of cryptocurrencies. </a>
+					</div>
+				</div>
+			</div>
+			<div class="p-t-30" fxFlex="30%" fxLayout="row">
+				<div fxFlex="15%">
+					<img src="https://s3.amazonaws.com/zalate/public/img/nego-min.png" />
+				</div>
+				<div fxFlex="85%" fxLayout="column">
+					<div class="list-head p-l-15 p-t-10">NEGOTIATE</div>
+					<div class="list-content p-l-15 p-t-15">
+						<a>Every deal is unique, and communication is critical. That’s why we’ve made it easy to message deal posters, all while maintaining your anonymity. No more having to give your personal information to random people.</a>
+					</div>
+				</div>
+			</div>
+			<div class="p-t-30" fxFlex="30%" fxLayout="row">
+				<div fxFlex="15%">
+					<img src="https://s3.amazonaws.com/zalate/public/img/closecolor-min.png" />
+				</div>
+				<div fxFlex="85%" fxLayout="column">
+					<div class="list-head p-l-15 p-t-10">CLOSE</div>
+					<div class="list-content p-l-15 p-t-15">
+						<a>After negotiations are completed and all parties are satisfied, you’re one step away from closing your first deal. </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="inter" fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+		<div fxFlex></div>
+		<div fxFlex="100%" class="inter-market inter-70">
+			<div class="inter-head">Take the headache out of OTC Deals</div>
+			<div class="inter-detail p-t-20">
+				<a>All of your OTC deals and communication in one place. Anytime. Anywhere</a>
+			</div>
+		</div>
+		<div fxFlex></div>
+	</div>
+	<div class="market-detail" fxFlex="100%" fxLayout="row" fxLayoutAlign="center start">
+		<div fxFlex="50%" class="market-content">
+			<div class="market-list" fxLayout="row" fxLayoutAlign="space-around start">
+				<div fxFlex="15%" class="text-center">
+					<img class="img4" src="https://s3.amazonaws.com/zalate/public/img/CLOCK-min.png" />
+				</div>
+				<div fxFlex="85%" fxLayoutAlign="start center" class="list-space">
+					<div class="list-content">
+						<div class="list-head">Find Deals Quick & Easy</div>
+						<div class="content">
+							<span class="list-icon">
+								<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+							</span>
+							<span class="list-mini">Cut through the noise and find the right deal for you.</span>
+						</div>
+						<div class="content">
+							<span class="list-icon">
+								<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+							</span>
+							<span class="list-mini">Buy and Sell Orders are organized and display all the important information about each deal.</span>
+						</div>
+						<div class="content">
+							<span class="list-icon">
+								<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+							</span>
+							<span class="list-mini">Easily filter through hundreds of buy and sell orders.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="market-list" fxLayout="row" fxLayoutAlign="space-around start">
+				<div fxFlex="15%" class="text-center">
+					<img class="img2 m-l-5" src="https://s3.amazonaws.com/zalate/public/img/hand-min.png" />
+				</div>
+				<div fxFlex="85%" fxLayoutAlign="start center" class="list-space">
+					<div class="list-content">
+						<div class="list-head">Instantly Chat with Buyers and Sellers</div>
+						<div class="content">
+							<span class="list-icon">
+								<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+							</span>
+							<span class="list-mini">Chat anonymously with potential buyers and sellers before you’re ready to move to the next step.</span>
+						</div>
+						<div class="content">
+							<span class="list-icon">
+								<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+							</span>
+							<span class="list-mini">End-to-end encryption means your messages are secure.</span>
+						</div>
+						<div class="content">
+							<span class="list-icon">
+								<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+							</span>
+							<span class="list-mini">See when users are online or offline.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="market-list" fxLayout="row" fxLayoutAlign="space-around start">
+				<div fxFlex="15%" class="text-center">
+					<img class="img3 m-l-5" src="https://s3.amazonaws.com/zalate/public/img/shild-min.png" />
+				</div>
+				<div fxFlex="85%" fxLayoutAlign="start center" class="list-space">
+					<div class="list-content">
+						<div class="list-head">Full Anonymity</div>
+						<div class="content">
+							<span class="list-icon">
+								<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+							</span>
+							<span class="list-mini">Your contact information is secure and won’t be shown to other users.</span>
+						</div>
+						<div class="content">
+							<span class="list-icon">
+								<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+							</span>
+							<span class="list-mini">Reveal your identity when you find the right deal.</span>
+						</div>
+						<div class="content">
+							<span class="list-icon">
+								<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+							</span>
+							<span class="list-mini">No more brokers blowing up your phone.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div fxFlex="50%" class="market-img top-app-banner p-t-10">
+			<img src="https://s3.amazonaws.com/zalate/public/img/inter-chat-mix-min.png" />
+		</div>
+	</div>
+	<div class="platform p-t-40">
+		<button class="platform-btn"  [routerLink]="['/buyers']">Check Out Deals</button>
+	</div>
+	<div class="sub-footer" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+		<div class="p-45 integration-box" fxFlex="100%">
+			<div fxFlex></div>
+			<div fxFlex="70%" class="integration">
+				<div class="head">Not Just Bitcoin</div>
+				<div class="detail p-t-20">
+					<a>Zalate currently supports OTC deals for Bitcoin, Bitcoin Cash, Ethereum, Ethereum Classic and Litecoin, with plenty more on the way!</a>
+				</div>
+			</div>
+			<div fxFlex></div>
+		</div>
+		<div fxFlex="100%" class="crypto-box">
+			<img class="crypto-img" src="https://s3.amazonaws.com/zalate/public/img/crypto-web-min.png" />
+		</div>
+		<div fxFlex="100%" class="sellorder-footer">
+			<div fxFlex="100%">
+				<img class="crypto-img" src="https://s3.amazonaws.com/zalate/public/img/sellorder-min.png" />
+			</div>
+		</div>
+	</div>
+	<div class="footer" fxFlex="100%" fxLayout="column" fxLayoutAlign="center stretch">
+		<div fxLayout="row" fxFlex="100%" fxLayoutAlign="start space-around">
+			
+
+			<div fxFlex="20%" class="logo footer-logo footer-left-block">
+				<div>
+					<img class="logo-img" src="https://s3.amazonaws.com/zalate/public/img/logo-min.png" />
+				</div>
+				<div>
+					<img class="cryptos" src="https://s3.amazonaws.com/zalate/public/img/cryptos-min.png" />
+				</div>
+				<div class="logo-detail">
+					<span>350 Lincoln Rd, Miami FL 33139, USA</span>
+				</div>
+				<div class="logo-detail">
+					<span>© Zalate LLC, 2018</span>
+				</div>
+			</div>
+
+
+			<div fxFlex="60%" fxLayout="column" class="footer-list" fxLayoutAlign="space-around center">
+				<div fxFlex="100%" class="footer-group">
+					<div fxFlex="30%" class="p-l-35">
+						<div class="footer-head">Deals</div>
+						<div><a class="footer-link" >Buy Orders</a></div>
+						<div><a class="footer-link" >Sell Orders</a></div>
+						<div><a class="footer-link">Sponsor Deal</a></div>
+						<div><a class="footer-link">Verify Deal</a></div>
+					</div>
+					<div fxFlex="30%" class="p-l-35">
+						<div class="footer-head">Account</div>
+						<div><a class="footer-link">Create Account</a></div>
+						<div><a class="footer-link">Sign In</a></div>
+						<div><a class="footer-link">Verify Account</a></div>
+					</div>
+					<div fxFlex="30%" class="p-l-35">
+						<div class="footer-head">Company</div>
+						<div><a class="footer-link">Frequently Asked Questions</a></div>
+						<div><a class="footer-link">Contact Us</a></div>
+						<div><a class="footer-link">White Glove Service</a></div>
+						<div><a class="footer-link">Terms & Conditions</a></div>
+					</div>
+				</div>
+				
+			</div>
+			<div fxFlex="20%" fxLayout="column" fxLayoutAlign="start center">
+				
+
+				<div class="social-column">
+
+
+
+
+					<div class="follow-row">
+						<a style="font-size: 15px; font-weight: 500; color: #1f1f1f; margin-right: 15px;">Follow Us: </a>
+						<a><img style="width: 30px; margin-right: 20px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/facebook.svg"></a>
+						<a><img style="width: 30px; margin-right: 20px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/twitter.svg"></a>
+						<a><img style="width: 30px; margin-right: 20px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/telegram.svg"></a>
+						<a><img style="width: 30px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/linkedin.svg"></a>
+					</div>
+
+
+					<div class="app-row">
+						<a><img style="width: 140px; margin-right: 20px;" src="https://s3.amazonaws.com/zalate/public/google-play.png"/></a>  
+                                                                      
+						<a><img style="width: 140px;" src="https://s3.amazonaws.com/zalate/public/app-store.png"/></a>  
+					</div>
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="footer1" fxFlex="100%" fxLayout="column" fxLayoutAlign="center stretch">
+		<div fxLayout="row footer-left-block" fxFlex="100%" fxLayoutAlign="start space-around">
+			<div fxFlex="20%" class="logo footer-logo">
+				<div style="align-items: center; justify-content: center; display: flex; margin-bottom: 10px;">
+					<img class="logo-img" src="https://s3.amazonaws.com/zalate/public/img/logo-min.png" />
+				</div>
+				<div>
+					<img class="cryptos" src="https://s3.amazonaws.com/zalate/public/img/cryptos-min.png" />
+				</div>
+				<div class="logo-detail">
+					<span>350 Lincoln Rd, Miami FL 33139, USA</span>
+				</div>
+				<div class="logo-detail">
+					<span>© Zalate LLC, 2018</span>
+				</div>
+			</div>
+			<div fxFlex="80%" fxLayout="column" class="footer-list" fxLayoutAlign="space-around center">
+				<div fxFlex="100%" class="footer-group">
+					<div fxFlex="30%" class="p-l-35">
+						<div class="footer-head">Deals</div>
+						<div><a class="footer-link">Buy Orders</a></div>
+						<div><a class="footer-link">Sell Orders</a></div>
+						<div><a class="footer-link">Sponsor Deal</a></div>
+						<div><a class="footer-link">Verify Deal</a></div>
+					</div>
+					<div fxFlex="30%" class="p-l-35">
+						<div class="footer-head">Account</div>
+						<div><a class="footer-link">Create Account</a></div>
+						<div><a class="footer-link">Sign In</a></div>
+						<div><a class="footer-link">Verify Account</a></div>
+					</div>
+					<div fxFlex="30%" class="p-l-35">
+						<div class="footer-head">Company</div>
+						<div><a class="footer-link">Frequently Asked Questions</a></div>
+						<div><a class="footer-link">Contact Us</a></div>
+						<div><a class="footer-link">White Glove Service</a></div>
+						<div><a class="footer-link">Terms & Conditions</a></div>
+					</div>
+				</div>
+				<div fxFlex="100%" fxLayout="column" class="m-t-20 newsletter-box" fxLayoutAlign="center start">
+					
+					<div fxFlex="100%" class="Newsletter p-t-10" fxLayout="row" fxLayoutAlign="center start">
+						<div fxFlex="65%" fxLayoutAlign="start start" style="width:100%">
+							<div class="app-row">
+						<a><img style="width: 140px; margin-right: 20px;" src="https://s3.amazonaws.com/zalate/public/google-play.png"/></a>  
+                                                                      
+						<a><img style="width: 140px;" src="https://s3.amazonaws.com/zalate/public/app-store.png"/></a>  
+					</div>
+						</div>
+						<div fxFlex="35%" class="footer-img">
+								<a><img style="width: 30px; margin-right: 12px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/facebook.svg"></a>
+								<a><img style="width: 30px; margin-right: 12px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/twitter.svg"></a>
+								<a><img style="width: 30px; margin-right: 12px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/telegram.svg"></a>
+								<a><img style="width: 30px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/linkedin.svg"></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- mob screen -->
+<div class="container bg-white" fxShow.xs fxHide fxLayout="column" fxLayoutAlign="space-around center">
+	<div class="mob-header" fxLayout="column" fxLayoutAlign="space-around center">
+		<div class="mob-actions" fxLayout="row" fxFlex="100%">
+			<div class="menu" fxFlex="50%" fxLayoutAlign="start center">
+				<button>
+					<img src="https://s3.amazonaws.com/zalate/public/img/menu-min.png" />
+				</button>
+			</div>
+			<div class="m-r-25" fxFlex="50%" fxLayoutAlign="end center">
+				<img class="logo" src="https://s3.amazonaws.com/zalate/public/img/logo-small-min.png" />
+			</div>
+		</div>
+		<div class="mob-welcome p-25" fxLayout="column" fxFlex="100%">
+			<div class="mob-header-welcome">
+				Welcome to <span>Zalate. Cryptocurrency</span> OTC Matchmaking
+			</div>
+			<div class="mob-welcome-content m-t-10"><a>Zalate is the world’s first and only peer-to-peer matchmaking platform allowing users to instantly discover cryptocurrency OTC deals. <br><br> Users from all across the globe are able to find, negotiate, and close OTC deals using our advanced listing and messaging tools. <br><br>Oh, and did we mention it’s <span style="font-weight: 600;">free</span>?</a>
+			</div>
+			<div class="m-t-25">
+				<button class="btn1 creat-btn" [routerLink]="['/join']">Create Account</button>
+			</div>
+			<div class="m-t-15">
+				<button class="btn1 deals-btn">See Deals</button>
+			</div>
+		</div>
+		<div class="mob-app-banner" fxFlex="100%">
+			<img src="https://s3.amazonaws.com/zalate/public/img/app-screen-mob-min.png" />
+		</div>
+	</div>
+	<div class="mob-otc-deal p-10 p-t-40" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+		<div fxFlex="100%" class="mob-otc-head">Discover OTC Deals Instantly</div>
+		<div fxFlex="100%" class="mob-otc-list p-t-15">
+			<img src="https://s3.amazonaws.com/zalate/public/img/mob-otc-list-min.png" />
+		</div>
+	</div>
+	<div class="how-it-work p-40" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+		<div fxFlex="100%" class="how-head">How it Works</div>
+		<div fxFlex="100%" fxLayout="column" fxLayoutAlign="center center" class="how-list p-t-20">
+			<div class="p-t-30" fxFlex="100%" fxLayout="row">
+				<div fxFlex="10%">
+					<img width="30px" src="https://s3.amazonaws.com/zalate/public/img/searchcolor-min.png" />
+				</div>
+				<div fxFlex="90%" fxLayout="column">
+					<div class="list-head p-l-15">FIND</div>
+					<div class="list-content p-l-15 p-t-10">
+						<a>Search through our extensive list of buy and sell orders, and find the perfect fit. Filter by discounts, location of the coin, and different types of cryptocurrencies. </a>
+					</div>
+				</div>
+			</div>
+			<div class="p-t-30" fxFlex="100%" fxLayout="row">
+				<div fxFlex="10%">
+					<img width="30px" src="https://s3.amazonaws.com/zalate/public/img/nego-min.png" />
+				</div>
+				<div fxFlex="90%" fxLayout="column">
+					<div class="list-head p-l-15">NEGOTIATE</div>
+					<div class="list-content p-l-15 p-t-10">
+						<a>Every deal is unique, and communication is critical. That’s why we’ve made it easy to message deal posters, all while maintaining your anonymity. No more having to give your personal information to random people.</a>
+					</div>
+				</div>
+			</div>
+			<div class="p-t-30" fxFlex="100%" fxLayout="row">
+				<div fxFlex="10%">
+					<img width="30px" src="https://s3.amazonaws.com/zalate/public/img/closecolor-min.png" />
+				</div>
+				<div fxFlex="90%" fxLayout="column">
+					<div class="list-head p-l-15">CLOSE</div>
+					<div class="list-content p-l-15 p-t-10">
+						<a>After negotiations are completed and all parties are satisfied, you’re one step away from closing your first deal. </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="p-40 mob-inter-market" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+		<div fxFlex="100%" class="mob-inter-head">Take the headache out of OTC Deals</div>
+		<div fxFlex="100%" class="mob-inter-detail p-t-20">
+			<a>All of your OTC deals and communication in one place. Anytime. Anywhere</a>
+		</div>
+	</div>
+	<div class="mob-market-detail" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center">
+		<div class="market-list p-t-40" fxFlex="100%" fxLayout="row" fxLayoutAlign="space-around start">
+			<div fxFlex="20%" class="text-center">
+				<img src="https://s3.amazonaws.com/zalate/public/img/CLOCK-min.png" />
+			</div>
+			<div fxFlex="80%">
+				<div class="list-content">
+					<div class="list-head">Find Deals Quick & Easy</div>
+					<div class="content">
+						<span class="list-icon">
+							<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+						</span>
+						<span class="list-mini">Cut through the noise and find the right deal for you.</span>
+					</div>
+					<div class="content">
+						<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+						<span class="list-mini">Buy and Sell Orders are organized and display all the important information about each deal.</span>
+					</div>
+					<div class="content">
+						<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+						<span class="list-mini">Easily filter through hundreds of buy and sell orders.</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="market-list p-t-40" fxFlex="100%" fxLayout="row" fxLayoutAlign="space-around start">
+			<div fxFlex="20%" class="text-center">
+				<img class="img1" src="https://s3.amazonaws.com/zalate/public/img/hand-min.png" />
+			</div>
+			<div fxFlex="80%">
+				<div class="list-content">
+					<div class="list-head">Instantly Chat with Buyers and Sellers</div>
+					<div class="content">
+						<span class="list-icon">
+							<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+						</span>
+						<span class="list-mini">Chat anonymously with potential buyers and sellers before you’re ready to move to the next step.</span>
+					</div>
+					<div class="content">
+						<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+						<span class="list-mini">End-to-end encryption means your messages are secure.</span>
+					</div>
+					<div class="content">
+						<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+						<span class="list-mini">See when users are online or offline.</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="market-list p-t-40" fxFlex="100%" fxLayout="row" fxLayoutAlign="space-around start">
+			<div fxFlex="20%" class="text-center">
+				<img class="img1" src="https://s3.amazonaws.com/zalate/public/img/shild-min.png" />
+			</div>
+			<div fxFlex="80%">
+				<div class="list-content">
+					<div class="list-head">Full Anonymity</div>
+					<div class="content">
+						<span class="list-icon">
+							<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+						</span>
+						<span class="list-mini">Your contact information is secure and won’t be shown to other users.</span>
+					</div>
+					<div class="content">
+						<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+						<span class="list-mini">Reveal your identity when you find the right deal.</span>
+					</div>
+					<div class="content">
+						<img src="https://s3.amazonaws.com/zalate/public/img/wrightgree-min.png" />
+						<span class="list-mini">No more brokers blowing up your phone.</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div fxFlex="100%" class="mob-platform p-40">
+		<button class="mob-platform-btn">Check our Platform</button>
+	</div>
+	<div class="mob-sub-footer" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+		<div fxFlex="100%" class="mob-integration">
+			<div class="head">Not Just Bitcoin.</div>
+			<div class="detail p-t-20">
+				Zalate currently supports OTC deals for Bitcoin, Bitcoin Cash, Ethereum, Ethereum Classic and Litecoin, with plenty more on the way!
+			</div>
+		</div>
+		<div fxFlex="100%" class="mob-crypto">
+			<img class="crypto-img" src="https://s3.amazonaws.com/zalate/public/img/crypto-mob-min.png" />
+		</div>
+		<div fxFlex="100%" class="mob-sellorder-footer">
+			<img class="crypto-img" src="https://s3.amazonaws.com/zalate/public/img/crypto-mob-min.png" />
+		</div>
+	</div>
+	<div class="mob-footer" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+		<div fxFlex="100%" class="Newsletter" fxLayout="column" fxLayoutAlign="center center">
+			
+			<div fxFlex="100%" fxLayout="column" fxLayoutAlign="center center" class="p-t-20" style="width:100%">
+				
+				<div style="align-items: center; justify-content: center; display: flex; margin-bottom: 10px;">
+					<img class="logo-img" style="max-width:200px;" src="https://s3.amazonaws.com/zalate/public/img/logo-min.png" />
+				</div>
+				<div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+					<img style="margin-bottom: 10px;" class="cryptos" style="width: 60%;" src="https://s3.amazonaws.com/zalate/public/img/cryptos-min.png" />
+				</div>
+				
+			
+			</div>
+		</div>
+		<div fxFlex="100%" class="p-t-30 group" fxLayout="column" fxLayoutAlign="center center">
+			<div fxFlex="100%" class="footer-group">
+				<div fxFlex="100%" class="info">
+					<div class="footer-head">Deals</div>
+						<div><a class="footer-link">Buy Orders</a></div>
+						<div><a class="footer-link">Sell Orders</a></div>
+						<div><a class="footer-link">Sponsor Deal</a></div>
+						<div><a class="footer-link">Verify Deal</a></div>
+				</div>
+			</div>
+			<div fxFlex="100%" class="footer-group">
+				<div fxFlex="100%" class="info">
+					<div class="footer-head">Account</div>
+						<div><a class="footer-link">Create Account</a></div>
+						<div><a class="footer-link">Sign In</a></div>
+						<div><a class="footer-link">Verify Account</a></div>
+				</div>
+			</div>
+			<div fxFlex="100%" class="footer-group">
+				<div fxFlex="100%" class="info">
+					<div class="footer-head">Company</div>
+						<div><a class="footer-link">Frequently Asked Questions</a></div>
+						<div><a class="footer-link">Contact Us</a></div>
+						<div><a class="footer-link">White Glove Service</a></div>
+						<div><a class="footer-link">Terms & Conditions</a></div>
+				</div>
+			</div>
+		</div>
+		<div fxFlex="100%" fxLayout="column" fxLayoutAlign="center center" class="p-t-20" style="width:100%; padding-bottom: 30px;">
+				
+				
+				<div class="logo-detail">
+					<span>350 Lincoln Rd, Miami FL 33139, USA</span>
+				</div>
+				<div class="logo-detail">
+					<span>© Zalate LLC, 2018</span>
+				</div>
+
+				<div class="follow-row">
+						<a style="font-size: 15px; font-weight: 500; color: #1f1f1f; margin-right: 15px;">Follow Us: </a>
+						<a><img style="width: 30px; margin-right: 20px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/facebook.svg"></a>
+						<a><img style="width: 30px; margin-right: 20px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/twitter.svg"></a>
+						<a><img style="width: 30px; margin-right: 20px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/telegram.svg"></a>
+						<a><img style="width: 30px; cursor: pointer;" src="https://s3.amazonaws.com/zalate/public/social/linkedin.svg"></a>
+					</div>
+			
+			</div>
+	</div>
+</div>
