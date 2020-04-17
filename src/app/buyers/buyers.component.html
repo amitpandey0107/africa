@@ -76,6 +76,161 @@
         </div>
       </div>
     </mat-card-title>
+
+
+    <!-- =================== Grid View ====================-->
+    <div class="grid-wrap">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-sm-4">
+              <div class="grid-content">
+                  <div class="grid-img">
+                    <img src="http://dev.gdsoftwares.com:3001/uploads/5e64f71668a12a4fdfdd97b8/5e99ba930ede446cf24533f4.jpeg" alt="img"> 
+                    <div class="grid-text">                
+                      <h3 class="grid-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, quia, amet labore, rem eum sed perferendis totam ipsum dolore explicab...</h3>
+                      <div class="grid-date">April 17, 2020</div>
+                    </div> 
+                  </div>
+                  <div class="grid-desc">
+                    <ul class="list-grid">
+                      <li>
+                        <strong>Category</strong>
+                        <span>Distributor</span>
+                      </li>
+                      <li>
+                        <strong>Country</strong>
+                        <span>India</span>
+                      </li>
+                      <li>
+                        <strong>Request Type</strong>
+                        <span>Provide</span>
+                      </li>
+                    </ul>
+                    <div class="grid-interest">                      
+                      <div class="request">
+                        <button>
+                        <i class="material-icons">notifications_active</i>
+                      </button>
+                      </div>
+                      <div class="interest">
+                        <button>
+                          <i class="material-icons">notifications_active</i>
+                        </button>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <!-- /col -->
+
+            <div class="col-sm-4">
+              <div class="grid-content">
+                  <div class="grid-img">
+                    <img src="http://dev.gdsoftwares.com:3001/uploads/5e64f71668a12a4fdfdd97b8/5e99ba930ede446cf24533f4.jpeg" alt="img"> 
+                    <div class="grid-text">                
+                      <h3 class="grid-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, quia, amet labore, rem eum sed perferendis totam ipsum dolore explicab...</h3>
+                      <div class="grid-date">April 17, 2020</div>
+                    </div> 
+                  </div>
+                  <div class="grid-desc">
+                    <ul class="list-grid">
+                      <li>
+                        <strong>Category</strong>
+                        <span>Distributor</span>
+                      </li>
+                      <li>
+                        <strong>Country</strong>
+                        <span>India</span>
+                      </li>
+                      <li>
+                        <strong>Request Type</strong>
+                        <span>Provide</span>
+                      </li>
+                    </ul>
+                    <div class="grid-interest">                      
+                      <div class="request">
+                        <button>
+                        <i class="material-icons">notifications_active</i>
+                      </button>
+                      </div>
+                      <div class="interest">
+                        <button>
+                          <i class="material-icons">notifications_active</i>
+                        </button>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <!-- /col -->
+
+            <div class="col-sm-4">
+              <div class="grid-content">
+                  <div class="grid-img">
+                    <img src="http://dev.gdsoftwares.com:3001/uploads/5e64f71668a12a4fdfdd97b8/5e99ba930ede446cf24533f4.jpeg" alt="img"> 
+                    <div class="grid-text">                
+                      <h3 class="grid-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, quia, amet labore, rem eum sed perferendis totam ipsum dolore explicab...</h3>
+                      <div class="grid-date">April 17, 2020</div>
+                    </div> 
+                  </div>
+                  <div class="grid-desc">
+                    <ul class="list-grid">
+                      <li>
+                        <strong>Category</strong>
+                        <span>Distributor</span>
+                      </li>
+                      <li>
+                        <strong>Country</strong>
+                        <span>India</span>
+                      </li>
+                      <li>
+                        <strong>Request Type</strong>
+                        <span>Provide</span>
+                      </li>
+                    </ul>
+                    <div class="grid-interest">                      
+                      <div class="request">
+                        <button>
+                        <i class="material-icons">notifications_active</i>
+                      </button>
+                      </div>
+                      <div class="interest">
+                        <button>
+                          <i class="material-icons">notifications_active</i>
+                        </button>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <!-- /col -->
+            
+           
+
+          </div>
+          <!-- /row -->
+        </div>
+        <!-- /container -->
+
+        <!-- <mat-card-content>
+          <mat-grid-list cols="3">
+            <mat-grid-tile class="grid-content">
+              <mat-grid-tile-header class="grid-img">
+                <img src="http://dev.gdsoftwares.com:3001/uploads/5e64f71668a12a4fdfdd97b8/5e99ba930ede446cf24533f4.jpeg" alt="img">
+              </mat-grid-tile-header>
+            </mat-grid-tile>
+
+
+
+            <mat-grid-tile>Tile 2 </mat-grid-tile>
+            <mat-grid-tile>Tile 3 </mat-grid-tile>
+          </mat-grid-list>
+        </mat-card-content> -->
+    </div>
+    <!-- /grid-wrap -->
+
+    
     <mat-card-content>
       <mat-grid-list (mouseover)="changeStyle($event,i)" (mouseout)="changeStyle($event,i)"
       (click)="openDeatils(item)" [ngClass]="{ 'grid-list-sponser': i == hoverIndex}"  *ngFor="let item of provideData; let i = index" [cols]="6" rowHeight="6:1"

@@ -2303,3 +2303,149 @@ label {
         padding-bottom: 0;
         text-align: center !important;
     }
+
+
+
+// GRID CODE
+
+.gridwrap{
+
+}
+.grid{
+    min-height: 300px;
+    background-color: #cccccc;
+}
+.grid-content{
+    margin-bottom: 30px;
+    border: 2px solid #633a5a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.grid-content .grid-img{
+    position: relative;
+}
+.grid-content .grid-img img{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+.grid-content .grid-title{
+    font-size: 17px;   
+    margin: 0;
+    
+}
+.grid-content .grid-date{
+    color: #fff;
+    margin-top: 15px;
+    font-size: 15px;
+    background: rgba(0,0,0,0.5);
+    padding: 6px;
+    display: inline-block;
+    border-radius: 9px;
+}
+.grid-content .grid-text{
+    background: rgba(87, 49, 77, 0.8);
+    color: #fff;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+}
+.grid-content .grid-desc {
+    background: #ffffff;
+    padding: 9px;
+    color: #8f8690;
+
+}
+.grid-content .grid-desc .list-grid{
+    padding: 0;
+    margin:0;
+}
+.grid-content .grid-desc .list-grid li{
+    list-style: none;
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+.grid-content .grid-desc .list-grid li:last-child{
+    // border-bottom: 0;
+}
+.btn-interest{}
+.grid-content .grid-desc .list-grid li strong{
+    width: 40%;
+    display: inline-block;
+}
+.grid-content .grid-desc .list-grid li span{
+    width: 60%;
+    display: inline-block;
+}
+.grid-content .grid-interest{
+    margin-top: 15px;
+    color:rgba(87, 49, 77, 1);
+}
+.grid-content .grid-interest .material-icons{
+    font-size: 32px;
+}
+.grid-content .grid-interest .request{
+    width: 50%;
+    display: inline-block;
+    position: relative;
+}
+.grid-content .grid-interest .interest{
+    width: 50%;
+    display: inline-block;
+    text-align: right;
+    position: relative;
+}
+.grid-content .grid-interest .request:after{
+    content: "Request";
+    background-color: #57314d;
+    position: absolute;
+    width: 88px;
+    text-align: center;
+    color: #ffffff;
+    padding: 2px;
+    border-radius: 6px;
+    left: 43px;
+    font-size: 14px;
+    top: 5px;
+    opacity: 0;
+}
+.grid-content .grid-interest .request:before{
+    content: "";
+    position: absolute;
+    border-right: 16px solid #57314d;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    top: 7px;
+    left: 29px; 
+    opacity: 0; 
+}
+
+.grid-content .grid-interest .interest:after{
+    content: "Interetsed";
+    background-color: #57314d;
+    position: absolute;
+    width: 88px;
+    text-align: center;
+    color: #ffffff;
+    padding: 2px;
+    border-radius: 6px;
+    right: 43px;
+    font-size: 14px;
+    top: 5px;
+    opacity: 0;
+}
+.grid-content .grid-interest .interest:before{
+    content: "";
+    position: absolute;
+    border-left: 16px solid #57314d;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    top: 8px;
+    right: 29px;
+    opacity: 0;
+}
+.grid-content .grid-interest button{
+    background: none;
+    border: none;
+}
