@@ -110,7 +110,7 @@
     "karma-jasmine-html-reporter": "1.1.0",
     "nodemon": "1.17.5",
     "protractor": "5.3.2",
-    "ssri": "6.0.0",
+    "ssri": "8.0.1",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "3.5.3",
